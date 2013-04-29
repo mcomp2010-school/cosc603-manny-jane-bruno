@@ -1,0 +1,27 @@
+Log file opened Sun Apr 01 15:31:57 EDT 2012
+***Server: Welcome to MegaMek.  Server is running version 0.34.10, build date Sun Apr 01 15:27:48 EDT 2012.
+***Server: Machine IP is 10.20.190.24
+***Server: Machine IP is fe80:0:0:0:c90b:cb9b:1350:2aa9%11
+***Server: Listening on port 2346
+***Server: Josh.2 connected from /127.0.0.1
+MegaMek: Game saved to savegames\autosave.sav
+Initiative Phase for Deployment
+------------------------------
+Josh rolls a 9[9+0].
+Josh.2 rolls a 3[3+0].
+
+The turn order for movement is:
+  Josh.2, Josh
+
+Wind direction is Northwest.  Wind strength is Calm.  The weather is Clear.  Visibility is Daylight.
+
+Josh: 0 BV remaining (from 0 initially)
+Josh.2: 616 BV remaining (from 616 initially)
+
+osh: 0 BV remaining (from 0 initially)
+Josh.2: 616 BV remaining (from 616 initially)
+
+***Server: Player 'Josh.2' is disconnected.  You may skip his/her current turn with the /skip command.
+***Server: Josh.2 disconnected.
+***Server: Player 'Josh.2' is disconnected.  You may skip his/her current turn with the /skip command.
+***Server: Josh.2 disconnected.

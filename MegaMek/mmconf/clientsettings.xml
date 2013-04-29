@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<MegaMekSettings>
+	<store name="ClientSettings">
+		<preference name="LastPlayerCategory" value="-- No Camo --"/>
+		<preference name="LastPlayerColor" value="1"/>
+		<preference name="megamek.megamek.goalplayers" value="2"/>
+		<preference name="LastPlayerName" value="Josh"/>
+		<preference name="megamek.megamek.metaservername" value="http://www.damour.info/cgi-bin/james/metaserver"/>
+		<preference name="LastServerPass" value="test"/>
+	</store>
+	<store name="megamek.client.ui.AWT.GUIPreferences">
+		<preference name="WindowPosY" value="3"/>
+		<preference name="WindowPosX" value="1"/>
+	</store>
+</MegaMekSettings>
