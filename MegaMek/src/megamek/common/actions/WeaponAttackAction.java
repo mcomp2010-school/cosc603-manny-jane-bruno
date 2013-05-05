@@ -77,91 +77,77 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      */
     private static final long serialVersionUID = -9096603813317359351L;
-    private int weaponId;
-    private int ammoId = -1;
-    private int aimedLocation = Entity.LOC_NONE;
-    private int aimMode = IAimingModes.AIM_MODE_NONE;
-    private int otherAttackInfo = -1; //
-    private boolean nemesisConfused;
-    private boolean swarmingMissiles;
-    private int oldTargetId = -1;
-    private int swarmMissiles = 0;
+    private WeaponAttackActionData data = new WeaponAttackActionData(-1,
+			Entity.LOC_NONE, IAimingModes.AIM_MODE_NONE, -1, -1, 0, new int[BombType.B_NUM]);
 
-    //bomb stuff
-    private int[] bombPayload = new int[BombType.B_NUM];
-
-    // equipment that affects this attack (AMS, ECM?, etc)
-    // only used server-side
-    private transient ArrayList<Mounted> vCounterEquipment;
-
-    // default to attacking an entity
+	// default to attacking an entity
     public WeaponAttackAction(int entityId, int targetId, int weaponId) {
         super(entityId, targetId);
-        this.weaponId = weaponId;
+        this.data.setWeaponId(weaponId);
     }
 
     public WeaponAttackAction(int entityId, int targetType, int targetId,
             int weaponId) {
         super(entityId, targetType, targetId);
-        this.weaponId = weaponId;
+        this.data.setWeaponId(weaponId);
     }
 
     public int getWeaponId() {
-        return weaponId;
+        return data.getWeaponId();
     }
 
     public int getAmmoId() {
-        return ammoId;
+        return data.getAmmoId();
     }
 
     public int getAimedLocation() {
-        return aimedLocation;
+        return data.getAimedLocation();
     }
 
     public int getAimingMode() {
-        return aimMode;
+        return data.getAimMode();
     }
 
     public ArrayList<Mounted> getCounterEquipment() {
-        return vCounterEquipment;
+        return data.getvCounterEquipment();
     }
 
     public void setWeaponId(int weaponId) {
-        this.weaponId = weaponId;
+        this.data.setWeaponId(weaponId);
     }
 
     public void setAmmoId(int ammoId) {
-        this.ammoId = ammoId;
+        this.data.setAmmoId(ammoId);
     }
 
     public void setAimedLocation(int aimedLocation) {
-        this.aimedLocation = aimedLocation;
+        this.data.setAimedLocation(aimedLocation);
     }
 
     public void setAimingMode(int aimMode) {
-        this.aimMode = aimMode;
+        this.data.setAimMode(aimMode);
     }
 
     public void addCounterEquipment(Mounted m) {
-        if (vCounterEquipment == null) {
-            vCounterEquipment = new ArrayList<Mounted>();
+        if (data.getvCounterEquipment() == null) {
+            data.setvCounterEquipment(new ArrayList<Mounted>());
         }
-        vCounterEquipment.add(m);
+        data.getvCounterEquipment().add(m);
     }
 
     public void setOtherAttackInfo(int newInfo) {
-        otherAttackInfo = newInfo;
+        data.setOtherAttackInfo(newInfo);
     }
 
     public int getOtherAttackInfo() {
-        return otherAttackInfo;
+        return data.getOtherAttackInfo();
     }
 
     public ToHitData toHit(IGame game) {
         return WeaponAttackAction.toHit(game, getEntityId(), game.getTarget(
                 getTargetType(), getTargetId()), getWeaponId(),
-                getAimedLocation(), getAimingMode(), nemesisConfused,
-                swarmingMissiles, game.getEntity(oldTargetId));
+                getAimedLocation(), getAimingMode(), data.isNemesisConfused(),
+                data.isSwarmingMissiles(), game.getEntity(data.getOldTargetId()));
     }
 
     public static ToHitData toHit(IGame game, int attackerId,
@@ -2649,7 +2635,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @return Returns the nemesisConfused.
      */
     public boolean isNemesisConfused() {
-        return nemesisConfused;
+        return data.isNemesisConfused();
     }
 
     /**
@@ -2657,34 +2643,34 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *            The nemesisConfused to set.
      */
     public void setNemesisConfused(boolean nemesisConfused) {
-        this.nemesisConfused = nemesisConfused;
+        this.data.setNemesisConfused(nemesisConfused);
     }
 
     public boolean isSwarmingMissiles() {
-        return swarmingMissiles;
+        return data.isSwarmingMissiles();
     }
 
     public void setSwarmingMissiles(boolean swarmingMissiles) {
-        this.swarmingMissiles = swarmingMissiles;
+        this.data.setSwarmingMissiles(swarmingMissiles);
     }
 
     public void setOldTargetId(int id) {
-        oldTargetId = id;
+        data.setOldTargetId(id);
     }
 
     public int getSwarmMissiles() {
-        return swarmMissiles;
+        return data.getSwarmMissiles();
     }
 
     public void setSwarmMissiles(int swarmMissiles) {
-        this.swarmMissiles = swarmMissiles;
+        this.data.setSwarmMissiles(swarmMissiles);
     }
 
     public int[] getBombPayload() {
-        return bombPayload;
+        return data.getBombPayload();
     }
 
     public void setBombPayload(int[] load) {
-        bombPayload = load;
+        data.setBombPayload(load);
     }
 }
