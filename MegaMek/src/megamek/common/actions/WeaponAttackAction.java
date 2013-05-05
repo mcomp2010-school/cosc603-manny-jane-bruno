@@ -90,7 +90,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	 * @param targetId the target id
 	 * @param weaponId the weapon id
 	 */
-	public WeaponAttackAction(int entityId, int targetId, int weaponId) {
+	public WeaponAttackAction(final int entityId, final int targetId, final int weaponId) {
         super(entityId, targetId);
         this.data.setWeaponId(weaponId);
     }
@@ -103,8 +103,8 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @param targetId the target id
      * @param weaponId the weapon id
      */
-    public WeaponAttackAction(int entityId, int targetType, int targetId,
-            int weaponId) {
+    public WeaponAttackAction(final int entityId, final int targetType, final int targetId,
+            final int weaponId) {
         super(entityId, targetType, targetId);
         this.data.setWeaponId(weaponId);
     }
@@ -114,7 +114,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the weapon id
      */
-    public int getWeaponId() {
+    public final int getWeaponId() {
         return data.getWeaponId();
     }
 
@@ -123,7 +123,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the ammo id
      */
-    public int getAmmoId() {
+    public final int getAmmoId() {
         return data.getAmmoId();
     }
 
@@ -132,7 +132,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the aimed location
      */
-    public int getAimedLocation() {
+    public final int getAimedLocation() {
         return data.getAimedLocation();
     }
 
@@ -141,7 +141,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the aiming mode
      */
-    public int getAimingMode() {
+    public final int getAimingMode() {
         return data.getAimMode();
     }
 
@@ -150,7 +150,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the counter equipment
      */
-    public ArrayList<Mounted> getCounterEquipment() {
+    public final ArrayList<Mounted> getCounterEquipment() {
         return data.getvCounterEquipment();
     }
 
@@ -159,7 +159,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param weaponId the new weapon id
      */
-    public void setWeaponId(int weaponId) {
+    public final void setWeaponId(final int weaponId) {
         this.data.setWeaponId(weaponId);
     }
 
@@ -168,7 +168,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param ammoId the new ammo id
      */
-    public void setAmmoId(int ammoId) {
+    public final void setAmmoId(final int ammoId) {
         this.data.setAmmoId(ammoId);
     }
 
@@ -177,7 +177,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param aimedLocation the new aimed location
      */
-    public void setAimedLocation(int aimedLocation) {
+    public final void setAimedLocation(final int aimedLocation) {
         this.data.setAimedLocation(aimedLocation);
     }
 
@@ -186,7 +186,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param aimMode the new aiming mode
      */
-    public void setAimingMode(int aimMode) {
+    public final void setAimingMode(final int aimMode) {
         this.data.setAimMode(aimMode);
     }
 
@@ -195,7 +195,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param m the m
      */
-    public void addCounterEquipment(Mounted m) {
+    public final void addCounterEquipment(final Mounted m) {
         if (data.getvCounterEquipment() == null) {
             data.setvCounterEquipment(new ArrayList<Mounted>());
         }
@@ -207,7 +207,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param newInfo the new other attack info
      */
-    public void setOtherAttackInfo(int newInfo) {
+    public final void setOtherAttackInfo(final int newInfo) {
         data.setOtherAttackInfo(newInfo);
     }
 
@@ -216,7 +216,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the other attack info
      */
-    public int getOtherAttackInfo() {
+    public final int getOtherAttackInfo() {
         return data.getOtherAttackInfo();
     }
 
@@ -226,7 +226,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @param game the game
      * @return the to hit data
      */
-    public ToHitData toHit(IGame game) {
+    public final ToHitData toHit(final IGame game) {
         return WeaponAttackAction.toHit(game, getEntityId(), game.getTarget(
                 getTargetType(), getTargetId()), getWeaponId(),
                 getAimedLocation(), getAimingMode(), data.isNemesisConfused(),
@@ -242,8 +242,8 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @param weaponId the weapon id
      * @return the to hit data
      */
-    public static ToHitData toHit(IGame game, int attackerId,
-            Targetable target, int weaponId) {
+    public static ToHitData toHit(final IGame game, final int attackerId,
+            final Targetable target, final int weaponId) {
         return WeaponAttackAction
                 .toHit(game, attackerId, target, weaponId, Entity.LOC_NONE,
                         IAimingModes.AIM_MODE_NONE, false, false, null);
@@ -260,8 +260,8 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @param aimingMode the aiming mode
      * @return the to hit data
      */
-    public static ToHitData toHit(IGame game, int attackerId,
-            Targetable target, int weaponId, int aimingAt, int aimingMode) {
+    public static ToHitData toHit(final IGame game, final int attackerId,
+            final Targetable target, final int weaponId, final int aimingAt, final int aimingMode) {
         return WeaponAttackAction.toHit(game, attackerId, target, weaponId, aimingAt, aimingMode,
                 false, false, null);
     }
@@ -280,10 +280,10 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @param oldTarget the old target
      * @return the to hit data
      */
-    private static ToHitData toHit(IGame game, int attackerId,
-            Targetable target, int weaponId, int aimingAt, int aimingMode,
-            boolean isNemesisConfused, boolean exchangeSwarmTarget,
-            Entity oldTarget) {
+    private static ToHitData toHit(final IGame game, final int attackerId,
+            final Targetable target, final int weaponId, final int aimingAt, final int aimingMode,
+            final boolean isNemesisConfused, final boolean exchangeSwarmTarget,
+            final Entity oldTarget) {
         final Entity ae = game.getEntity(attackerId);
         final Mounted weapon = ae.getEquipment(weaponId);
         final WeaponType wtype = (WeaponType) weapon.getType();
@@ -1832,14 +1832,14 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @param isTargetECMAffected the is target ecm affected
      * @return the string
      */
-    private static String toHitIsImpossible(IGame game, Entity ae,
-            Targetable target, Mounted weapon, AmmoType atype,
-            WeaponType wtype, int ttype, boolean exchangeSwarmTarget,
-            boolean usesAmmo, Entity te, boolean isTAG, boolean isInferno,
-            boolean isAttackerInfantry, boolean isIndirect, int attackerId,
-            int weaponId, boolean isArtilleryIndirect, Mounted ammo,
-            boolean isArtilleryFLAK, boolean targetInBuilding,
-            boolean isArtilleryDirect, boolean isTargetECMAffected) {
+    private static String toHitIsImpossible(final IGame game, Entity ae,
+            final Targetable target, final Mounted weapon, AmmoType atype,
+            final WeaponType wtype, final int ttype, final boolean exchangeSwarmTarget,
+            final boolean usesAmmo, final Entity te, final boolean isTAG, boolean isInferno,
+            final boolean isAttackerInfantry, final boolean isIndirect, final int attackerId,
+            final int weaponId, final boolean isArtilleryIndirect, Mounted ammo,
+            final boolean isArtilleryFLAK, final boolean targetInBuilding,
+            final boolean isArtilleryDirect, final boolean isTargetECMAffected) {
         boolean isHoming = false;
         ToHitData toHit = null;
 
@@ -2778,7 +2778,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return Returns the nemesisConfused.
      */
-    public boolean isNemesisConfused() {
+    public final boolean isNemesisConfused() {
         return data.isNemesisConfused();
     }
 
@@ -2787,7 +2787,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param nemesisConfused The nemesisConfused to set.
      */
-    public void setNemesisConfused(boolean nemesisConfused) {
+    public final void setNemesisConfused(final boolean nemesisConfused) {
         this.data.setNemesisConfused(nemesisConfused);
     }
 
@@ -2796,7 +2796,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return true, if is swarming missiles
      */
-    public boolean isSwarmingMissiles() {
+    public final boolean isSwarmingMissiles() {
         return data.isSwarmingMissiles();
     }
 
@@ -2805,7 +2805,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param swarmingMissiles the new swarming missiles
      */
-    public void setSwarmingMissiles(boolean swarmingMissiles) {
+    public final void setSwarmingMissiles(final boolean swarmingMissiles) {
         this.data.setSwarmingMissiles(swarmingMissiles);
     }
 
@@ -2814,7 +2814,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param id the new old target id
      */
-    public void setOldTargetId(int id) {
+    public final void setOldTargetId(final int id) {
         data.setOldTargetId(id);
     }
 
@@ -2823,7 +2823,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the swarm missiles
      */
-    public int getSwarmMissiles() {
+    public final int getSwarmMissiles() {
         return data.getSwarmMissiles();
     }
 
@@ -2832,7 +2832,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param swarmMissiles the new swarm missiles
      */
-    public void setSwarmMissiles(int swarmMissiles) {
+    public final void setSwarmMissiles(final int swarmMissiles) {
         this.data.setSwarmMissiles(swarmMissiles);
     }
 
@@ -2841,7 +2841,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @return the bomb payload
      */
-    public int[] getBombPayload() {
+    public final int[] getBombPayload() {
         return data.getBombPayload();
     }
 
@@ -2850,7 +2850,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      *
      * @param load the new bomb payload
      */
-    public void setBombPayload(int[] load) {
+    public final void setBombPayload(final int[] load) {
         data.setBombPayload(load);
     }
 }
