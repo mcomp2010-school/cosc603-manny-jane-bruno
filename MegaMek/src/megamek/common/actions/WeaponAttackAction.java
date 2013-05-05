@@ -68,66 +68,133 @@ import megamek.common.weapons.SRTWeapon;
 import megamek.common.weapons.ScreenLauncherBayWeapon;
 import megamek.common.weapons.VariableSpeedPulseLaserWeapon;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents intention to fire a weapon at the target.
  */
 public class WeaponAttackAction extends AbstractAttackAction implements
         Serializable {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -9096603813317359351L;
+    
+    /** The data. */
     private WeaponAttackActionData data = new WeaponAttackActionData(-1,
 			Entity.LOC_NONE, IAimingModes.AIM_MODE_NONE, -1, -1, 0, new int[BombType.B_NUM]);
 
 	// default to attacking an entity
-    public WeaponAttackAction(int entityId, int targetId, int weaponId) {
+    /**
+	 * Instantiates a new weapon attack action.
+	 *
+	 * @param entityId the entity id
+	 * @param targetId the target id
+	 * @param weaponId the weapon id
+	 */
+	public WeaponAttackAction(int entityId, int targetId, int weaponId) {
         super(entityId, targetId);
         this.data.setWeaponId(weaponId);
     }
 
+    /**
+     * Instantiates a new weapon attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param weaponId the weapon id
+     */
     public WeaponAttackAction(int entityId, int targetType, int targetId,
             int weaponId) {
         super(entityId, targetType, targetId);
         this.data.setWeaponId(weaponId);
     }
 
+    /**
+     * Gets the weapon id.
+     *
+     * @return the weapon id
+     */
     public int getWeaponId() {
         return data.getWeaponId();
     }
 
+    /**
+     * Gets the ammo id.
+     *
+     * @return the ammo id
+     */
     public int getAmmoId() {
         return data.getAmmoId();
     }
 
+    /**
+     * Gets the aimed location.
+     *
+     * @return the aimed location
+     */
     public int getAimedLocation() {
         return data.getAimedLocation();
     }
 
+    /**
+     * Gets the aiming mode.
+     *
+     * @return the aiming mode
+     */
     public int getAimingMode() {
         return data.getAimMode();
     }
 
+    /**
+     * Gets the counter equipment.
+     *
+     * @return the counter equipment
+     */
     public ArrayList<Mounted> getCounterEquipment() {
         return data.getvCounterEquipment();
     }
 
+    /**
+     * Sets the weapon id.
+     *
+     * @param weaponId the new weapon id
+     */
     public void setWeaponId(int weaponId) {
         this.data.setWeaponId(weaponId);
     }
 
+    /**
+     * Sets the ammo id.
+     *
+     * @param ammoId the new ammo id
+     */
     public void setAmmoId(int ammoId) {
         this.data.setAmmoId(ammoId);
     }
 
+    /**
+     * Sets the aimed location.
+     *
+     * @param aimedLocation the new aimed location
+     */
     public void setAimedLocation(int aimedLocation) {
         this.data.setAimedLocation(aimedLocation);
     }
 
+    /**
+     * Sets the aiming mode.
+     *
+     * @param aimMode the new aiming mode
+     */
     public void setAimingMode(int aimMode) {
         this.data.setAimMode(aimMode);
     }
 
+    /**
+     * Adds the counter equipment.
+     *
+     * @param m the m
+     */
     public void addCounterEquipment(Mounted m) {
         if (data.getvCounterEquipment() == null) {
             data.setvCounterEquipment(new ArrayList<Mounted>());
@@ -135,14 +202,30 @@ public class WeaponAttackAction extends AbstractAttackAction implements
         data.getvCounterEquipment().add(m);
     }
 
+    /**
+     * Sets the other attack info.
+     *
+     * @param newInfo the new other attack info
+     */
     public void setOtherAttackInfo(int newInfo) {
         data.setOtherAttackInfo(newInfo);
     }
 
+    /**
+     * Gets the other attack info.
+     *
+     * @return the other attack info
+     */
     public int getOtherAttackInfo() {
         return data.getOtherAttackInfo();
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return WeaponAttackAction.toHit(game, getEntityId(), game.getTarget(
                 getTargetType(), getTargetId()), getWeaponId(),
@@ -150,6 +233,15 @@ public class WeaponAttackAction extends AbstractAttackAction implements
                 data.isSwarmingMissiles(), game.getEntity(data.getOldTargetId()));
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param weaponId the weapon id
+     * @return the to hit data
+     */
     public static ToHitData toHit(IGame game, int attackerId,
             Targetable target, int weaponId) {
         return WeaponAttackAction
@@ -157,6 +249,17 @@ public class WeaponAttackAction extends AbstractAttackAction implements
                         IAimingModes.AIM_MODE_NONE, false, false, null);
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param weaponId the weapon id
+     * @param aimingAt the aiming at
+     * @param aimingMode the aiming mode
+     * @return the to hit data
+     */
     public static ToHitData toHit(IGame game, int attackerId,
             Targetable target, int weaponId, int aimingAt, int aimingMode) {
         return WeaponAttackAction.toHit(game, attackerId, target, weaponId, aimingAt, aimingMode,
@@ -165,6 +268,17 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 
     /**
      * To-hit number for attacker firing a weapon at the target.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param weaponId the weapon id
+     * @param aimingAt the aiming at
+     * @param aimingMode the aiming mode
+     * @param isNemesisConfused the is nemesis confused
+     * @param exchangeSwarmTarget the exchange swarm target
+     * @param oldTarget the old target
+     * @return the to hit data
      */
     private static ToHitData toHit(IGame game, int attackerId,
             Targetable target, int weaponId, int aimingAt, int aimingMode,
@@ -1691,6 +1805,33 @@ public class WeaponAttackAction extends AbstractAttackAction implements
         return toHit;
     }
 
+    /**
+     * To hit is impossible.
+     *
+     * @param game the game
+     * @param ae the ae
+     * @param target the target
+     * @param weapon the weapon
+     * @param atype the atype
+     * @param wtype the wtype
+     * @param ttype the ttype
+     * @param exchangeSwarmTarget the exchange swarm target
+     * @param usesAmmo the uses ammo
+     * @param te the te
+     * @param isTAG the is tag
+     * @param isInferno the is inferno
+     * @param isAttackerInfantry the is attacker infantry
+     * @param isIndirect the is indirect
+     * @param attackerId the attacker id
+     * @param weaponId the weapon id
+     * @param isArtilleryIndirect the is artillery indirect
+     * @param ammo the ammo
+     * @param isArtilleryFLAK the is artillery flak
+     * @param targetInBuilding the target in building
+     * @param isArtilleryDirect the is artillery direct
+     * @param isTargetECMAffected the is target ecm affected
+     * @return the string
+     */
     private static String toHitIsImpossible(IGame game, Entity ae,
             Targetable target, Mounted weapon, AmmoType atype,
             WeaponType wtype, int ttype, boolean exchangeSwarmTarget,
@@ -2441,6 +2582,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
         if (!Compute.isInArc(game, attackerId, weaponId, target)) {
             return "Target not in arc.";
         }
+        
 
         // Protomech can fire MGA only into front arc, TW page 137
         if (!Compute.isInArc(ae.getPosition(), ae.getFacing(), target.getPosition(), Compute.ARC_FORWARD)
@@ -2632,6 +2774,8 @@ public class WeaponAttackAction extends AbstractAttackAction implements
     }
 
     /**
+     * Checks if is nemesis confused.
+     *
      * @return Returns the nemesisConfused.
      */
     public boolean isNemesisConfused() {
@@ -2639,37 +2783,73 @@ public class WeaponAttackAction extends AbstractAttackAction implements
     }
 
     /**
-     * @param nemesisConfused
-     *            The nemesisConfused to set.
+     * Sets the nemesis confused.
+     *
+     * @param nemesisConfused The nemesisConfused to set.
      */
     public void setNemesisConfused(boolean nemesisConfused) {
         this.data.setNemesisConfused(nemesisConfused);
     }
 
+    /**
+     * Checks if is swarming missiles.
+     *
+     * @return true, if is swarming missiles
+     */
     public boolean isSwarmingMissiles() {
         return data.isSwarmingMissiles();
     }
 
+    /**
+     * Sets the swarming missiles.
+     *
+     * @param swarmingMissiles the new swarming missiles
+     */
     public void setSwarmingMissiles(boolean swarmingMissiles) {
         this.data.setSwarmingMissiles(swarmingMissiles);
     }
 
+    /**
+     * Sets the old target id.
+     *
+     * @param id the new old target id
+     */
     public void setOldTargetId(int id) {
         data.setOldTargetId(id);
     }
 
+    /**
+     * Gets the swarm missiles.
+     *
+     * @return the swarm missiles
+     */
     public int getSwarmMissiles() {
         return data.getSwarmMissiles();
     }
 
+    /**
+     * Sets the swarm missiles.
+     *
+     * @param swarmMissiles the new swarm missiles
+     */
     public void setSwarmMissiles(int swarmMissiles) {
         this.data.setSwarmMissiles(swarmMissiles);
     }
 
+    /**
+     * Gets the bomb payload.
+     *
+     * @return the bomb payload
+     */
     public int[] getBombPayload() {
         return data.getBombPayload();
     }
 
+    /**
+     * Sets the bomb payload.
+     *
+     * @param load the new bomb payload
+     */
     public void setBombPayload(int[] load) {
         data.setBombPayload(load);
     }
