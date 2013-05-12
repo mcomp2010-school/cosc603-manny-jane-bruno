@@ -38,12 +38,7 @@ import megamek.common.actions.KickAttackAction;
 import megamek.common.actions.PunchAttackAction;
 import megamek.common.actions.PushAttackAction;
 
-public final class PhysicalCalculator {
-    private PhysicalCalculator() {
-        super();
-        // should never call this
-    }
-
+public final class PhysicalCalculator {   
     static PhysicalOption calculatePhysicalTurn(TestBot bot) {
         int entNum = bot.game.getFirstEntityNum(bot.getMyTurn());
         int first = entNum;
