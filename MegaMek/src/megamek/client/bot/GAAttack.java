@@ -313,7 +313,7 @@ public class GAAttack extends GA {
                 : 0;
         CEntity target = null;
         boolean done = false;
-        if (r1 % 2 == 1) {
+        if (Math.abs(r1) % 2 == 1) { // Adjusted to accomodate for negative numbers
             c1.genes[r1]--;
             if (c1.genes[r1] < 0 && attack.size() > r1) {
                 c1.genes[r1] = attack.get(r1).size() - 1;
