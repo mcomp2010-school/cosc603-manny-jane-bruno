@@ -281,9 +281,9 @@ public class WeaponAttackAction extends AbstractAttackAction implements
      * @return the to hit data
      */
     private static ToHitData toHit(final IGame game, final int attackerId,
-            final Targetable target, final int weaponId, final int aimingAt, final int aimingMode,
+             Targetable target, final int weaponId, final int aimingAt, final int aimingMode,
             final boolean isNemesisConfused, final boolean exchangeSwarmTarget,
-            final Entity oldTarget) {
+             Entity oldTarget) {
         final Entity ae = game.getEntity(attackerId);
         final Mounted weapon = ae.getEquipment(weaponId);
         final WeaponType wtype = (WeaponType) weapon.getType();
