@@ -66,8 +66,8 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
      * @param w
      * @param g
      */
-    public ArtilleryWeaponIndirectFireHandler(ToHitData t,
-            WeaponAttackAction w, IGame g, Server s) {
+    public ArtilleryWeaponIndirectFireHandler(final ToHitData t,
+            final WeaponAttackAction w, final IGame g, final Server s) {
         super(t, w, g, s);
     }
 
@@ -77,7 +77,7 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
      * @see megamek.common.weapons.AttackHandler#cares(int)
      */
     @Override
-    public boolean cares(IGame.Phase phase) {
+	public boolean cares(final IGame.Phase phase) {
         if ((phase == IGame.Phase.PHASE_OFFBOARD) || (phase == IGame.Phase.PHASE_TARGETING)) {
             return true;
         }
@@ -90,7 +90,7 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
      * @see megamek.common.weapons.AttackHandler#handle(int, java.util.Vector)
      */
     @Override
-    public boolean handle(IGame.Phase phase, Vector<Report> vPhaseReport) {
+	public boolean handle(final IGame.Phase phase, final Vector<Report> vPhaseReport) {
         if (!cares(phase)) {
             return true;
         }
@@ -155,7 +155,7 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 
                         public Targetable targ = target;
 
-                        public boolean accept(Entity entity) {
+                        public boolean accept(final Entity entity) {
                             Integer id = new Integer(entity.getId());
                             if ((player == entity.getOwnerId())
                                     && spottersBefore.contains(id)
@@ -448,7 +448,7 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
      * @see megamek.common.weapons.WeaponHandler#calcDamagePerHit()
      */
     @Override
-    protected int calcDamagePerHit() {
+	protected final int calcDamagePerHit() {
         float toReturn = wtype.getDamage();
         // area effect damage is double
         if ((target instanceof Infantry) && !(target instanceof BattleArmor)) {
