@@ -43,15 +43,18 @@ import megamek.common.actions.ArtilleryAttackAction;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ArtilleryWeaponIndirectFireHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1277649123562229298L;
+    
+    /** The handled ammo and report. */
     boolean handledAmmoAndReport = false;
 
     /**
@@ -62,13 +65,16 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
     }
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new artillery weapon indirect fire handler.
+     *
+     * @param toHitData the to hit data
+     * @param weaponAttackAction the weapon attack action
+     * @param game the game
+     * @param server the server
      */
-    public ArtilleryWeaponIndirectFireHandler(final ToHitData t,
-            final WeaponAttackAction w, final IGame g, final Server s) {
-        super(t, w, g, s);
+    public ArtilleryWeaponIndirectFireHandler(final ToHitData toHitData,
+            final WeaponAttackAction weaponAttackAction, final IGame game, final Server server) {
+        super(toHitData, weaponAttackAction, game, server);
     }
 
     /*
