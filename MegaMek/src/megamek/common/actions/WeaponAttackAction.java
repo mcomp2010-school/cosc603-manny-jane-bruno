@@ -93,7 +93,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	public WeaponAttackAction(final int entityId, final int targetId, final int weaponId) {
         super(entityId, targetId);
         this.data.setWeaponId(weaponId);
-    }
+    }  
 
     /**
      * Instantiates a new weapon attack action.
@@ -287,6 +287,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
         final Entity ae = game.getEntity(attackerId);
         final Mounted weapon = ae.getEquipment(weaponId);
         final WeaponType wtype = (WeaponType) weapon.getType();
+       
         if (exchangeSwarmTarget) {
             // Quick check, is the new target out of range for the weapon?
             if (RangeType.rangeBracket(ae.getPosition().distance(
@@ -304,77 +305,56 @@ public class WeaponAttackAction extends AbstractAttackAction implements
             target = oldTarget;
             oldTarget = (Entity) tempTarget;
         }
+        
         Entity te = null;
         if (target.getTargetType() == Targetable.TYPE_ENTITY) {
             te = (Entity) target;
         }
+        
         boolean isAttackerInfantry = ae instanceof Infantry;
         boolean isWeaponInfantry = wtype.hasFlag(WeaponType.F_INFANTRY);
         // 2003-01-02 BattleArmor MG and Small Lasers have unlimited ammo.
         // 2002-09-16 Infantry weapons have unlimited ammo.
         final boolean usesAmmo = (wtype.getAmmoType() != AmmoType.T_NA)
                 && !isWeaponInfantry;
+        
         final Mounted ammo = usesAmmo ? weapon.getLinked() : null;
         final AmmoType atype = ammo == null ? null : (AmmoType) ammo.getType();
         final boolean targetInBuilding = Compute.isInBuilding(game, te);
-        boolean isIndirect = wtype.hasModes()
-                && weapon.curMode().equals("Indirect");
-        boolean isInferno = ((atype != null)
-                && ((atype.getAmmoType() == AmmoType.T_SRM) || (atype
-                        .getAmmoType() == AmmoType.T_MML))
-                && (atype.getMunitionType() == AmmoType.M_INFERNO))
-                || (isWeaponInfantry && (wtype.hasFlag(WeaponType.F_INFERNO)));
-        boolean isArtilleryDirect = wtype.hasFlag(WeaponType.F_ARTILLERY)
-                && (game.getPhase() == IGame.Phase.PHASE_FIRING);
-        boolean isArtilleryIndirect = wtype.hasFlag(WeaponType.F_ARTILLERY)
-                && ((game.getPhase() == IGame.Phase.PHASE_TARGETING) || (game
-                        .getPhase() == IGame.Phase.PHASE_OFFBOARD));
+        boolean isIndirect = isIndirect(weapon, wtype);       
+        boolean isInferno = isInferno(wtype, isWeaponInfantry, atype);        
+        boolean isArtilleryDirect = isArtilleryDirect(game, wtype);        
+        boolean isArtilleryIndirect = isArtilleryIndirect(game, wtype);
+        
         // hack, otherwise when actually resolves shot labeled impossible.
-        boolean isArtilleryFLAK = isArtilleryDirect
-                && (target.getTargetType() == Targetable.TYPE_ENTITY)
-                && (te.getMovementMode() == IEntityMovementMode.VTOL)
-                && (te.getElevation() > 0)
-                && (usesAmmo && (atype.getMunitionType() == AmmoType.M_STANDARD));
-        boolean isHaywireINarced = ae.isINarcedWith(INarcPod.HAYWIRE);
-        boolean isINarcGuided = false;
+        boolean isArtilleryFLAK = isArtilleryFLAK(target, te, usesAmmo, atype, isArtilleryDirect);
+        
+        boolean isHaywireINarced = ae.isINarcedWith(INarcPod.HAYWIRE);        
+        
         // for attacks where ECM along flight path makes a difference
         boolean isECMAffected = Compute.isAffectedByECM(ae, ae.getPosition(),
                 target.getPosition());
+        
         // for attacks where only ECM on the target hex makes a difference
         boolean isTargetECMAffected = Compute.isAffectedByECM(ae, target
                 .getPosition(), target.getPosition());
+        
         boolean isTAG = wtype.hasFlag(WeaponType.F_TAG);
-        boolean isHoming = false;
-        boolean bHeatSeeking = (atype != null)
-                && ((atype.getAmmoType() == AmmoType.T_SRM)
-                        || (atype.getAmmoType() == AmmoType.T_MML) || (atype
-                        .getAmmoType() == AmmoType.T_LRM))
-                && (atype.getMunitionType() == AmmoType.M_HEAT_SEEKING);
-        boolean bFTL = (atype != null)
-                && ((atype.getAmmoType() == AmmoType.T_MML) || (atype
-                        .getAmmoType() == AmmoType.T_LRM))
-                && (atype.getMunitionType() == AmmoType.M_FOLLOW_THE_LEADER);
+        boolean isHoming = false;        
+        boolean bHeatSeeking = bHeatSeeking(atype);        
+        boolean bFTL = bFTL(atype);
 
         Mounted mLinker = weapon.getLinkedBy();
-        boolean bApollo = ((mLinker != null)
-                && (mLinker.getType() instanceof MiscType)
-                && !mLinker.isDestroyed() && !mLinker.isMissing()
-                && !mLinker.isBreached() && mLinker.getType().hasFlag(
-                MiscType.F_APOLLO))
-                && (atype.getAmmoType() == AmmoType.T_MRM);
+        boolean bApollo = bApollo(atype, mLinker);
         boolean inSameBuilding = Compute.isInSameBuilding(game, ae, te);
 
+        
+        boolean isINarcGuided = false;
         if (te != null) {
-            if (!isTargetECMAffected
-                    && te.isINarcedBy(ae.getOwner().getTeam())
-                    && (atype != null)
-                    && ((atype.getAmmoType() == AmmoType.T_LRM)
-                            || (atype.getAmmoType() == AmmoType.T_MML) || (atype
-                            .getAmmoType() == AmmoType.T_SRM))
-                    && (atype.getMunitionType() == AmmoType.M_NARC_CAPABLE)) {
-                isINarcGuided = true;
-            }
+            isINarcGuided = isNarcGuidedCheck(ae, te, atype,
+					isTargetECMAffected, isINarcGuided);            
         }
+        
         int toSubtract = 0;
         final int ttype = target.getTargetType();
 
@@ -386,6 +366,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
                 isAttackerInfantry, isIndirect, attackerId, weaponId,
                 isArtilleryIndirect, ammo, isArtilleryFLAK, targetInBuilding,
                 isArtilleryDirect, isTargetECMAffected);
+        
         if (reason != null) {
             return new ToHitData(TargetRoll.IMPOSSIBLE, reason);
         }
@@ -454,16 +435,10 @@ public class WeaponAttackAction extends AbstractAttackAction implements
         int eistatus = 0;
 
         boolean MPMelevationHack = false;
-        if (usesAmmo
-                && (wtype.getAmmoType() == AmmoType.T_LRM)
-                && (atype != null)
-                && (atype.getMunitionType() == AmmoType.M_MULTI_PURPOSE)
-                && (ae.getElevation() == -1)
-                && (ae.getLocationStatus(weapon.getLocation()) == ILocationExposureStatus.WET)) {
-            MPMelevationHack = true;
-            // surface to fire
-            ae.setElevation(0);
-        }
+        
+        MPMelevationHack = elevationHackCheck(ae, weapon, wtype, usesAmmo,
+				atype, MPMelevationHack);
+        
         // check LOS (indirect LOS is from the spotter)
         LosEffects los;
         ToHitData losMods;
@@ -514,6 +489,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 
             losMods = los.losModifiers(game);
         }
+        
         if (MPMelevationHack) {
             // return to depth 1
             ae.setElevation(-1);
@@ -1804,6 +1780,159 @@ public class WeaponAttackAction extends AbstractAttackAction implements
         // okay!
         return toHit;
     }
+
+	/**
+	 * @param ae
+	 * @param weapon
+	 * @param wtype
+	 * @param usesAmmo
+	 * @param atype
+	 * @param MPMelevationHack
+	 * @return
+	 */
+	private static boolean elevationHackCheck(final Entity ae,
+			final Mounted weapon, final WeaponType wtype,
+			final boolean usesAmmo, final AmmoType atype,
+			boolean MPMelevationHack) {
+		if (usesAmmo
+                && (wtype.getAmmoType() == AmmoType.T_LRM)
+                && (atype != null)
+                && (atype.getMunitionType() == AmmoType.M_MULTI_PURPOSE)
+                && (ae.getElevation() == -1)
+                && (ae.getLocationStatus(weapon.getLocation()) == ILocationExposureStatus.WET)) {
+            MPMelevationHack = true;
+            // surface to fire
+            ae.setElevation(0);
+        }
+		return MPMelevationHack;
+	}
+
+	/**
+	 * @param ae
+	 * @param te
+	 * @param atype
+	 * @param isTargetECMAffected
+	 * @param isINarcGuided
+	 * @return
+	 */
+	private static boolean isNarcGuidedCheck(final Entity ae, Entity te,
+			final AmmoType atype, boolean isTargetECMAffected,
+			boolean isINarcGuided) {
+		if (!isTargetECMAffected
+		        && te.isINarcedBy(ae.getOwner().getTeam())
+		        && (atype != null)
+		        && ((atype.getAmmoType() == AmmoType.T_LRM)
+		                || (atype.getAmmoType() == AmmoType.T_MML) || (atype
+		                .getAmmoType() == AmmoType.T_SRM))
+		        && (atype.getMunitionType() == AmmoType.M_NARC_CAPABLE)) {
+		    isINarcGuided = true;
+		}
+		return isINarcGuided;
+	}
+
+	/**
+	 * @param atype
+	 * @param mLinker
+	 * @return
+	 */
+	private static boolean bApollo(final AmmoType atype, Mounted mLinker) {
+		return ((mLinker != null)
+                && (mLinker.getType() instanceof MiscType)
+                && !mLinker.isDestroyed() && !mLinker.isMissing()
+                && !mLinker.isBreached() && mLinker.getType().hasFlag(
+                MiscType.F_APOLLO))
+                && (atype.getAmmoType() == AmmoType.T_MRM);
+	}
+
+	/**
+	 * @param atype
+	 * @return
+	 */
+	private static boolean bFTL(final AmmoType atype) {
+		return (atype != null)
+                && ((atype.getAmmoType() == AmmoType.T_MML) || (atype
+                        .getAmmoType() == AmmoType.T_LRM))
+                && (atype.getMunitionType() == AmmoType.M_FOLLOW_THE_LEADER);
+	}
+
+	/**
+	 * @param atype
+	 * @return
+	 */
+	private static boolean bHeatSeeking(final AmmoType atype) {
+		return (atype != null)
+                && ((atype.getAmmoType() == AmmoType.T_SRM)
+                        || (atype.getAmmoType() == AmmoType.T_MML) || (atype
+                        .getAmmoType() == AmmoType.T_LRM))
+                && (atype.getMunitionType() == AmmoType.M_HEAT_SEEKING);
+	}
+
+	/**
+	 * @param target
+	 * @param te
+	 * @param usesAmmo
+	 * @param atype
+	 * @param isArtilleryDirect
+	 * @return
+	 */
+	private static boolean isArtilleryFLAK(Targetable target, Entity te,
+			final boolean usesAmmo, final AmmoType atype,
+			boolean isArtilleryDirect) {
+		return isArtilleryDirect
+                && (target.getTargetType() == Targetable.TYPE_ENTITY)
+                && (te.getMovementMode() == IEntityMovementMode.VTOL)
+                && (te.getElevation() > 0)
+                && (usesAmmo && (atype.getMunitionType() == AmmoType.M_STANDARD));
+	}
+
+	/**
+	 * @param game
+	 * @param wtype
+	 * @return
+	 */
+	private static boolean isArtilleryIndirect(final IGame game,
+			final WeaponType wtype) {
+		return wtype.hasFlag(WeaponType.F_ARTILLERY)
+                && ((game.getPhase() == IGame.Phase.PHASE_TARGETING) || (game
+                        .getPhase() == IGame.Phase.PHASE_OFFBOARD));
+	}
+
+	/**
+	 * @param weapon
+	 * @param wtype
+	 * @return
+	 */
+	private static boolean isIndirect(final Mounted weapon,
+			final WeaponType wtype) {
+		return wtype.hasModes()
+                && weapon.curMode().equals("Indirect");
+	}
+
+	/**
+	 * @param game
+	 * @param wtype
+	 * @return
+	 */
+	private static boolean isArtilleryDirect(final IGame game,
+			final WeaponType wtype) {
+		return wtype.hasFlag(WeaponType.F_ARTILLERY)
+                && (game.getPhase() == IGame.Phase.PHASE_FIRING);
+	}
+
+	/**
+	 * @param wtype
+	 * @param isWeaponInfantry
+	 * @param atype
+	 * @return
+	 */
+	private static boolean isInferno(final WeaponType wtype,
+			boolean isWeaponInfantry, final AmmoType atype) {
+		return ((atype != null)
+                && ((atype.getAmmoType() == AmmoType.T_SRM) || (atype
+                        .getAmmoType() == AmmoType.T_MML))
+                && (atype.getMunitionType() == AmmoType.M_INFERNO))
+                || (isWeaponInfantry && (wtype.hasFlag(WeaponType.F_INFERNO)));
+	}
 
     /**
      * To hit is impossible.
