@@ -938,7 +938,7 @@ public class BoardView1 extends JPanel implements IBoardView, Scrollable, BoardL
                 // bottom edge of sheet (edge 3 and possible 2 & 4)
                 boardGraph.drawLine(drawX + (int) (62 * scale), drawY + (int) (71 * scale), drawX
                         + (int) (21 * scale), drawY + (int) (71 * scale));
-                if (Math.abs(c.x) % 2 == 1) {
+                if (c.x % 2 != 0) { // changed to accommodate for negative numbers
                     boardGraph.drawLine(drawX + (int) (83 * scale), drawY + (int) (36 * scale),
                             drawX + (int) (62 * scale), drawY + (int) (71 * scale));
                     boardGraph.drawLine(drawX + (int) (21 * scale), drawY + (int) (71 * scale),
