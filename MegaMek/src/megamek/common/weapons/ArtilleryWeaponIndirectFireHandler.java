@@ -43,15 +43,18 @@ import megamek.common.actions.ArtilleryAttackAction;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ArtilleryWeaponIndirectFireHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1277649123562229298L;
+    
+    /** The handled ammo and report. */
     boolean handledAmmoAndReport = false;
 
     /**
@@ -62,13 +65,16 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
     }
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new artillery weapon indirect fire handler.
+     *
+     * @param toHitData the to hit data
+     * @param weaponAttackAction the weapon attack action
+     * @param game the game
+     * @param server the server
      */
-    public ArtilleryWeaponIndirectFireHandler(ToHitData t,
-            WeaponAttackAction w, IGame g, Server s) {
-        super(t, w, g, s);
+    public ArtilleryWeaponIndirectFireHandler(final ToHitData toHitData,
+            final WeaponAttackAction weaponAttackAction, final IGame game, final Server server) {
+        super(toHitData, weaponAttackAction, game, server);
     }
 
     /*
@@ -77,7 +83,7 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
      * @see megamek.common.weapons.AttackHandler#cares(int)
      */
     @Override
-    public boolean cares(IGame.Phase phase) {
+	public boolean cares(final IGame.Phase phase) {
         if ((phase == IGame.Phase.PHASE_OFFBOARD) || (phase == IGame.Phase.PHASE_TARGETING)) {
             return true;
         }
@@ -90,40 +96,13 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
      * @see megamek.common.weapons.AttackHandler#handle(int, java.util.Vector)
      */
     @Override
-    public boolean handle(IGame.Phase phase, Vector<Report> vPhaseReport) {
+	public boolean handle(final IGame.Phase phase, final Vector<Report> vPhaseReport) {
         if (!cares(phase)) {
             return true;
         }
         ArtilleryAttackAction aaa = (ArtilleryAttackAction) waa;
         if (phase == IGame.Phase.PHASE_TARGETING) {
-            if (!handledAmmoAndReport) {
-                addHeat();
-                // Report the firing itself
-                r = new Report(3121);
-                r.indent();
-                r.newlines = 0;
-                r.subject = subjectId;
-                r.add(wtype.getName());
-                r.add(aaa.turnsTilHit);
-                vPhaseReport.addElement(r);
-                Report.addNewline(vPhaseReport);
-                handledAmmoAndReport = true;
-
-                game.getBoard().addSpecialHexDisplay(
-                        aaa.getTarget(game).getPosition(),
-                        new SpecialHexDisplay(
-                                SpecialHexDisplay.Type.ARTILLERY_INCOMING,
-                                game.getRoundCount() + aaa.turnsTilHit,
-                                game.getPlayer(aaa.getPlayerId()).getName(),
-                                "Artilery Incoming. Better text later."));
-            }
-            // if this is the last targeting phase before we hit,
-            // make it so the firing entity is announced in the
-            // off-board attack phase that follows.
-            if (aaa.turnsTilHit == 0) {
-                announcedEntityFiring = false;
-            }
-            return true;
+            return phaseTargetingPhase(vPhaseReport, aaa);
         }
         if (aaa.turnsTilHit > 0) {
             aaa.turnsTilHit--;
@@ -148,36 +127,8 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
         final AmmoType atype = ammo == null ? null : (AmmoType) ammo.getType();
         // Are there any valid spotters?
         if ((null != spottersBefore) && !isFlak) {
-            // fetch possible spotters now
-            Enumeration<Entity> spottersAfter = game
-                    .getSelectedEntities(new EntitySelector() {
-                        public int player = playerId;
-
-                        public Targetable targ = target;
-
-                        public boolean accept(Entity entity) {
-                            Integer id = new Integer(entity.getId());
-                            if ((player == entity.getOwnerId())
-                                    && spottersBefore.contains(id)
-                                    && !(LosEffects.calculateLos(game, entity
-                                            .getId(), targ)).isBlocked()
-                                    && entity.isActive()
-                                    && !entity.isINarcedWith(INarcPod.HAYWIRE)) {
-                                return true;
-                            }
-                            return false;
-                        }
-                    });
-
-            // Out of any valid spotters, pick the best.
-            while (spottersAfter.hasMoreElements()) {
-                Entity ent = spottersAfter.nextElement();
-                if ((bestSpotter == null)
-                        || (ent.crew.getGunnery() < bestSpotter.crew
-                                .getGunnery())) {
-                    bestSpotter = ent;
-                }
-            }
+            bestSpotter = fetchPossibleSpotters(spottersBefore, target,
+					playerId, bestSpotter);
 
         } // End have-valid-spotters
 
@@ -192,102 +143,18 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
         Entity artyAttacker = aaa.getEntity(game);
         if ((null != artyAttacker) && !isFlak) {
 
-            // Get the arty weapon.
-            Mounted weapon = artyAttacker.getEquipment(aaa.getWeaponId());
-
-            // If the shot hit the target hex, then all subsequent
-            // fire will hit the hex automatically.
-            if (roll >= toHit.getValue()) {
-                artyAttacker.aTracker.setModifier(weapon,
-                        TargetRoll.AUTOMATIC_SUCCESS, targetPos);
-
-                game.getBoard().addSpecialHexDisplay(targetPos,
-                        new SpecialHexDisplay(
-                                SpecialHexDisplay.Type.ARTILLERY_AUTOHIT,
-                                game.getRoundCount(),
-                                game.getPlayer(aaa.getPlayerId()).getName(),
-                                "Artilery AutoHit. Better text later.",
-                                false
-                        )
-                 );
-            }
-            // If the shot missed, but was adjusted by a
-            // spotter, future shots are more likely to hit.
-            else if (null != bestSpotter) {
-                artyAttacker.aTracker.setModifier(weapon, artyAttacker.aTracker
-                        .getModifier(weapon, targetPos) - 1, targetPos);
-
-                game.getBoard().addSpecialHexDisplay(targetPos,
-                        new SpecialHexDisplay(
-                            SpecialHexDisplay.Type.ARTILLERY_ADJUSTED,
-                            game.getRoundCount(),
-                            game.getPlayer(aaa.getPlayerId()).getName(),
-                            "Artilery toHit Adjusted. Better text later.",
-                            false
-                        )
-                );
-            }
+            adjustTarget(aaa, targetPos, bestSpotter, artyAttacker);
 
         } // End artyAttacker-alive
 
         // Report weapon attack and its to-hit value.
-        r = new Report(3120);
-        r.indent();
-        r.newlines = 0;
-        r.subject = subjectId;
-        if (wtype != null) {
-            r.add(wtype.getName());
-        } else {
-            r.add("Error: From Nowhwere");
-        }
-
-        r.add(target.getDisplayName(), true);
-        vPhaseReport.addElement(r);
-        if (toHit.getValue() == TargetRoll.IMPOSSIBLE) {
-            r = new Report(3135);
-            r.subject = subjectId;
-            r.add(toHit.getDesc());
-            vPhaseReport.addElement(r);
-            return false;
-        } else if (toHit.getValue() == TargetRoll.AUTOMATIC_FAIL) {
-            r = new Report(3140);
-            r.newlines = 0;
-            r.subject = subjectId;
-            r.add(toHit.getDesc());
-            vPhaseReport.addElement(r);
-        } else if (toHit.getValue() == TargetRoll.AUTOMATIC_SUCCESS) {
-            r = new Report(3145);
-            r.newlines = 0;
-            r.subject = subjectId;
-            r.add(toHit.getDesc());
-            vPhaseReport.addElement(r);
-        } else {
-            // roll to hit
-            r = new Report(3150);
-            r.newlines = 0;
-            r.subject = subjectId;
-            r.add(toHit.getValue());
-            vPhaseReport.addElement(r);
-        }
+        if(!reportWeaponAttackAndToHitValue(vPhaseReport, target))
+        {
+        	return false;
+        }        
 
         // dice have been rolled, thanks
-        r = new Report(3155);
-        r.newlines = 0;
-        r.subject = subjectId;
-        r.add(roll);
-        vPhaseReport.addElement(r);
-
-        if (!isFlak) {
-            game.getBoard().addSpecialHexDisplay(
-                    targetPos,
-                    new SpecialHexDisplay(SpecialHexDisplay.Type.ARTILLERY_TARGET,
-                            game.getRoundCount(),
-                            game.getPlayer(aaa.getPlayerId()).getName(),
-                            "Artilery Target. Better text later.",
-                            false
-                    )
-            );
-        }
+        setArtilleryText(vPhaseReport, aaa, targetPos, isFlak);
 
         // do we hit?
         bMissed = roll < toHit.getValue();
@@ -301,19 +168,7 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
         }
         Coords coords = target.getPosition();
         if (!bMissed) {
-            if (!isFlak) {
-                r = new Report(3190);
-            } else {
-                r = new Report(3191);
-            }
-            r.subject = subjectId;
-            r.add(coords.getBoardNum());
-            vPhaseReport.addElement(r);
-
-            game.getBoard().addSpecialHexDisplay(targetPos,
-                    new SpecialHexDisplay(SpecialHexDisplay.Type.ARTILLERY_HIT,
-                            game.getRoundCount(),
-                            "Artilery Hit. Better text later."));
+            directHit(vPhaseReport, targetPos, isFlak, coords);
 
         } else {
             // direct fire artillery only scatters by one d6
@@ -324,38 +179,103 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
             } else {
                 coords = Compute.scatter(coords, Math.abs(toHit.getMoS()));
             }
-            if (game.getBoard().contains(coords)) {
-                // misses and scatters to another hex
-                if (!isFlak) {
-                    r = new Report(3195);
-                    game.getBoard().addSpecialHexDisplay(
-                        coords,
-                        new SpecialHexDisplay(
-                                SpecialHexDisplay.Type.ARTILLERY_HIT,
-                                game.getRoundCount(),
-                                "Artilery Scatered Here. Better text later."
-                        )
-                    );
-                } else {
-                    r = new Report(3192);
-                }
-                r.subject = subjectId;
-                r.add(coords.getBoardNum());
-                vPhaseReport.addElement(r);
-            } else {
-                // misses and scatters off-board
-                if (isFlak) {
-                    r = new Report(3193);
-                } else {
-                    r = new Report(3200);
-                }
-                r.subject = subjectId;
-                vPhaseReport.addElement(r);
-                return !bMissed;
+            
+            
+            if(!missBehavior(vPhaseReport, isFlak, coords))
+            {
+            	return !bMissed;
             }
+            else
+            	return bMissed;
         }
 
-        if (atype.getMunitionType() == AmmoType.M_FLARE) {
+        if(!checkAmmoType(vPhaseReport, ae, atype, artyAttacker, coords))
+        return false;
+        
+        int altitude = 0;
+        if (isFlak) {
+            altitude = ((VTOL) target).getElevation();
+        }
+
+        //check to see if this is a mine clearing attack
+        //According to the RAW you have to hit the right hex to hit even if the scatter hex has minefields
+        boolean mineClear = target.getTargetType() == Targetable.TYPE_MINEFIELD_CLEAR;
+        mineClear(vPhaseReport, isFlak, ae, coords, mineClear);
+
+        server.artilleryDamageArea(coords, artyAttacker.getPosition(), atype,
+                subjectId, artyAttacker, isFlak, altitude, mineClear, vPhaseReport);
+
+        //artillery may unintentially clear minefields, but only if it wasn't trying to
+        accidentalMineFieldClear(vPhaseReport, artyAttacker, coords, mineClear);
+
+        return false;
+    }
+
+	/**
+	 * @param vPhaseReport
+	 * @param artyAttacker
+	 * @param coords
+	 * @param mineClear
+	 */
+	private void accidentalMineFieldClear(final Vector<Report> vPhaseReport,
+			Entity artyAttacker, Coords coords, boolean mineClear) {
+		if(!mineClear && game.containsMinefield(coords)) {
+            Enumeration<Minefield> minefields = game.getMinefields(coords).elements();
+            ArrayList<Minefield> mfRemoved = new ArrayList<Minefield>();
+            while (minefields.hasMoreElements()) {
+                Minefield mf = minefields.nextElement();
+                if(server.clearMinefield(mf, artyAttacker, 10, vPhaseReport)) {
+                    mfRemoved.add(mf);
+                }
+            }
+            //we have to do it this way to avoid a concurrent error problem
+            for(Minefield mf : mfRemoved) {
+                server.removeMinefield(mf);
+            }
+        }
+	}
+
+	/**
+	 * @param vPhaseReport
+	 * @param isFlak
+	 * @param ae
+	 * @param coords
+	 * @param mineClear
+	 */
+	private void mineClear(final Vector<Report> vPhaseReport, boolean isFlak,
+			Entity ae, Coords coords, boolean mineClear) {
+		if (mineClear && game.containsMinefield(coords)
+                && !isFlak && !bMissed) {
+            r = new Report(3255);
+            r.indent(1);
+            r.subject = subjectId;
+            vPhaseReport.addElement(r);
+
+            Enumeration<Minefield> minefields = game.getMinefields(coords).elements();
+            ArrayList<Minefield> mfRemoved = new ArrayList<Minefield>();
+            while (minefields.hasMoreElements()) {
+                Minefield mf = minefields.nextElement();
+                if(server.clearMinefield(mf, ae, Minefield.CLEAR_NUMBER_WEAPON, vPhaseReport)) {
+                    mfRemoved.add(mf);
+                }
+            }
+            //we have to do it this way to avoid a concurrent error problem
+            for(Minefield mf : mfRemoved) {
+                server.removeMinefield(mf);
+            }
+        }
+	}
+
+	/**
+	 * @param vPhaseReport
+	 * @param ae
+	 * @param atype
+	 * @param artyAttacker
+	 * @param coords
+	 */
+	private boolean checkAmmoType(final Vector<Report> vPhaseReport, Entity ae,
+			final AmmoType atype, Entity artyAttacker, Coords coords) {
+		if (atype.getMunitionType() == AmmoType.M_FLARE) {
             int radius;
             if (atype.getAmmoType() == AmmoType.T_ARROW_IV) {
                 radius = 4;
@@ -391,56 +311,272 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
             server.deliverArtillerySmoke(coords, vPhaseReport);
             return false;
         }
-        int altitude = 0;
-        if (isFlak) {
-            altitude = ((VTOL) target).getElevation();
+
+        //if none of the conditions above are true, then return true by default
+        return true;
+	}
+
+	/**
+	 * @param vPhaseReport
+	 * @param isFlak
+	 * @param coords
+	 */
+	private boolean missBehavior(final Vector<Report> vPhaseReport,
+			boolean isFlak, Coords coords) {
+		if (game.getBoard().contains(coords)) {
+		    // misses and scatters to another hex
+		    if (!isFlak) {
+		        r = new Report(3195);
+		        game.getBoard().addSpecialHexDisplay(
+		            coords,
+		            new SpecialHexDisplay(
+		                    SpecialHexDisplay.Type.ARTILLERY_HIT,
+		                    game.getRoundCount(),
+		                    "Artilery Scatered Here. Better text later."
+		            )
+		        );
+		    } else {
+		        r = new Report(3192);
+		    }
+		    r.subject = subjectId;
+		    r.add(coords.getBoardNum());
+		    vPhaseReport.addElement(r);
+		    return bMissed;
+		} else {
+		    // misses and scatters off-board
+		    if (isFlak) {
+		        r = new Report(3193);
+		    } else {
+		        r = new Report(3200);
+		    }
+		    r.subject = subjectId;
+		    vPhaseReport.addElement(r);
+		    return !bMissed;
+		}
+	}
+
+	/**
+	 * @param vPhaseReport
+	 * @param targetPos
+	 * @param isFlak
+	 * @param coords
+	 */
+	private void directHit(final Vector<Report> vPhaseReport,
+			final Coords targetPos, boolean isFlak, Coords coords) {
+		if (!isFlak) {
+		    r = new Report(3190);
+		} else {
+		    r = new Report(3191);
+		}
+		r.subject = subjectId;
+		r.add(coords.getBoardNum());
+		vPhaseReport.addElement(r);
+
+		game.getBoard().addSpecialHexDisplay(targetPos,
+		        new SpecialHexDisplay(SpecialHexDisplay.Type.ARTILLERY_HIT,
+		                game.getRoundCount(),
+		                "Artilery Hit. Better text later."));
+	}
+
+	/**
+	 * @param vPhaseReport
+	 * @param aaa
+	 * @param targetPos
+	 * @param isFlak
+	 */
+	private void setArtilleryText(final Vector<Report> vPhaseReport,
+			ArtilleryAttackAction aaa, final Coords targetPos, boolean isFlak) {
+		r = new Report(3155);
+        r.newlines = 0;
+        r.subject = subjectId;
+        r.add(roll);
+        vPhaseReport.addElement(r);
+
+        if (!isFlak) {
+            game.getBoard().addSpecialHexDisplay(
+                    targetPos,
+                    new SpecialHexDisplay(SpecialHexDisplay.Type.ARTILLERY_TARGET,
+                            game.getRoundCount(),
+                            game.getPlayer(aaa.getPlayerId()).getName(),
+                            "Artilery Target. Better text later.",
+                            false
+                    )
+            );
+        }
+	}
+
+	/**
+	 * @param vPhaseReport
+	 * @param target
+	 */
+	private boolean reportWeaponAttackAndToHitValue(
+			final Vector<Report> vPhaseReport, final Targetable target) {
+		r = new Report(3120);
+        r.indent();
+        r.newlines = 0;
+        r.subject = subjectId;
+        if (wtype != null) {
+            r.add(wtype.getName());
+        } else {
+            r.add("Error: From Nowhwere");
         }
 
-        //check to see if this is a mine clearing attack
-        //According to the RAW you have to hit the right hex to hit even if the scatter hex has minefields
-        boolean mineClear = target.getTargetType() == Targetable.TYPE_MINEFIELD_CLEAR;
-        if (mineClear && game.containsMinefield(coords)
-                && !isFlak && !bMissed) {
-            r = new Report(3255);
-            r.indent(1);
+        r.add(target.getDisplayName(), true);
+        vPhaseReport.addElement(r);
+        if (toHit.getValue() == TargetRoll.IMPOSSIBLE) {
+            r = new Report(3135);
             r.subject = subjectId;
+            r.add(toHit.getDesc());
             vPhaseReport.addElement(r);
-
-            Enumeration<Minefield> minefields = game.getMinefields(coords).elements();
-            ArrayList<Minefield> mfRemoved = new ArrayList<Minefield>();
-            while (minefields.hasMoreElements()) {
-                Minefield mf = minefields.nextElement();
-                if(server.clearMinefield(mf, ae, Minefield.CLEAR_NUMBER_WEAPON, vPhaseReport)) {
-                    mfRemoved.add(mf);
-                }
-            }
-            //we have to do it this way to avoid a concurrent error problem
-            for(Minefield mf : mfRemoved) {
-                server.removeMinefield(mf);
-            }
+            return false;
+        } else if (toHit.getValue() == TargetRoll.AUTOMATIC_FAIL) {
+            r = new Report(3140);
+            r.newlines = 0;
+            r.subject = subjectId;
+            r.add(toHit.getDesc());
+            vPhaseReport.addElement(r);
+            return true;
+        } else if (toHit.getValue() == TargetRoll.AUTOMATIC_SUCCESS) {
+            r = new Report(3145);
+            r.newlines = 0;
+            r.subject = subjectId;
+            r.add(toHit.getDesc());
+            vPhaseReport.addElement(r);
+            return true;
+        } else {
+            // roll to hit
+            r = new Report(3150);
+            r.newlines = 0;
+            r.subject = subjectId;
+            r.add(toHit.getValue());
+            vPhaseReport.addElement(r);
+            return true;
         }
+	}
 
-        server.artilleryDamageArea(coords, artyAttacker.getPosition(), atype,
-                subjectId, artyAttacker, isFlak, altitude, mineClear, vPhaseReport);
+	/**
+	 * @param aaa
+	 * @param targetPos
+	 * @param bestSpotter
+	 * @param artyAttacker
+	 */
+	private void adjustTarget(ArtilleryAttackAction aaa,
+			final Coords targetPos, Entity bestSpotter, Entity artyAttacker) {
+		// Get the arty weapon.
+		Mounted weapon = artyAttacker.getEquipment(aaa.getWeaponId());
 
-        //artillery may unintentially clear minefields, but only if it wasn't trying to
-        if(!mineClear && game.containsMinefield(coords)) {
-            Enumeration<Minefield> minefields = game.getMinefields(coords).elements();
-            ArrayList<Minefield> mfRemoved = new ArrayList<Minefield>();
-            while (minefields.hasMoreElements()) {
-                Minefield mf = minefields.nextElement();
-                if(server.clearMinefield(mf, artyAttacker, 10, vPhaseReport)) {
-                    mfRemoved.add(mf);
-                }
-            }
-            //we have to do it this way to avoid a concurrent error problem
-            for(Minefield mf : mfRemoved) {
-                server.removeMinefield(mf);
-            }
-        }
+		// If the shot hit the target hex, then all subsequent
+		// fire will hit the hex automatically.
+		if (roll >= toHit.getValue()) {
+		    artyAttacker.aTracker.setModifier(weapon,
+		            TargetRoll.AUTOMATIC_SUCCESS, targetPos);
 
-        return false;
-    }
+		    game.getBoard().addSpecialHexDisplay(targetPos,
+		            new SpecialHexDisplay(
+		                    SpecialHexDisplay.Type.ARTILLERY_AUTOHIT,
+		                    game.getRoundCount(),
+		                    game.getPlayer(aaa.getPlayerId()).getName(),
+		                    "Artilery AutoHit. Better text later.",
+		                    false
+		            )
+		     );
+		}
+		// If the shot missed, but was adjusted by a
+		// spotter, future shots are more likely to hit.
+		else if (null != bestSpotter) {
+		    artyAttacker.aTracker.setModifier(weapon, artyAttacker.aTracker
+		            .getModifier(weapon, targetPos) - 1, targetPos);
+
+		    game.getBoard().addSpecialHexDisplay(targetPos,
+		            new SpecialHexDisplay(
+		                SpecialHexDisplay.Type.ARTILLERY_ADJUSTED,
+		                game.getRoundCount(),
+		                game.getPlayer(aaa.getPlayerId()).getName(),
+		                "Artilery toHit Adjusted. Better text later.",
+		                false
+		            )
+		    );
+		}
+	}
+
+	/**
+	 * @param spottersBefore
+	 * @param target
+	 * @param playerId
+	 * @param bestSpotter
+	 * @return
+	 */
+	private Entity fetchPossibleSpotters(final Vector<Integer> spottersBefore,
+			final Targetable target, final int playerId, Entity bestSpotter) {
+		// fetch possible spotters now
+		Enumeration<Entity> spottersAfter = game
+		        .getSelectedEntities(new EntitySelector() {
+		            public int player = playerId;
+
+		            public Targetable targ = target;
+
+		            public boolean accept(final Entity entity) {
+		                Integer id = new Integer(entity.getId());
+		                if ((player == entity.getOwnerId())
+		                        && spottersBefore.contains(id)
+		                        && !(LosEffects.calculateLos(game, entity
+		                                .getId(), targ)).isBlocked()
+		                        && entity.isActive()
+		                        && !entity.isINarcedWith(INarcPod.HAYWIRE)) {
+		                    return true;
+		                }
+		                return false;
+		            }
+		        });
+
+		// Out of any valid spotters, pick the best.
+		while (spottersAfter.hasMoreElements()) {
+		    Entity ent = spottersAfter.nextElement();
+		    if ((bestSpotter == null)
+		            || (ent.crew.getGunnery() < bestSpotter.crew
+		                    .getGunnery())) {
+		        bestSpotter = ent;
+		    }
+		}
+		return bestSpotter;
+	}
+
+	/**
+	 * @param vPhaseReport
+	 * @param aaa
+	 * @return
+	 */
+	private boolean phaseTargetingPhase(final Vector<Report> vPhaseReport,
+			ArtilleryAttackAction aaa) {
+		if (!handledAmmoAndReport) {
+		    addHeat();
+		    // Report the firing itself
+		    r = new Report(3121);
+		    r.indent();
+		    r.newlines = 0;
+		    r.subject = subjectId;
+		    r.add(wtype.getName());
+		    r.add(aaa.turnsTilHit);
+		    vPhaseReport.addElement(r);
+		    Report.addNewline(vPhaseReport);
+		    handledAmmoAndReport = true;
+
+		    game.getBoard().addSpecialHexDisplay(
+		            aaa.getTarget(game).getPosition(),
+		            new SpecialHexDisplay(
+		                    SpecialHexDisplay.Type.ARTILLERY_INCOMING,
+		                    game.getRoundCount() + aaa.turnsTilHit,
+		                    game.getPlayer(aaa.getPlayerId()).getName(),
+		                    "Artilery Incoming. Better text later."));
+		}
+		// if this is the last targeting phase before we hit,
+		// make it so the firing entity is announced in the
+		// off-board attack phase that follows.
+		if (aaa.turnsTilHit == 0) {
+		    announcedEntityFiring = false;
+		}
+		return true;
+	}
 
     /*
      * (non-Javadoc)
@@ -448,7 +584,7 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
      * @see megamek.common.weapons.WeaponHandler#calcDamagePerHit()
      */
     @Override
-    protected int calcDamagePerHit() {
+	protected final int calcDamagePerHit() {
         float toReturn = wtype.getDamage();
         // area effect damage is double
         if ((target instanceof Infantry) && !(target instanceof BattleArmor)) {
