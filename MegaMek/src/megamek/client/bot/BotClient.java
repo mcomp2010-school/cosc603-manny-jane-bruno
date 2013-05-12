@@ -84,6 +84,12 @@ public abstract class BotClient extends Client {
 
         });
     }
+    
+    protected int highest_elev;
+    
+    protected int lowest_elev;
+    
+    protected Coords[] valid_array;
 
     BotConfiguration config = new BotConfiguration();
 
@@ -343,7 +349,7 @@ public abstract class BotClient extends Client {
     }
 
     protected Coords[] getStartingCoordsArray() {
-        int test_x, test_y, highest_elev, lowest_elev;
+        int test_x, test_y, lowest_elev;
         int counter, valid_arr_index, arr_x_index;
         int weapon_count;
 
@@ -353,7 +359,7 @@ public abstract class BotClient extends Client {
 
         Coords highest_hex = new Coords();
         Coords test_hex = new Coords();
-        Coords[] valid_array;
+        
         int standard = game.getBoard().getWidth() * 3;
 
         Entity test_ent, deployed_ent;
@@ -437,18 +443,15 @@ public abstract class BotClient extends Client {
 
         highest_elev = -100;
         lowest_elev = 100;
+        
         for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
             if (game.getBoard().getHex(valid_array[valid_arr_index].x,
                     valid_array[valid_arr_index].y).getElevation() > highest_elev) {
-                highest_elev = game.getBoard().getHex(
-                        valid_array[valid_arr_index].x,
-                        valid_array[valid_arr_index].y).getElevation();
+                highest_elev = calcHighestElev(valid_arr_index);
             }
             if (game.getBoard().getHex(valid_array[valid_arr_index].x,
                     valid_array[valid_arr_index].y).getElevation() < lowest_elev) {
-                lowest_elev = game.getBoard().getHex(
-                        valid_array[valid_arr_index].x,
-                        valid_array[valid_arr_index].y).getElevation();
+                lowest_elev = calcLowestElev(valid_arr_index);
             }
         }
 
@@ -710,6 +713,20 @@ public abstract class BotClient extends Client {
         Arrays.sort(valid_array, new FitnessComparator());
 
         return valid_array;
+    }
+    
+    protected int calcHighestElev(int valid_arr_index) {
+    	highest_elev = game.getBoard().getHex(
+                valid_array[valid_arr_index].x,
+                valid_array[valid_arr_index].y).getElevation();
+    	return highest_elev;
+    }
+    
+    protected int calcLowestElev(int valid_arr_index) {
+    	lowest_elev = game.getBoard().getHex(
+                valid_array[valid_arr_index].x,
+                valid_array[valid_arr_index].y).getElevation();
+    	return lowest_elev;
     }
 
     class FitnessComparator implements Comparator<Coords> {
