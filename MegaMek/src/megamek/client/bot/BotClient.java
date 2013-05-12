@@ -354,6 +354,7 @@ public abstract class BotClient extends Client {
         Coords highest_hex = new Coords();
         Coords test_hex = new Coords();
         Coords[] valid_array;
+        int standard = game.getBoard().getWidth() * 3;
 
         Entity test_ent, deployed_ent;
 
@@ -371,19 +372,19 @@ public abstract class BotClient extends Client {
         case 3:
         case 5:
         case 7:
-            valid_array = new Coords[(3 * game.getBoard().getWidth())
+            valid_array = new Coords[(standard)
                     + (3 * game.getBoard().getHeight()) - 9];
             // fitness = new
             // double[(3*game.getBoard().getWidth())+(3*game.getBoard().getHeight())-9];
             break;
         case 2:
         case 6:
-            valid_array = new Coords[game.getBoard().getWidth() * 3];
+            valid_array = new Coords[standard];
             // fitness = new double[game.getBoard().getWidth()*3];
             break;
         case 4:
         case 8:
-            valid_array = new Coords[game.getBoard().getHeight() * 3];
+            valid_array = new Coords[standard];
             // fitness = new double[game.getBoard().getHeight()*3];
             break;
         case 0:

@@ -1115,7 +1115,7 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 
                 toHit.addModifier(modifier, "weapon to-hit modifier");
             } else if (wtype instanceof ISBombastLaser) {
-                int damage = (int) Math.ceil((Compute.dialDownDamage(weapon,
+                int damage = (int)Math.ceil((Compute.dialDownDamage(weapon,
                         wtype) - 7) / 2);
 
                 if (damage > 0) {
