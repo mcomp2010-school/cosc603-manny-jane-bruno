@@ -896,7 +896,7 @@ public class CustomMechDialog extends ClientDialog implements ActionListener,
             for (int x = 0; e.hasNext(); x++) {
                 AmmoType at = e.next();
                 m_choice.addItem(at.getName());
-                if (at.getInternalName() == curType.getInternalName()) {
+                if (at.getInternalName().equals(curType.getInternalName())) {
                     m_choice.setSelectedIndex(x);
                 }
             }
@@ -1234,7 +1234,7 @@ public class CustomMechDialog extends ClientDialog implements ActionListener,
         for (final Object newVar : optionComps) {
             DialogOptionComponent comp = (DialogOptionComponent) newVar;
             option = comp.getOption();
-            if ((comp.getValue() == Messages.getString("CustomMechDialog.None"))) { // NON-NLS-$1
+            if ((comp.getValue().equals(Messages.getString("CustomMechDialog.None")))) { // NON-NLS-$1
                 entity.getCrew().getOptions().getOption(option.getName())
                         .setValue("None"); // NON-NLS-$1
             } else {

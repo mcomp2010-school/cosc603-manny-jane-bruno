@@ -348,7 +348,7 @@ public class HexTileset {
         }
 
         // check theme
-        if (com.getTheme() == org.getTheme()
+        if (com.getTheme().equals(org.getTheme())
                 || (com.getTheme() != null && com.getTheme().equalsIgnoreCase(
                         org.getTheme()))) {
             theme = 1.0;

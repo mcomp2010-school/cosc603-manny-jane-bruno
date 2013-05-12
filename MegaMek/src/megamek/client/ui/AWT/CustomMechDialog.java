@@ -867,7 +867,7 @@ public class CustomMechDialog extends ClientDialog implements ActionListener,
             for (int x = 0; e.hasMoreElements(); x++) {
                 AmmoType at = e.nextElement();
                 m_choice.add(at.getName());
-                if (at.getInternalName() == curType.getInternalName()) {
+                if (at.getInternalName().equals(curType.getInternalName())) {
                     m_choice.select(x);
                 }
             }
@@ -1257,7 +1257,7 @@ public class CustomMechDialog extends ClientDialog implements ActionListener,
         IOption option;
         for (DialogOptionComponent comp : optionComps) {
          option = comp.getOption();
-         if ((comp.getValue() == Messages.getString("CustomMechDialog.None"))) { // NON
+         if ((comp.getValue().equals(Messages.getString("CustomMechDialog.None")))) { // NON
                                                                             // -
                                                                             // NLS
                                                                             // -
