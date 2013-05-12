@@ -89,7 +89,21 @@ public abstract class BotClient extends Client {
     
     protected int lowest_elev;
     
+    protected int counter;
+    
     protected Coords[] valid_array;
+    
+    protected Entity deployed_ent;
+    
+    protected Entity test_ent;
+    
+    protected int valid_arr_index;
+    
+    protected int arr_x_index;
+    
+    protected Coords highest_hex = new Coords();
+    
+    protected Coords test_hex = new Coords();
 
     BotConfiguration config = new BotConfiguration();
 
@@ -349,8 +363,7 @@ public abstract class BotClient extends Client {
     }
 
     protected Coords[] getStartingCoordsArray() {
-        int test_x, test_y, lowest_elev;
-        int counter, valid_arr_index, arr_x_index;
+        int valid_arr_index, arr_x_index;
         int weapon_count;
 
         double av_range, best_fitness, ideal_elev;
@@ -358,9 +371,6 @@ public abstract class BotClient extends Client {
         double adjusted_damage, max_damage, total_damage;
 
         Coords highest_hex = new Coords();
-        Coords test_hex = new Coords();
-        
-        Entity test_ent, deployed_ent;
 
         Vector<Entity> valid_attackers;
 
@@ -370,42 +380,14 @@ public abstract class BotClient extends Client {
         
         checkForProhibitedTerrain();
 
-        counter = 0;
-        for (test_x = 0; test_x <= game.getBoard().getWidth(); test_x++) {
-            for (test_y = 0; test_y <= game.getBoard().getHeight(); test_y++) {
-                test_hex.x = test_x;
-                test_hex.y = test_y;
-                if (game.getBoard().isLegalDeployment(test_hex,
-                        getLocalPlayer())) {
-                    if (!deployed_ent.isHexProhibited(game.getBoard().getHex(
-                            test_hex.x, test_hex.y))) {
-                        valid_array[counter] = new Coords(test_hex);
-                        counter++;
-                    }
-                }
-            }
-        }
+        setTestHexXandY();
+        
+        
 
         // Randomize hexes so hexes are not in order
         // This is to prevent clumping at the upper-left corner on very flat
         // maps
-
-        for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
-            arr_x_index = Compute.randomInt(counter);
-            if (arr_x_index < 0) {
-                arr_x_index = 0;
-            }
-            test_hex = valid_array[valid_arr_index];
-            valid_array[valid_arr_index] = valid_array[arr_x_index];
-            valid_array[arr_x_index] = test_hex;
-        }
-        // copy valid hexes into a new array of the correct size,
-        // so we don't return an array that contains null Coords
-        Coords[] valid_new = new Coords[counter];
-        for (int i = 0; i < counter; i++) {
-            valid_new[i] = valid_array[i];
-        }
-        valid_array = valid_new;
+        
 
         // Now get minimum and maximum elevation levels for these hexes
 
@@ -729,6 +711,45 @@ public abstract class BotClient extends Client {
             // double[game.getBoard().getWidth()*game.getBoard().getHeight()];
             break;
         }
+    }
+    
+    protected void setTestHexXandY() {
+    	counter = 0;
+    	int test_x, test_y;
+        for (test_x = 0; test_x <= game.getBoard().getWidth(); test_x++) {
+            for (test_y = 0; test_y <= game.getBoard().getHeight(); test_y++) {
+                test_hex.x = test_x;
+                test_hex.y = test_y;
+                if (game.getBoard().isLegalDeployment(test_hex,
+                        getLocalPlayer())) {
+                    if (!deployed_ent.isHexProhibited(game.getBoard().getHex(
+                            test_hex.x, test_hex.y))) {
+                        valid_array[counter] = new Coords(test_hex);
+                        counter++;
+                    }
+                }
+            }
+            getValidArray();
+        }
+    }
+    
+    protected void getValidArray() {
+        for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
+            arr_x_index = Compute.randomInt(counter);
+            if (arr_x_index < 0) {
+                arr_x_index = 0;
+            }
+            test_hex = valid_array[valid_arr_index];
+            valid_array[valid_arr_index] = valid_array[arr_x_index];
+            valid_array[arr_x_index] = test_hex;
+        }
+        // copy valid hexes into a new array of the correct size,
+        // so we don't return an array that contains null Coords
+        Coords[] valid_new = new Coords[counter];
+        for (int i = 0; i < counter; i++) {
+            valid_new[i] = valid_array[i];
+        }
+        valid_array = valid_new;
     }
 
     class FitnessComparator implements Comparator<Coords> {
