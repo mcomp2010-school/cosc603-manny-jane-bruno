@@ -29,27 +29,42 @@ import megamek.common.Targetable;
 import megamek.common.Terrains;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PhysicalAttackAction.
+ */
 public class PhysicalAttackAction extends AbstractAttackAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4702357516725749181L;
 
+    /**
+     * Instantiates a new physical attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public PhysicalAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new physical attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public PhysicalAttackAction(int entityId, int targetType, int targetId) {
         super(entityId, targetType, targetId);
     }
 
     /**
-     * Common checking whether is it possible to physically attack the target
+     * Common checking whether is it possible to physically attack the target.
      *
-     * @param game
-     * @param attackerId
-     * @param target
+     * @param game the game
+     * @param ae the ae
+     * @param target the target
      * @return reason the attack is impossible, or null if it is possible
      */
     protected static String toHitIsImpossible(IGame game, Entity ae,
@@ -138,6 +153,14 @@ public class PhysicalAttackAction extends AbstractAttackAction {
         return null;
     }
 
+    /**
+     * Sets the common modifiers.
+     *
+     * @param toHit the to hit
+     * @param game the game
+     * @param ae the ae
+     * @param target the target
+     */
     protected static void setCommonModifiers(ToHitData toHit, IGame game,
             Entity ae, Targetable target) {
 
