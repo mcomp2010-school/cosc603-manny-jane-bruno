@@ -51,7 +51,7 @@ public final class PhysicalCalculator {
      * @param bot the bot
      * @return the physical option
      */
-    static PhysicalOption calculatePhysicalTurn(TestBot bot) {
+    static PhysicalOption calculatePhysicalTurn(final TestBot bot) {
         int entNum = bot.game.getFirstEntityNum(bot.getMyTurn());
         int first = entNum;
         do {
@@ -79,7 +79,7 @@ public final class PhysicalCalculator {
      * @param game the game
      * @return the best physical
      */
-    static PhysicalOption getBestPhysical(Entity entity, IGame game) {
+    static PhysicalOption getBestPhysical(final Entity entity, final IGame game) {
         // Infantry can't conduct physical attacks.
         if (entity instanceof Infantry) {
             return null;
@@ -326,8 +326,8 @@ public final class PhysicalCalculator {
      * @param game the game
      * @return the best physical attack
      */
-    static PhysicalOption getBestPhysicalAttack(Entity from, Entity to,
-            IGame game) {
+    static PhysicalOption getBestPhysicalAttack(final Entity from, final Entity to,
+            final IGame game) {
         double bestDmg = 0.0;
         double dmg;
         int damage;
@@ -590,7 +590,7 @@ public final class PhysicalCalculator {
      * @param ent The entity that is falling
      * @return the double
      */
-    private static double calculateFallingDamage(double odds, Entity ent) {
+    private static double calculateFallingDamage(final double odds, final Entity ent) {
         double dmg = odds;
         dmg *= 1.0 - Compute.oddsAbove(ent.getBasePilotingRoll().getValue()) / 100.0;
         dmg *= ent.getWeight() * 0.1;
@@ -608,8 +608,8 @@ public final class PhysicalCalculator {
      * @param action the action
      * @return the expected kick damage
      */
-    private static double getExpectedKickDamage(Entity from, Entity to,
-            IGame game, int locTable, int arc, int action) {
+    private static double getExpectedKickDamage(final Entity from, final Entity to,
+            final IGame game, final int locTable, final int arc, final int action) {
         double self_damage;
         double dmg;
         double coll_damage = 0.0;
@@ -666,8 +666,8 @@ public final class PhysicalCalculator {
      * @param group the group
      * @return the double
      */
-    private static double punchThroughMod(Entity target, int hitTable,
-            int hitSide, double damage, double group) {
+    private static double punchThroughMod(final Entity target, final int hitTable,
+            final int hitSide, final double damage, final double group) {
 
         int[] armor_values = new int[8];
         int max_index = 1;
@@ -796,6 +796,8 @@ public final class PhysicalCalculator {
                 case ToHitData.SIDE_REAR:
                     armor_values[0] = target.getArmor(Tank.LOC_REAR);
                     break;
+			default:
+				break;
             }
             if (!((Tank) target).hasNoTurret()) {
                 max_index++;
