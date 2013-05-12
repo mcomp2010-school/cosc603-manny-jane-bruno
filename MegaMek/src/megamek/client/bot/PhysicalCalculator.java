@@ -38,13 +38,20 @@ import megamek.common.actions.KickAttackAction;
 import megamek.common.actions.PunchAttackAction;
 import megamek.common.actions.PushAttackAction;
 
-public final class PhysicalCalculator {
-    private PhysicalCalculator() {
-        super();
-        // should never call this
-    }
 
-    static PhysicalOption calculatePhysicalTurn(TestBot bot) {
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PhysicalCalculator.
+ */
+public final class PhysicalCalculator {   
+    
+    /**
+     * Calculate physical turn.
+     *
+     * @param bot the bot
+     * @return the physical option
+     */
+    static PhysicalOption calculatePhysicalTurn(final TestBot bot) {
         int entNum = bot.game.getFirstEntityNum(bot.getMyTurn());
         int first = entNum;
         do {
@@ -65,7 +72,14 @@ public final class PhysicalCalculator {
         return null;
     }
 
-    static PhysicalOption getBestPhysical(Entity entity, IGame game) {
+    /**
+     * Gets the best physical.
+     *
+     * @param entity the entity
+     * @param game the game
+     * @return the best physical
+     */
+    static PhysicalOption getBestPhysical(final Entity entity, final IGame game) {
         // Infantry can't conduct physical attacks.
         if (entity instanceof Infantry) {
             return null;
@@ -304,8 +318,16 @@ public final class PhysicalCalculator {
         return best;
     }
 
-    static PhysicalOption getBestPhysicalAttack(Entity from, Entity to,
-            IGame game) {
+    /**
+     * Gets the best physical attack.
+     *
+     * @param from the from
+     * @param to the to
+     * @param game the game
+     * @return the best physical attack
+     */
+    static PhysicalOption getBestPhysicalAttack(final Entity from, final Entity to,
+            final IGame game) {
         double bestDmg = 0.0;
         double dmg;
         int damage;
@@ -564,19 +586,30 @@ public final class PhysicalCalculator {
     /**
      * Calculates the Falling damage after a successful To-Hit.
      *
-     * @param odds
+     * @param odds the odds
      * @param ent The entity that is falling
-     * @return
+     * @return the double
      */
-    private static double calculateFallingDamage(double odds, Entity ent) {
+    private static double calculateFallingDamage(final double odds, final Entity ent) {
         double dmg = odds;
         dmg *= 1.0 - Compute.oddsAbove(ent.getBasePilotingRoll().getValue()) / 100.0;
         dmg *= ent.getWeight() * 0.1;
         return dmg;
     }
 
-    private static double getExpectedKickDamage(Entity from, Entity to,
-            IGame game, int locTable, int arc, int action) {
+    /**
+     * Gets the expected kick damage.
+     *
+     * @param from the from
+     * @param to the to
+     * @param game the game
+     * @param locTable the loc table
+     * @param arc the arc
+     * @param action the action
+     * @return the expected kick damage
+     */
+    private static double getExpectedKickDamage(final Entity from, final Entity to,
+            final IGame game, final int locTable, final int arc, final int action) {
         double self_damage;
         double dmg;
         double coll_damage = 0.0;
@@ -625,9 +658,16 @@ public final class PhysicalCalculator {
      * each hit being multiples of group damage to reflect shot grouping; as
      * each pass is made the increase to the multiplier is lowered due to the
      * lower chance of hitting the same location
+     *
+     * @param target the target
+     * @param hitTable the hit table
+     * @param hitSide the hit side
+     * @param damage the damage
+     * @param group the group
+     * @return the double
      */
-    private static double punchThroughMod(Entity target, int hitTable,
-            int hitSide, double damage, double group) {
+    private static double punchThroughMod(final Entity target, final int hitTable,
+            final int hitSide, final double damage, final double group) {
 
         int[] armor_values = new int[8];
         int max_index = 1;
@@ -756,6 +796,8 @@ public final class PhysicalCalculator {
                 case ToHitData.SIDE_REAR:
                     armor_values[0] = target.getArmor(Tank.LOC_REAR);
                     break;
+			default:
+				break;
             }
             if (!((Tank) target).hasNoTurret()) {
                 max_index++;
