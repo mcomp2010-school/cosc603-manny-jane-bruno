@@ -360,8 +360,6 @@ public abstract class BotClient extends Client {
         Coords highest_hex = new Coords();
         Coords test_hex = new Coords();
         
-        int standard = game.getBoard().getWidth() * 3;
-
         Entity test_ent, deployed_ent;
 
         Vector<Entity> valid_attackers;
@@ -369,38 +367,8 @@ public abstract class BotClient extends Client {
         deployed_ent = getEntity(game.getFirstDeployableEntityNum());
 
         WeaponAttackAction test_attack;
-
-        // Create array of hexes in the deployment zone that can be deployed to
-        // Check for prohibited terrain, stacking limits
-
-        switch (getLocalPlayer().getStartingPos()) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-            valid_array = new Coords[(standard)
-                    + (3 * game.getBoard().getHeight()) - 9];
-            // fitness = new
-            // double[(3*game.getBoard().getWidth())+(3*game.getBoard().getHeight())-9];
-            break;
-        case 2:
-        case 6:
-            valid_array = new Coords[standard];
-            // fitness = new double[game.getBoard().getWidth()*3];
-            break;
-        case 4:
-        case 8:
-            valid_array = new Coords[standard];
-            // fitness = new double[game.getBoard().getHeight()*3];
-            break;
-        case 0:
-        default:
-            valid_array = new Coords[game.getBoard().getWidth()
-                    * game.getBoard().getHeight()];
-            // fitness = new
-            // double[game.getBoard().getWidth()*game.getBoard().getHeight()];
-            break;
-        }
+        
+        checkForProhibitedTerrain();
 
         counter = 0;
         for (test_x = 0; test_x <= game.getBoard().getWidth(); test_x++) {
@@ -727,6 +695,40 @@ public abstract class BotClient extends Client {
                 valid_array[valid_arr_index].x,
                 valid_array[valid_arr_index].y).getElevation();
     	return lowest_elev;
+    }
+    
+    protected void checkForProhibitedTerrain() {
+    	
+    	int standard = game.getBoard().getWidth() * 3;
+    	
+    	switch (getLocalPlayer().getStartingPos()) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+            valid_array = new Coords[(standard)
+                    + (3 * game.getBoard().getHeight()) - 9];
+            // fitness = new
+            // double[(3*game.getBoard().getWidth())+(3*game.getBoard().getHeight())-9];
+            break;
+        case 2:
+        case 6:
+            valid_array = new Coords[standard];
+            // fitness = new double[game.getBoard().getWidth()*3];
+            break;
+        case 4:
+        case 8:
+            valid_array = new Coords[standard];
+            // fitness = new double[game.getBoard().getHeight()*3];
+            break;
+        case 0:
+        default:
+            valid_array = new Coords[game.getBoard().getWidth()
+                    * game.getBoard().getHeight()];
+            // fitness = new
+            // double[game.getBoard().getWidth()*game.getBoard().getHeight()];
+            break;
+        }
     }
 
     class FitnessComparator implements Comparator<Coords> {
