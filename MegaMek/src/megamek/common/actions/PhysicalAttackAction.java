@@ -171,9 +171,9 @@ public class PhysicalAttackAction extends AbstractAttackAction {
             int sensorHits2 = ae.getBadCriticals(CriticalSlot.TYPE_SYSTEM,
                     Mech.SYSTEM_SENSORS, Mech.LOC_CT);
             if ((sensorHits + sensorHits2) == 3) {
-                toHit = new ToHitData(TargetRoll.IMPOSSIBLE,
-                        "Sensors Completely Destroyed for Torso-Mounted Cockpit");
+            	toHit.addModifier(TargetRoll.IMPOSSIBLE, "Sensors Completely Destroyed for Torso-Mounted Cockpit");            
                 return;
+                
             } else if (sensorHits == 2) {
                 toHit.addModifier(4,
                         "Head Sensors Destroyed for Torso-Mounted Cockpit");
