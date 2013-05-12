@@ -38,7 +38,19 @@ import megamek.common.actions.KickAttackAction;
 import megamek.common.actions.PunchAttackAction;
 import megamek.common.actions.PushAttackAction;
 
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PhysicalCalculator.
+ */
 public final class PhysicalCalculator {   
+    
+    /**
+     * Calculate physical turn.
+     *
+     * @param bot the bot
+     * @return the physical option
+     */
     static PhysicalOption calculatePhysicalTurn(TestBot bot) {
         int entNum = bot.game.getFirstEntityNum(bot.getMyTurn());
         int first = entNum;
@@ -60,6 +72,13 @@ public final class PhysicalCalculator {
         return null;
     }
 
+    /**
+     * Gets the best physical.
+     *
+     * @param entity the entity
+     * @param game the game
+     * @return the best physical
+     */
     static PhysicalOption getBestPhysical(Entity entity, IGame game) {
         // Infantry can't conduct physical attacks.
         if (entity instanceof Infantry) {
@@ -299,6 +318,14 @@ public final class PhysicalCalculator {
         return best;
     }
 
+    /**
+     * Gets the best physical attack.
+     *
+     * @param from the from
+     * @param to the to
+     * @param game the game
+     * @return the best physical attack
+     */
     static PhysicalOption getBestPhysicalAttack(Entity from, Entity to,
             IGame game) {
         double bestDmg = 0.0;
@@ -559,9 +586,9 @@ public final class PhysicalCalculator {
     /**
      * Calculates the Falling damage after a successful To-Hit.
      *
-     * @param odds
+     * @param odds the odds
      * @param ent The entity that is falling
-     * @return
+     * @return the double
      */
     private static double calculateFallingDamage(double odds, Entity ent) {
         double dmg = odds;
@@ -570,6 +597,17 @@ public final class PhysicalCalculator {
         return dmg;
     }
 
+    /**
+     * Gets the expected kick damage.
+     *
+     * @param from the from
+     * @param to the to
+     * @param game the game
+     * @param locTable the loc table
+     * @param arc the arc
+     * @param action the action
+     * @return the expected kick damage
+     */
     private static double getExpectedKickDamage(Entity from, Entity to,
             IGame game, int locTable, int arc, int action) {
         double self_damage;
@@ -620,6 +658,13 @@ public final class PhysicalCalculator {
      * each hit being multiples of group damage to reflect shot grouping; as
      * each pass is made the increase to the multiplier is lowered due to the
      * lower chance of hitting the same location
+     *
+     * @param target the target
+     * @param hitTable the hit table
+     * @param hitSide the hit side
+     * @param damage the damage
+     * @param group the group
+     * @return the double
      */
     private static double punchThroughMod(Entity target, int hitTable,
             int hitSide, double damage, double group) {
