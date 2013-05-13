@@ -51,36 +51,63 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.common.containers.PlayerIDandList;
 import megamek.common.event.GamePlayerChatEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestBot.
+ */
 public class TestBot extends BotClient {
 
+    /** The centities. */
     public CEntity.Table centities = new CEntity.Table(this);
 
+    /** The chatp. */
     protected ChatProcessor chatp = new ChatProcessor();
 
+    /** The ignore. */
     public int ignore = 10;
 
+    /** The debug. */
     boolean debug = false;
 
+    /** The enemies_moved. */
     int enemies_moved = 0;
 
+    /** The old_moves. */
     GALance old_moves = null;
 
+    /** The my_mechs_moved. */
     int my_mechs_moved = 0;
 
+    /**
+     * Instantiates a new test bot.
+     *
+     * @param name the name
+     * @param host the host
+     * @param port the port
+     */
     public TestBot(String name, String host, int port) {
         super(name, host, port);
         ignore = config.getIgnoreLevel();
         debug = config.isDebug();
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#initialize()
+     */
     public void initialize() {
         // removed
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#calculatePhysicalTurn()
+     */
     public PhysicalOption calculatePhysicalTurn() {
         return PhysicalCalculator.calculatePhysicalTurn(this);
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#calculateMoveTurn()
+     */
     public MovePath calculateMoveTurn() {
         long enter = System.currentTimeMillis();
         int initiative = 0;
@@ -267,6 +294,12 @@ public class TestBot extends BotClient {
         return min;
     }
 
+    /**
+     * Calculate move.
+     *
+     * @param entity the entity
+     * @return the move option[]
+     */
     public MoveOption[] calculateMove(Entity entity) {
         ArrayList<Entity> enemy_array = new ArrayList<Entity>(game.getValidTargets(entity));
         ArrayList<Entity> entities = new ArrayList<Entity>(game.getEntitiesVector());
@@ -337,7 +370,9 @@ public class TestBot extends BotClient {
     /**
      * ************************************************************************ first pass, filter
      * moves based upon present case
-     * ************************************************************************
+     * ************************************************************************.
+     *
+     * @param self the self
      */
     public void firstPass(CEntity self) {
         ArrayList<Entity> enemies = getEnemyEntities();
@@ -492,7 +527,13 @@ public class TestBot extends BotClient {
     /**
      * ******************************************************************** Second pass, combination
      * moves/firing based only on the present case, since only one mech moves at a time
-     * ********************************************************************
+     * ********************************************************************.
+     *
+     * @param self the self
+     * @param friends the friends
+     * @param enemy_array the enemy_array
+     * @param entities the entities
+     * @return the move option[]
      */
     private MoveOption[] secondPass(CEntity self, int friends, ArrayList<Entity> enemy_array,
             ArrayList<Entity> entities) {
@@ -526,7 +567,11 @@ public class TestBot extends BotClient {
     /**
      * ******************************************************************** third pass, (not so bad)
      * oppurtunistic planner gives preference to good ranges/defensive positions based upon the mech
-     * characterization ********************************************************************
+     * characterization ********************************************************************.
+     *
+     * @param self the self
+     * @param enemy_array the enemy_array
+     * @return the move option[]
      */
     private MoveOption[] thirdPass(CEntity self, ArrayList<Entity> enemy_array) {
         MoveOption[] move_array = self.pass.values().toArray(new MoveOption[0]);
@@ -638,7 +683,11 @@ public class TestBot extends BotClient {
     /**
      * ******************************************************************** fourth pass, speculation
      * on top moves use averaging to filter
-     * ********************************************************************
+     * ********************************************************************.
+     *
+     * @param self the self
+     * @param enemy_array the enemy_array
+     * @return the move option[]
      */
     private MoveOption[] fourthPass(CEntity self, ArrayList<Entity> enemy_array) {
         MoveOption[] move_array = self.pass.values().toArray(new MoveOption[0]);
@@ -788,7 +837,11 @@ public class TestBot extends BotClient {
     /**
      * ******************************************************************** fifth pass, final damage
      * and threat approximation --prevents moves that from the previous pass would cause the mech to
-     * die ********************************************************************
+     * die ********************************************************************.
+     *
+     * @param self the self
+     * @param enemy_array the enemy_array
+     * @return the move option[]
      */
     private MoveOption[] fifthPass(CEntity self, ArrayList<Entity> enemy_array) {
         MoveOption[] move_array = self.pass.values().toArray(new MoveOption[0]);
@@ -878,6 +931,14 @@ public class TestBot extends BotClient {
         return move_array;
     }
 
+    /**
+     * Filter moves.
+     *
+     * @param move_array the move_array
+     * @param pass the pass
+     * @param comp the comp
+     * @param filter the filter
+     */
     private void filterMoves(MoveOption[] move_array, MoveOption.Table pass,
             MoveOption.WeightedComparator comp, int filter) {
         Arrays.sort(move_array, comp);
@@ -888,6 +949,9 @@ public class TestBot extends BotClient {
         }
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#initFiring()
+     */
     protected void initFiring() {
         ArrayList<Entity> entities = new ArrayList<Entity>(game.getEntitiesVector());
         for (int i = 0; i < entities.size(); i++) {
@@ -907,6 +971,14 @@ public class TestBot extends BotClient {
         }
     }
 
+    /**
+     * Calculate weapon attacks.
+     *
+     * @param en the en
+     * @param mw the mw
+     * @param best_only the best_only
+     * @return the array list
+     */
     protected ArrayList<AttackOption> calculateWeaponAttacks(Entity en, Mounted mw,
             boolean best_only) {
         int from = en.getId();
@@ -1005,10 +1077,24 @@ public class TestBot extends BotClient {
         return result;
     }
 
+    /**
+     * Best attack.
+     *
+     * @param es the es
+     * @return the gA attack
+     */
     public GAAttack bestAttack(MoveOption es) {
         return bestAttack(es, null, 2);
     }
 
+    /**
+     * Best attack.
+     *
+     * @param es the es
+     * @param target the target
+     * @param search_level the search_level
+     * @return the gA attack
+     */
     public GAAttack bestAttack(MoveOption es, CEntity target, int search_level) {
         Entity en = es.getEntity();
         int attacks[] = new int[4];
@@ -1171,13 +1257,13 @@ public class TestBot extends BotClient {
     /**
      * If the best attack is a punch, then check each punch damage against the weapons damage from
      * the appropriate arm; if the punch does more damage, drop the weapons in that arm to 0
-     * expected damage Repeat this for left and right twists
-     * 
-     * @param best_po
-     * @param entity
-     * @param attackOptions
-     * @param la_dmg
-     * @param ra_dmg
+     * expected damage Repeat this for left and right twists.
+     *
+     * @param best_po the best_po
+     * @param entity the entity
+     * @param attackOptions the attack options
+     * @param la_dmg the la_dmg
+     * @param ra_dmg the ra_dmg
      */
     private void fireOrPhysicalCheck(PhysicalOption best_po, Entity entity,
             ArrayList<ArrayList<AttackOption>> attackOptions, double la_dmg, double ra_dmg) {
@@ -1230,6 +1316,13 @@ public class TestBot extends BotClient {
     }
 
     /* could use best of best strategy instead of expensive ga */
+    /**
+     * Attack utility.
+     *
+     * @param es the es
+     * @param target the target
+     * @return the double
+     */
     public double attackUtility(MoveOption es, CEntity target) {
         GAAttack result = bestAttack(es, target, 1);
         if (result == null) {
@@ -1238,6 +1331,9 @@ public class TestBot extends BotClient {
         return result.getFittestChromosomesFitness();
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#calculateFiringTurn()
+     */
     public void calculateFiringTurn() {
         int first_entity = game.getFirstEntityNum(getMyTurn());
         int entity_num = first_entity;
@@ -1337,7 +1433,7 @@ public class TestBot extends BotClient {
     }
 
     /**
-     * consider how to put more pre-turn logic here
+     * consider how to put more pre-turn logic here.
      */
     protected void initMovement() {
         this.my_mechs_moved = 0;
@@ -1471,11 +1567,17 @@ public class TestBot extends BotClient {
         System.gc(); // just to make sure
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#processChat(megamek.common.event.GamePlayerChatEvent)
+     */
     protected void processChat(GamePlayerChatEvent ge) {
         chatp.processChat(ge, this);
     }
 
     // Where do I put my units? This prioritizes hexes and facings
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#calculateDeployment()
+     */
     protected void calculateDeployment() {
 
         int weapon_count;
@@ -1576,6 +1678,9 @@ public class TestBot extends BotClient {
         deploy(entNum, cDeploy, nDir);
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#continueMovementFor(megamek.common.Entity)
+     */
     protected MovePath continueMovementFor(Entity entity) {
         System.out.println("Contemplating movement of " + entity.getShortName() + " "
                 + entity.getId());
@@ -1699,6 +1804,9 @@ public class TestBot extends BotClient {
         return min;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#calculateMinefieldDeployment()
+     */
     protected Vector<Minefield> calculateMinefieldDeployment() {
         Vector<Minefield> deployedMinefields = new Vector<Minefield>();
 
@@ -1709,12 +1817,22 @@ public class TestBot extends BotClient {
         return deployedMinefields;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.BotClient#calculateArtyAutoHitHexes()
+     */
     protected PlayerIDandList<Coords> calculateArtyAutoHitHexes() {
         PlayerIDandList<Coords> artyAutoHitHexes = new PlayerIDandList<Coords>();
         artyAutoHitHexes.setPlayerID(this.getLocalPlayer().getId());
         return artyAutoHitHexes;
     }
 
+    /**
+     * Deploy minefields.
+     *
+     * @param deployedMinefields the deployed minefields
+     * @param number the number
+     * @param type the type
+     */
     protected void deployMinefields(Vector<Minefield> deployedMinefields, int number, int type) {
         for (int i = 0; i < number; i++) {
             Coords coords = new Coords(Compute.randomInt(game.getBoard().getWidth()), Compute
@@ -1748,6 +1866,13 @@ public class TestBot extends BotClient {
     // must match
     // 1:1 with WeaponAttackActions in Vector.
 
+    /**
+     * Gets the aim point.
+     *
+     * @param attack_tree the attack_tree
+     * @param atk_action_list the atk_action_list
+     * @return the aim point
+     */
     private void getAimPoint(TreeSet<AttackOption> attack_tree, Vector<EntityAction> atk_action_list) {
 
         if (attack_tree == null || atk_action_list == null) {
@@ -2245,6 +2370,13 @@ public class TestBot extends BotClient {
         }
     }
 
+    /**
+     * Gets the aim modifier.
+     *
+     * @param target_id the target_id
+     * @param location the location
+     * @return the aim modifier
+     */
     private double getAimModifier(int target_id, int location) {
 
         double loc_total;
