@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryLRMWeapon.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryLRMWeapon extends InfantryWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -966926675003846938L;
 
+    /**
+     * Instantiates a new infantry lrm weapon.
+     */
     public InfantryLRMWeapon() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

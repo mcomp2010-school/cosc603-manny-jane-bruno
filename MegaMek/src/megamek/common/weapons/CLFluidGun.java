@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLFluidGun.
+ *
  * @author beerockxs
  */
 public class CLFluidGun extends FluidGunWeapon{
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5043640099544278749L;
 
     /**
-     *
+     * Instantiates a new cL fluid gun.
      */
     public CLFluidGun() {
         super();

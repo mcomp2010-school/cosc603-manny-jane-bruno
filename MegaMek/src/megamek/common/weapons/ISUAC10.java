@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISUAC10.
+ *
  * @author Andrew Hunter
  */
 public class ISUAC10 extends UACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6937673199956551674L;
 
     /**
-     * 
+     * Instantiates a new iSUA c10.
      */
     public ISUAC10() {
         super();

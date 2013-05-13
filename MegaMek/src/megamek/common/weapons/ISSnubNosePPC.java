@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISSnubNosePPC.
+ *
  * @author Andrew Hunter
  */
 public class ISSnubNosePPC extends PPCWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5650794792475465261L;
 
     /**
-     * 
+     * Instantiates a new checks if is snub nose ppc.
      */
     public ISSnubNosePPC() {
         super();
@@ -61,6 +63,9 @@ public class ISSnubNosePPC extends PPCWeapon {
         this.medAV = 8;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.WeaponType#getDamage(int)
+     */
     public int getDamage(int range) {
         if ( range <= shortRange )
             return damageShort;

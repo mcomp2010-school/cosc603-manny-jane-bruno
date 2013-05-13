@@ -15,14 +15,18 @@
 package megamek.common.actions;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TriggerBPodAction.
+ */
 public class TriggerBPodAction extends AbstractEntityAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -9087658958702066030L;
     /** Save the equipment ID of the Anti-BA Pod being triggered. */
     int podId;
+    
+    /** The target id. */
     int targetId;
 
     /**
@@ -30,6 +34,7 @@ public class TriggerBPodAction extends AbstractEntityAction {
      *
      * @param entityId the <code>int</code> ID of the triggering entity.
      * @param equipId the <code>int</code> ID of the triggered AP Pod.
+     * @param targetId the target id
      */
     public TriggerBPodAction(int entityId, int equipId, int targetId) {
         super(entityId);
@@ -46,6 +51,11 @@ public class TriggerBPodAction extends AbstractEntityAction {
         return podId;
     }
 
+    /**
+     * Gets the target id.
+     *
+     * @return the target id
+     */
     public int getTargetId() {
         return targetId;
     }

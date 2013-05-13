@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.TechConstants;
 import megamek.common.WeaponType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLargeVariableSpeedPulseLaser.
+ *
  * @author Jason Tighe
  */
 public class ISLargeVariableSpeedPulseLaser extends VariableSpeedPulseLaserWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2676144961105838316L;
 
     /**
-     *
+     * Instantiates a new checks if is large variable speed pulse laser.
      */
     public ISLargeVariableSpeedPulseLaser() {
         super();

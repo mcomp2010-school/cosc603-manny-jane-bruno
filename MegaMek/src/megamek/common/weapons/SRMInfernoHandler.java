@@ -29,21 +29,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SRMInfernoHandler.
+ *
  * @author Sebastian Brocks
  */
 public class SRMInfernoHandler extends SRMHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 826674238068613732L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new sRM inferno handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public SRMInfernoHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {
@@ -114,6 +117,9 @@ public class SRMInfernoHandler extends SRMHandler {
         return 0;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.MissileWeaponHandler#handle(megamek.common.IGame.Phase, java.util.Vector)
+     */
     @Override
     public boolean handle(IGame.Phase phase, Vector<Report> vPhaseReport) {
         if (!cares(phase)) {
@@ -343,6 +349,9 @@ public class SRMInfernoHandler extends SRMHandler {
         return missilesHit;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleClearDamage(java.util.Vector, megamek.common.Building, int, boolean)
+     */
     @Override
     protected void handleClearDamage(Vector<Report> vPhaseReport,
             Building bldg, int nDamage, boolean bSalvo) {

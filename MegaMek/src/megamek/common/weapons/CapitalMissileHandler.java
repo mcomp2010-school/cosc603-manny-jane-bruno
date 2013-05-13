@@ -18,27 +18,33 @@ import megamek.common.IGame;import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CapitalMissileHandler.
+ *
  * @author Jay Lawson
  */
 public class CapitalMissileHandler extends AmmoWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
 
     private static final long serialVersionUID = -1618484541772117621L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new capital missile handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public CapitalMissileHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#getCapMisMod()
+     */
     @Override
     protected int getCapMisMod() {
         return getCritMod((AmmoType)ammo.getType());
@@ -47,6 +53,12 @@ public class CapitalMissileHandler extends AmmoWeaponHandler {
 
     /*
      * get the cap mis mod given a single ammo type
+     */
+    /**
+     * Gets the crit mod.
+     *
+     * @param atype the atype
+     * @return the crit mod
      */
     protected int getCritMod(AmmoType atype) {
         if(atype == null || atype.getAmmoType() == AmmoType.T_PIRANHA

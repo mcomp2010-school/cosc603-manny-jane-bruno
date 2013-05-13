@@ -26,20 +26,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BAAPGaussWeaponHandler.
+ *
  * @author Sebastian Brocks
  */
 public class BAAPGaussWeaponHandler extends WeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -95308846220143952L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new bAAP gauss weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public BAAPGaussWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

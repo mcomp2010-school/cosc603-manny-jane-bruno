@@ -31,22 +31,27 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SRMTandemChargeHandler.
+ *
  * @author Jason Tighe
  */
 public class SRMTandemChargeHandler extends SRMHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6292692766500970690L;
+    
+    /** The general damage type. */
     protected int generalDamageType = HitData.DAMAGE_ARMOR_PIERCING_MISSILE;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new sRM tandem charge handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public SRMTandemChargeHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -56,13 +61,13 @@ public class SRMTandemChargeHandler extends SRMHandler {
     /**
      * Handle damage against an entity, called once per hit by default.
      *
-     * @param entityTarget
-     * @param vPhaseReport
-     * @param bldg
-     * @param hits
-     * @param nCluster
-     * @param nDamPerHit
-     * @param bldgAbsorbs
+     * @param entityTarget the entity target
+     * @param vPhaseReport the v phase report
+     * @param bldg the bldg
+     * @param hits the hits
+     * @param nCluster the n cluster
+     * @param nDamPerHit the n dam per hit
+     * @param bldgAbsorbs the bldg absorbs
      */
     @Override
     protected void handleEntityDamage(Entity entityTarget, Vector<Report> vPhaseReport, Building bldg, int hits, int nCluster, int nDamPerHit, int bldgAbsorbs) {

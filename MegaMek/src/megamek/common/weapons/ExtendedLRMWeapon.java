@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.AmmoType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ExtendedLRMWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class ExtendedLRMWeapon extends LRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1266251778897684302L;
 
     /**
-     * 
+     * Instantiates a new extended lrm weapon.
      */
     public ExtendedLRMWeapon() {
         super();

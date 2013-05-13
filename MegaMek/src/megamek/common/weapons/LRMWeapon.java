@@ -19,16 +19,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LRMWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class LRMWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8755275511561446251L;
 
+    /**
+     * Instantiates a new lRM weapon.
+     */
     public LRMWeapon() {
         super();
         this.ammoType = AmmoType.T_LRM;

@@ -19,16 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISC3M.
+ *
  * @author Sebastian Brocks
  */
 public class ISC3M extends TAGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8367068184993071837L;
 
+    /**
+     * Instantiates a new checks if is c3 m.
+     */
     public ISC3M() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLAPGaussRifle.
+ *
  * @author Sebastian Brocks
  */
 public class CLAPGaussRifle extends GaussWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3055904827702262063L;
 
     /**
-     * 
+     * Instantiates a new cLAP gauss rifle.
      */
     public CLAPGaussRifle() {
         super();

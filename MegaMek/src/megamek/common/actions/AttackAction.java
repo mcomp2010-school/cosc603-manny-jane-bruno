@@ -14,12 +14,37 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface AttackAction.
+ */
 public interface AttackAction extends EntityAction {
+    
+    /**
+     * Gets the target type.
+     *
+     * @return the target type
+     */
     public int getTargetType();
 
+    /**
+     * Gets the target id.
+     *
+     * @return the target id
+     */
     public int getTargetId();
 
+    /**
+     * Sets the target type.
+     *
+     * @param nType the new target type
+     */
     public void setTargetType(int nType);
 
+    /**
+     * Sets the target id.
+     *
+     * @param targetId the new target id
+     */
     public void setTargetId(int targetId);
 }

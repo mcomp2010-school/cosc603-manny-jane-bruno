@@ -21,21 +21,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SRMDeadFireHandler.
+ *
  * @author Jason Tighe
  */
 public class SRMDeadFireHandler extends SRMHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1511452503641090393L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new sRM dead fire handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public SRMDeadFireHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

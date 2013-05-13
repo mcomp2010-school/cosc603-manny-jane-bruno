@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISHeavyRecoillessRifle.
+ *
  * @author Andrew Hunter
  */
 public class ISHeavyRecoillessRifle extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1717246683401964562L;
 
     /**
-     * 
+     * Instantiates a new checks if is heavy recoilless rifle.
      */
     public ISHeavyRecoillessRifle() {
         super();

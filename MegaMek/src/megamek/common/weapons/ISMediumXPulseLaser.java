@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMediumXPulseLaser.
+ *
  * @author Sebastian Brocks
  */
 public class ISMediumXPulseLaser extends PulseLaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6576828912486084151L;
 
     /**
-     * 
+     * Instantiates a new checks if is medium x pulse laser.
      */
     public ISMediumXPulseLaser() {
         super();

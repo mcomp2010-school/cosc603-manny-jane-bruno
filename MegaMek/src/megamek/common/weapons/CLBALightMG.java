@@ -19,18 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLBALightMG.
+ *
  * @author Sebastian Brocks
  */
 public class CLBALightMG extends BAMGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1810341654439496432L;
 
     /**
-     * 
+     * Instantiates a new cLBA light mg.
      */
     public CLBALightMG() {
         super();

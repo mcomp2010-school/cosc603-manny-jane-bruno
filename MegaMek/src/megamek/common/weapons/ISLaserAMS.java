@@ -19,15 +19,20 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLaserAMS.
+ *
  * @author Sebastian Brocks
  */
 public class ISLaserAMS extends LaserWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7448728413011101076L;
 
+    /**
+     * Instantiates a new checks if is laser ams.
+     */
     public ISLaserAMS() {
         super();
         techLevel = TechConstants.T_IS_EXPERIMENTAL;

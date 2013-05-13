@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
-* @author Jay Lawson
-*/
+ * The Class LightNPPCWeapon.
+ *
+ * @author Jay Lawson
+ */
 public class LightNPPCWeapon extends NavalPPCWeapon {
-   /**
-    * 
-    */
+   
+   /** The Constant serialVersionUID. */
    private static final long serialVersionUID = 8756042527483383101L;
 
    /**
-    * 
+    * Instantiates a new light nppc weapon.
     */
    public LightNPPCWeapon() {
        super();

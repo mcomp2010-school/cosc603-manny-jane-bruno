@@ -24,19 +24,23 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ACWeapon.
+ *
  * @author Andrew Hunter N.B. This class is overriden for AC/2, AC/5, AC/10,
- *         AC/10, NOT ultras/LB/RAC. (No difference between ACWeapon and
- *         AmmoWeapon except the ability to use special ammos (precision, AP,
- *         etc.) )
+ * AC/10, NOT ultras/LB/RAC. (No difference between ACWeapon and
+ * AmmoWeapon except the ability to use special ammos (precision, AP,
+ * etc.) )
  */
 public abstract class ACWeapon extends AmmoWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1537808266032711407L;
 
+    /**
+     * Instantiates a new aC weapon.
+     */
     public ACWeapon() {
         super();
         flags |= F_DIRECT_FIRE | F_BALLISTIC | F_MECH_WEAPON | F_AERO_WEAPON |  F_TANK_WEAPON;

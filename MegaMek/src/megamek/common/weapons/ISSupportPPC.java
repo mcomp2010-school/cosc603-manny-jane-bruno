@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISSupportPPC.
+ *
  * @author Sebastian Brocks
  */
 public class ISSupportPPC extends PPCWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -993141316216102914L;
 
     /**
-     * 
+     * Instantiates a new checks if is support ppc.
      */
     public ISSupportPPC() {
         super();

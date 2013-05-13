@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMediumPulseLaserPrototype.
+ *
  * @author Sebastian Brocks
  */
 public class ISMediumPulseLaserPrototype extends PulseLaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8402915088560062495L;
 
     /**
-     * 
+     * Instantiates a new checks if is medium pulse laser prototype.
      */
     public ISMediumPulseLaserPrototype() {
         super();

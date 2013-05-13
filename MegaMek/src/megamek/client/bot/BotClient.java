@@ -52,8 +52,19 @@ import megamek.common.event.GamePlayerChatEvent;
 import megamek.common.event.GameReportEvent;
 import megamek.common.event.GameTurnChangeEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BotClient.
+ */
 public abstract class BotClient extends Client {
 
+    /**
+     * Instantiates a new bot client.
+     *
+     * @param playerName the player name
+     * @param host the host
+     * @param port the port
+     */
     public BotClient(String playerName, String host, int port) {
         super(playerName, host, port);
         game.addGameListener(new GameListenerAdapter() {
@@ -85,30 +96,82 @@ public abstract class BotClient extends Client {
         });
     }
 
+    /** The config. */
     BotConfiguration config = new BotConfiguration();
 
+    /**
+     * Initialize.
+     */
     public abstract void initialize();
 
+    /**
+     * Process chat.
+     *
+     * @param ge the ge
+     */
     protected abstract void processChat(GamePlayerChatEvent ge);
 
+    /**
+     * Inits the movement.
+     */
     protected abstract void initMovement();
 
+    /**
+     * Inits the firing.
+     */
     protected abstract void initFiring();
 
+    /**
+     * Calculate move turn.
+     *
+     * @return the move path
+     */
     protected abstract MovePath calculateMoveTurn();
 
+    /**
+     * Calculate firing turn.
+     */
     protected abstract void calculateFiringTurn();
 
+    /**
+     * Calculate deployment.
+     */
     protected abstract void calculateDeployment();
 
+    /**
+     * Calculate physical turn.
+     *
+     * @return the physical option
+     */
     protected abstract PhysicalOption calculatePhysicalTurn();
 
+    /**
+     * Continue movement for.
+     *
+     * @param entity the entity
+     * @return the move path
+     */
     protected abstract MovePath continueMovementFor(Entity entity);
 
+    /**
+     * Calculate minefield deployment.
+     *
+     * @return the vector
+     */
     protected abstract Vector<Minefield> calculateMinefieldDeployment();
 
+    /**
+     * Calculate arty auto hit hexes.
+     *
+     * @return the vector
+     */
     protected abstract Vector<Coords> calculateArtyAutoHitHexes();
 
+    /**
+     * Gets the entities owned.
+     *
+     * @return the entities owned
+     */
     public ArrayList<Entity> getEntitiesOwned() {
         ArrayList<Entity> result = new ArrayList<Entity>();
         for (Enumeration<Entity> i = game.getEntities(); i.hasMoreElements();) {
@@ -121,6 +184,11 @@ public abstract class BotClient extends Client {
         return result;
     }
 
+    /**
+     * Gets the enemy entities.
+     *
+     * @return the enemy entities
+     */
     public ArrayList<Entity> getEnemyEntities() {
         ArrayList<Entity> result = new ArrayList<Entity>();
         for (Enumeration<Entity> i = game.getEntities(); i.hasMoreElements();) {
@@ -134,6 +202,9 @@ public abstract class BotClient extends Client {
     }
 
     // TODO: move initMovement to be called on phase end
+    /* (non-Javadoc)
+     * @see megamek.client.Client#changePhase(megamek.common.IGame.Phase)
+     */
     @Override
     public void changePhase(IGame.Phase phase) {
         super.changePhase(phase);
@@ -193,6 +264,11 @@ public abstract class BotClient extends Client {
         }
     }
 
+    /**
+     * Gets the random unmoved entity.
+     *
+     * @return the random unmoved entity
+     */
     private Entity getRandomUnmovedEntity() {
         List<Entity> owned = getEntitiesOwned();
         List<Entity> unMoved = new ArrayList<Entity>();
@@ -204,6 +280,9 @@ public abstract class BotClient extends Client {
         return unMoved.get(Compute.randomInt(unMoved.size()));
     }
 
+    /**
+     * Calculate my turn.
+     */
     protected void calculateMyTurn() {
         try {
             if (game.getPhase() == IGame.Phase.PHASE_MOVEMENT) {
@@ -261,7 +340,11 @@ public abstract class BotClient extends Client {
     }
 
     /**
-     * Gets valid & empty starting coords around the specified point
+     * Gets valid & empty starting coords around the specified point.
+     *
+     * @param deploy_me the deploy_me
+     * @param c the c
+     * @return the coords around
      */
     protected Coords getCoordsAround(Entity deploy_me, Coords[] c) {
         int mech_count;
@@ -332,6 +415,11 @@ public abstract class BotClient extends Client {
     // Screens out invalid hexes then rates them
     // Highest rating wins out; if this applies to multiple hexes then randomly
     // select among them
+    /**
+     * Gets the starting coords.
+     *
+     * @return the starting coords
+     */
     protected Coords getStartingCoords() {
         Coords[] calc = getStartingCoordsArray();
         if (calc != null) {
@@ -342,6 +430,11 @@ public abstract class BotClient extends Client {
         return null;
     }
 
+    /**
+     * Gets the starting coords array.
+     *
+     * @return the starting coords array
+     */
     protected Coords[] getStartingCoordsArray() {
         int test_x, test_y, highest_elev, lowest_elev;
         int counter, valid_arr_index, arr_x_index;
@@ -711,7 +804,14 @@ public abstract class BotClient extends Client {
         return valid_array;
     }
 
+    /**
+     * The Class FitnessComparator.
+     */
     class FitnessComparator implements Comparator<Coords> {
+        
+        /* (non-Javadoc)
+         * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+         */
         public int compare(Coords d1, Coords d2) {
             return -1 * Double.compare(d1.fitness, d2.fitness);
         }
@@ -720,6 +820,7 @@ public abstract class BotClient extends Client {
     // Missile hits table
     // Some of these are interpolated for odd weapons sizes found in Protos and
     // new BAs
+    /** The expected hits by rack size. */
     private static float[] expectedHitsByRackSize = { 0.0f, 1.0f, 1.58f, 2.0f,
             2.63f, 3.17f, 4.0f, 4.49f, 4.98f, 5.47f, 6.31f, 7.23f, 8.14f,
             8.59f, 9.04f, 9.5f, 0.0f, 0.0f, 0.0f, 0.0f, 12.7f };
@@ -729,6 +830,10 @@ public abstract class BotClient extends Client {
      * sizes, etc. This has been copied almost wholesale from
      * Compute.getExpectedDamage; the logfile print commands were removed due to
      * excessive data generated
+     *
+     * @param g the g
+     * @param waa the waa
+     * @return the deploy damage
      */
     private static float getDeployDamage(IGame g, WeaponAttackAction waa) {
         Entity attacker = g.getEntity(waa.getEntityId());
@@ -791,7 +896,7 @@ public abstract class BotClient extends Client {
     /**
      * If the unit has stealth armor, turning it off is probably a good idea if
      * most of the enemy force is at 'short' range or if in danger of
-     * overheating
+     * overheating.
      */
 
     private void toggleStealth() {
@@ -877,6 +982,11 @@ public abstract class BotClient extends Client {
         }
     }
 
+    /**
+     * Gets the random bot message.
+     *
+     * @return the random bot message
+     */
     public String getRandomBotMessage() {
         String message = "";
 
@@ -904,6 +1014,9 @@ public abstract class BotClient extends Client {
         return message;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.Client#retrieveServerInfo()
+     */
     @Override
     public void retrieveServerInfo() {
         super.retrieveServerInfo();

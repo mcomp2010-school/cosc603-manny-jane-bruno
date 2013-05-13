@@ -19,18 +19,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NarcWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class NarcWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1651402906360520759L;
 
     /**
-     * 
+     * Instantiates a new narc weapon.
      */
     public NarcWeapon() {
         super();

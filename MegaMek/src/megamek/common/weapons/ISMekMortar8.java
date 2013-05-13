@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMekMortar8.
+ *
  * @author Jason Tighe
  */
 public class ISMekMortar8 extends MekMortarWeapon{
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3352749710661515958L;
 
     /**
-     * 
+     * Instantiates a new checks if is mek mortar8.
      */
     public ISMekMortar8() {
         super();

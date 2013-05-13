@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISPPC.
+ *
  * @author Andrew Hunter
  */
 public class ISPPC extends PPCWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5775665622863346537L;
 
     /**
-     * 
+     * Instantiates a new isppc.
      */
     public ISPPC() {
         super();

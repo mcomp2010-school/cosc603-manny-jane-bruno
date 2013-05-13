@@ -29,6 +29,7 @@ import megamek.common.actions.KickAttackAction;
 import megamek.common.actions.PunchAttackAction;
 import megamek.common.actions.PushAttackAction;
 
+// TODO: Auto-generated Javadoc
 /**
  * TODO: add more options, pushing, kick both for quad mechs, etc.
  *
@@ -36,36 +37,86 @@ import megamek.common.actions.PushAttackAction;
  * are the conditions for multiple physical attacks?
  */
 public class PhysicalOption {
+    
+    /** The Constant NONE. */
     public final static int NONE = 0;
+    
+    /** The Constant PUNCH_LEFT. */
     public final static int PUNCH_LEFT = 1;
+    
+    /** The Constant PUNCH_RIGHT. */
     public final static int PUNCH_RIGHT = 2;
+    
+    /** The Constant PUNCH_BOTH. */
     public final static int PUNCH_BOTH = 3;
+    
+    /** The Constant KICK_LEFT. */
     public final static int KICK_LEFT = 4;
+    
+    /** The Constant KICK_RIGHT. */
     public final static int KICK_RIGHT = 5;
+    
+    /** The Constant USE_CLUB. */
     public final static int USE_CLUB = 6; // Includes sword, hatchet, mace,
                                             // and found clubs
-    public final static int USE_CLAW = 7; // Level 3 rules, not incorporated
+    /** The Constant USE_CLAW. */
+                                            public final static int USE_CLAW = 7; // Level 3 rules, not incorporated
                                             // yet
-    public final static int PUSH_ATTACK = 8;
+    /** The Constant PUSH_ATTACK. */
+                                            public final static int PUSH_ATTACK = 8;
+    
+    /** The Constant TRIP_ATTACK. */
     public final static int TRIP_ATTACK = 9; // Level 3 rules, not
                                                 // incorporated yet
-    public final static int BRUSH_LEFT = 10;
+    /** The Constant BRUSH_LEFT. */
+                                                public final static int BRUSH_LEFT = 10;
+    
+    /** The Constant BRUSH_RIGHT. */
     public final static int BRUSH_RIGHT = 11;
+    
+    /** The Constant BRUSH_BOTH. */
     public final static int BRUSH_BOTH = 12;
+    
+    /** The Constant THRASH_INF. */
     public final static int THRASH_INF = 13;
 
+    /** The attacker. */
     Entity attacker;
+    
+    /** The target. */
     Entity target;
+    
+    /** The i_target. */
     INarcPod i_target;
+    
+    /** The expected dmg. */
     double expectedDmg;
+    
+    /** The type. */
     int type;
+    
+    /** The club. */
     Mounted club;
 
+    /**
+     * Instantiates a new physical option.
+     *
+     * @param attacker the attacker
+     */
     public PhysicalOption(Entity attacker) {
         this.attacker = attacker;
         this.type = NONE;
     }
 
+    /**
+     * Instantiates a new physical option.
+     *
+     * @param attacker the attacker
+     * @param target the target
+     * @param dmg the dmg
+     * @param type the type
+     * @param club the club
+     */
     public PhysicalOption(Entity attacker, Targetable target, double dmg,
             int type, Mounted club) {
         this.attacker = attacker;
@@ -80,6 +131,11 @@ public class PhysicalOption {
         this.club = club;
     }
 
+    /**
+     * To action.
+     *
+     * @return the abstract attack action
+     */
     public AbstractAttackAction toAction() {
         switch (type) {
             case PUNCH_LEFT:
@@ -143,6 +199,11 @@ public class PhysicalOption {
         return null;
     }
 
+    /**
+     * Gets the vector.
+     *
+     * @return the vector
+     */
     public Vector<EntityAction> getVector() {
         AbstractAttackAction aaa = toAction();
         Vector<EntityAction> v = new Vector<EntityAction>();

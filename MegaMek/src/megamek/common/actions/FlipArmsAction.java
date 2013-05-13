@@ -14,22 +14,43 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FlipArmsAction.
+ */
 public class FlipArmsAction extends AbstractEntityAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5330424034128054338L;
+    
+    /** The is flipped. */
     private boolean isFlipped;
 
+    /**
+     * Instantiates a new flip arms action.
+     *
+     * @param entityId the entity id
+     * @param isFlipped the is flipped
+     */
     public FlipArmsAction(int entityId, boolean isFlipped) {
         super(entityId);
         this.isFlipped = isFlipped;
     }
 
+    /**
+     * Gets the checks if is flipped.
+     *
+     * @return the checks if is flipped
+     */
     public boolean getIsFlipped() {
         return isFlipped;
     }
 
+    /**
+     * Sets the checks if is flipped.
+     *
+     * @param isFlipped the new checks if is flipped
+     */
     public void setIsFlipped(boolean isFlipped) {
         this.isFlipped = isFlipped;
     }

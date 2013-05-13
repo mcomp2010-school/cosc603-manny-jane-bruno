@@ -33,25 +33,33 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class FlamerHeatHandler.
+ *
  * @author Andrew Hunter
  */
 public class FlamerHeatHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7785915075211288648L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new flamer heat handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public FlamerHeatHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {
         super(toHit, waa, g, s);
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleEntityDamage(megamek.common.Entity, java.util.Vector, megamek.common.Building, int, int, int, int)
+     */
     protected void handleEntityDamage(Entity entityTarget,
             Vector<Report> vPhaseReport, Building bldg, int hits, int nCluster,
             int nDamPerHit, int bldgAbsorbs) {
@@ -116,9 +124,15 @@ public class FlamerHeatHandler extends WeaponHandler {
     
 
     /**
+     * Handle special miss.
+     *
+     * @param entityTarget the entity target
+     * @param targetInBuilding the target in building
+     * @param bldg the bldg
+     * @param vPhaseReport the v phase report
      * @return a <code>boolean</code> value indicating wether or not this
-     *         attack needs further calculating, like a missed shot hitting a
-     *         building, or an AMS only shooting down some missiles.
+     * attack needs further calculating, like a missed shot hitting a
+     * building, or an AMS only shooting down some missiles.
      */
     protected boolean handleSpecialMiss(Entity entityTarget,
             boolean targetInBuilding, Building bldg, Vector<Report> vPhaseReport) {
@@ -142,6 +156,9 @@ public class FlamerHeatHandler extends WeaponHandler {
         return true;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleIgnitionDamage(java.util.Vector, megamek.common.Building, boolean, int)
+     */
     protected void handleIgnitionDamage(Vector<Report> vPhaseReport,
             Building bldg, boolean bSalvo, int hits) {
         if (!bSalvo) {
@@ -159,6 +176,9 @@ public class FlamerHeatHandler extends WeaponHandler {
         }
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleClearDamage(java.util.Vector, megamek.common.Building, int, boolean)
+     */
     protected void handleClearDamage(Vector<Report> vPhaseReport,
             Building bldg, int nDamage, boolean bSalvo) {
         if (!bSalvo) {

@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLargePulseLaser.
+ *
  * @author Andrew Hunter
  */
 public class ISLargePulseLaser extends PulseLaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 94533476706680275L;
 
     /**
-     * 
+     * Instantiates a new checks if is large pulse laser.
      */
     public ISLargePulseLaser() {
         super();

@@ -16,18 +16,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISThunderBolt20.
+ *
  * @author Sebastian Brocks
  */
 public class ISThunderBolt20 extends ThunderBoltWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6976091682813292840L;
 
     /**
-     * 
+     * Instantiates a new checks if is thunder bolt20.
      */
     public ISThunderBolt20() {
         super();

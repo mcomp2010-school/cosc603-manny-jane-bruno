@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLLaserAMS.
+ *
  * @author Sebastian Brocks
  */
 public class CLLaserAMS extends LaserWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3262387868757752971L;
 
     /**
-     *
+     * Instantiates a new cL laser ams.
      */
     public CLLaserAMS() {
         super();

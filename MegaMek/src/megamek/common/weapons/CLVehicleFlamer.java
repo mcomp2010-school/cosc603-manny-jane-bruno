@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLVehicleFlamer.
+ *
  * @author Sebastian Brocks
  */
 public class CLVehicleFlamer extends VehicleFlamerWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1550030929314637199L;
 
     /**
-     * 
+     * Instantiates a new cL vehicle flamer.
      */
     public CLVehicleFlamer() {
         super();

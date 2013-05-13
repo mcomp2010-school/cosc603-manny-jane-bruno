@@ -26,19 +26,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ERFlamerHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ERFlamerHandler extends FlamerHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7348456582587703751L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new eR flamer handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public ERFlamerHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {

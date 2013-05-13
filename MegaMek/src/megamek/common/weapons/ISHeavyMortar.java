@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISHeavyMortar.
+ *
  * @author Sebastian Brocks
  */
 public class ISHeavyMortar extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7081695747408312441L;
 
     /**
-     * 
+     * Instantiates a new checks if is heavy mortar.
      */
     public ISHeavyMortar() {
         super();

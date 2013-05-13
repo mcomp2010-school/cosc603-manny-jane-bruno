@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISRailGun.
+ *
  * @author Andrew Hunter
  */
 public class ISRailGun extends GaussWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8879671694066711976L;
 
     /**
-     * 
+     * Instantiates a new checks if is rail gun.
      */
     public ISRailGun() {
         super();

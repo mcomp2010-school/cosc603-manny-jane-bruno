@@ -38,24 +38,42 @@ import megamek.common.Targetable;
 import megamek.common.Terrains;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * TODO: add the notion of a dependent state (at least a first pass estimate of
  * worst case threat) for when psr's are made. TODO: add a notion of a blocked
  * move, something that could open up after another mech moves.
  */
 public class MoveOption extends MovePath {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4517093562444861980L;
 
+    /**
+     * The Class WeightedComparator.
+     */
     public static class WeightedComparator implements Comparator<MoveOption> {
 
+        /** The utility_weight. */
         private double utility_weight;
+        
+        /** The damage_weight. */
         private double damage_weight;
 
+        /**
+         * Instantiates a new weighted comparator.
+         *
+         * @param utility the utility
+         * @param damage the damage
+         */
         public WeightedComparator(double utility, double damage) {
             utility_weight = utility;
             damage_weight = damage;
         }
 
+        /* (non-Javadoc)
+         * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+         */
         public int compare(MoveOption e0, MoveOption e1) {
             if (damage_weight * e0.damage - utility_weight * e0.getUtility() > damage_weight
                     * e1.damage - utility_weight * e1.getUtility()) {
@@ -65,65 +83,147 @@ public class MoveOption extends MovePath {
         }
     }
 
+    /**
+     * The Class Table.
+     */
     public static class Table extends HashMap<MovePath.Key, MoveOption> {
+        
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 5926883297848807149L;
 
+        /**
+         * Put.
+         *
+         * @param es the es
+         */
         public void put(MoveOption es) {
             this.put(es.getKey(), es);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param es the es
+         * @return the move option
+         */
         public MoveOption get(MoveOption es) {
             return super.get(es.getKey());
         }
 
+        /**
+         * Removes the.
+         *
+         * @param es the es
+         * @return the move option
+         */
         public MoveOption remove(MoveOption es) {
             return super.remove(es.getKey());
         }
 
+        /**
+         * Gets the array.
+         *
+         * @return the array
+         */
         public ArrayList<MoveOption> getArray() {
             return new ArrayList<MoveOption>(values());
         }
     }
 
+    /**
+     * The Class DistanceComparator.
+     */
     public static class DistanceComparator implements Comparator<MoveOption> {
 
+        /* (non-Javadoc)
+         * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+         */
         public int compare(MoveOption e0, MoveOption e1) {
             return e0.getDistUtility() < e1.getDistUtility() ? -1 : 1;
         }
     }
 
+    /**
+     * The Class DamageInfo.
+     */
     public static class DamageInfo {
+        
+        /** The threat. */
         double threat;
+        
+        /** The damage. */
         double damage;
+        
+        /** The max_threat. */
         double max_threat;
+        
+        /** The min_damage. */
         double min_damage;
     }
 
+    /** The Constant DISTANCE_COMPARATOR. */
     public static final DistanceComparator DISTANCE_COMPARATOR = new DistanceComparator();
 
+    /** The Constant ATTACK_MOD. */
     public static final int ATTACK_MOD = 0;
+    
+    /** The Constant DEFENCE_MOD. */
     public static final int DEFENCE_MOD = 1;
+    
+    /** The Constant ATTACK_PC. */
     public static final int ATTACK_PC = 2;
+    
+    /** The Constant DEFENCE_PC. */
     public static final int DEFENCE_PC = 3;
 
+    /** The in danger. */
     boolean inDanger = false;
+    
+    /** The doomed. */
     boolean doomed = false;
+    
+    /** The is physical. */
     boolean isPhysical = false;
 
+    /** The self_threat. */
     double self_threat = 0;
+    
+    /** The movement_threat. */
     double movement_threat = 0;
+    
+    /** The self_damage. */
     double self_damage = 0;
 
+    /** The damage. */
     double damage = 0;
+    
+    /** The threat. */
     double threat = 0;
 
+    /** The centity. */
     private transient CEntity centity;
+    
+    /** The tv. */
     transient ArrayList<String> tv = new ArrayList<String>();
+    
+    /** The damage infos. */
     transient HashMap<CEntity, DamageInfo> damageInfos = new HashMap<CEntity, DamageInfo>();
+    
+    /** The pos. */
     private Coords pos;
+    
+    /** The facing. */
     private int facing;
+    
+    /** The prone. */
     private boolean prone;
 
+    /**
+     * Instantiates a new move option.
+     *
+     * @param game the game
+     * @param centity the centity
+     */
     public MoveOption(IGame game, CEntity centity) {
         super(game, centity.entity);
         this.centity = centity;
@@ -132,6 +232,11 @@ public class MoveOption extends MovePath {
         prone = centity.entity.isProne();
     }
 
+    /**
+     * Instantiates a new move option.
+     *
+     * @param base the base
+     */
     public MoveOption(MoveOption base) {
         this(base.game, base.centity);
         steps = new Vector<MoveStep>(base.steps);
@@ -149,35 +254,76 @@ public class MoveOption extends MovePath {
         prone = base.prone;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.MovePath#clone()
+     */
     @Override
     public MoveOption clone() {
         return new MoveOption(this);
     }
 
+    /**
+     * Gets the threat.
+     *
+     * @param e the e
+     * @return the threat
+     */
     public double getThreat(CEntity e) {
         return getDamageInfo(e, true).threat;
     }
 
+    /**
+     * Sets the threat.
+     *
+     * @param e the e
+     * @param value the value
+     */
     public void setThreat(CEntity e, double value) {
         getDamageInfo(e, true).threat = value;
     }
 
+    /**
+     * Gets the min damage.
+     *
+     * @param e the e
+     * @return the min damage
+     */
     public double getMinDamage(CEntity e) {
         return getDamageInfo(e, true).min_damage;
     }
 
+    /**
+     * Gets the damage.
+     *
+     * @param e the e
+     * @return the damage
+     */
     public double getDamage(CEntity e) {
         return getDamageInfo(e, true).damage;
     }
 
+    /**
+     * Sets the damage.
+     *
+     * @param e the e
+     * @param value the value
+     */
     public void setDamage(CEntity e, double value) {
         getDamageInfo(e, true).damage = value;
     }
 
+    /**
+     * Gets the c entity.
+     *
+     * @return the c entity
+     */
     CEntity getCEntity() {
         return centity;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.MovePath#addStep(int)
+     */
     @Override
     public MoveOption addStep(int step_type) {
         super.addStep(step_type);
@@ -207,6 +353,11 @@ public class MoveOption extends MovePath {
         return this;
     }
 
+    /**
+     * Gets the movementheat buildup.
+     *
+     * @return the movementheat buildup
+     */
     public int getMovementheatBuildup() {
         MoveStep last = getLastStep();
         if (last == null) {
@@ -232,6 +383,11 @@ public class MoveOption extends MovePath {
         return heat + move; // illegal?
     }
 
+    /**
+     * Change to physical.
+     *
+     * @return true, if successful
+     */
     public boolean changeToPhysical() {
         MoveStep last = getLastStep();
         if (isJumping()) {
@@ -276,6 +432,9 @@ public class MoveOption extends MovePath {
     }
 
     // it would be nice to have a stand still move...
+    /**
+     * Sets the state.
+     */
     public void setState() {
         entity = centity.entity;
         if (steps.size() == 0) {
@@ -296,7 +455,10 @@ public class MoveOption extends MovePath {
 
     /**
      * TODO: replace with more common logic approximates the attack and
-     * defensive modifies assumes that set state has been called
+     * defensive modifies assumes that set state has been called.
+     *
+     * @param te the te
+     * @return the modifiers
      */
     public int[] getModifiers(final Entity te) {
         // set them at the appropriate positions
@@ -403,6 +565,8 @@ public class MoveOption extends MovePath {
 
     /**
      * TODO: the result of this calculation should be cached...
+     *
+     * @return the utility
      */
     public double getUtility() {
         // self threat and self damage are considered transient
@@ -459,7 +623,12 @@ public class MoveOption extends MovePath {
     /**
      * get maximum damage in this current state from enemy accounting for torso
      * twisting and slightly for heat -- the ce passed in is supposed to be the
-     * enemy mech
+     * enemy mech.
+     *
+     * @param enemy the enemy
+     * @param modifier the modifier
+     * @param apc the apc
+     * @return the max modified damage
      */
     public double getMaxModifiedDamage(MoveOption enemy, int modifier, int apc) {
         double max = 0;
@@ -522,6 +691,13 @@ public class MoveOption extends MovePath {
         return max;
     }
 
+    /**
+     * Gets the damage info.
+     *
+     * @param cen the cen
+     * @param create the create
+     * @return the damage info
+     */
     public DamageInfo getDamageInfo(CEntity cen, boolean create) {
         DamageInfo result = damageInfos.get(cen);
         if (create && (result == null)) {
@@ -531,12 +707,19 @@ public class MoveOption extends MovePath {
         return result;
     }
 
+    /**
+     * Gets the dist utility.
+     *
+     * @return the dist utility
+     */
     public double getDistUtility() {
         return getMpUsed() + movement_threat * 100 / centity.bv;
     }
 
     /**
-     * There could still be a problem here, but now it's the callers problem
+     * There could still be a problem here, but now it's the callers problem.
+     *
+     * @return the physical target id
      */
     int getPhysicalTargetId() {
         MoveStep step = getLastStep();
@@ -550,6 +733,9 @@ public class MoveOption extends MovePath {
         return target.getTargetId();
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.MovePath#toString()
+     */
     @Override
     public String toString() {
         return getEntity().getShortName() + " " + getEntity().getId() + " "

@@ -27,23 +27,28 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryWeaponHandler.
+ *
  * @author Sebastian Brocks
  */
 public abstract class InfantryWeaponHandler extends WeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1425176802065536326L;
 
     // damage lookup table, different for each infantry weapon
+    /** The damage. */
     int[] damage;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new infantry weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public InfantryWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

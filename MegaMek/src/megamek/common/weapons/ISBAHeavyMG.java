@@ -19,18 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISBAHeavyMG.
+ *
  * @author Sebastian Brocks
  */
 public class ISBAHeavyMG extends BAMGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8064879485060186631L;
 
     /**
-     * 
+     * Instantiates a new iSBA heavy mg.
      */
     public ISBAHeavyMG() {
         super();

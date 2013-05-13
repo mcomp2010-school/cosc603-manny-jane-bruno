@@ -28,20 +28,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MPodHandler.
+ *
  * @author Sebastian Brocks
  */
 public class MPodHandler extends LBXHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1591751929178217495L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new m pod handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public MPodHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

@@ -29,16 +29,22 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlasmaCannonHandler.
+ */
 public class PlasmaCannonHandler extends AmmoWeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2304364403526293671L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new plasma cannon handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public PlasmaCannonHandler(ToHitData toHit, WeaponAttackAction waa, IGame g, Server s) {
         super(toHit, waa, g, s);
@@ -155,9 +161,15 @@ public class PlasmaCannonHandler extends AmmoWeaponHandler {
     
 
     /**
+     * Handle special miss.
+     *
+     * @param entityTarget the entity target
+     * @param targetInBuilding the target in building
+     * @param bldg the bldg
+     * @param vPhaseReport the v phase report
      * @return a <code>boolean</code> value indicating wether or not this
-     *         attack needs further calculating, like a missed shot hitting a
-     *         building, or an AMS only shooting down some missiles.
+     * attack needs further calculating, like a missed shot hitting a
+     * building, or an AMS only shooting down some missiles.
      */
     protected boolean handleSpecialMiss(Entity entityTarget,
             boolean targetInBuilding, Building bldg, Vector<Report> vPhaseReport) {
@@ -181,6 +193,9 @@ public class PlasmaCannonHandler extends AmmoWeaponHandler {
         return true;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleIgnitionDamage(java.util.Vector, megamek.common.Building, boolean, int)
+     */
     protected void handleIgnitionDamage(Vector<Report> vPhaseReport,
             Building bldg, boolean bSalvo, int hits) {
         if (!bSalvo) {
@@ -198,6 +213,9 @@ public class PlasmaCannonHandler extends AmmoWeaponHandler {
         }
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleClearDamage(java.util.Vector, megamek.common.Building, int, boolean)
+     */
     protected void handleClearDamage(Vector<Report> vPhaseReport,
             Building bldg, int nDamage, boolean bSalvo) {
         if (!bSalvo) {

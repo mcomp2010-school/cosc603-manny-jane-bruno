@@ -22,20 +22,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryLaserHandler.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryLaserHandler extends InfantryWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1574769836005358471L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new infantry laser handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public InfantryLaserHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

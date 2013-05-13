@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryFlamerWeapon.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryFlamerWeapon extends InfantryWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5741978934100309295L;
 
+    /**
+     * Instantiates a new infantry flamer weapon.
+     */
     public InfantryFlamerWeapon() {
         super();
         this.techLevel = TechConstants.T_INTRO_BOXSET;

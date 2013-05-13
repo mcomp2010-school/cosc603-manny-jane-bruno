@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ATMBayWeapon.
+ *
  * @author Jay Lawson
  */
 public class ATMBayWeapon extends AmmoBayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new aTM bay weapon.
      */
     public ATMBayWeapon() {
         super();

@@ -30,21 +30,27 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class HAGWeaponHandler.
+ *
  * @author Sebastian Brocks
  */
 public class HAGWeaponHandler extends AmmoWeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8193801876308832102L;
 
+    /** The ammo. */
     Mounted ammo;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new hAG weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public HAGWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -149,11 +155,17 @@ public class HAGWeaponHandler extends AmmoWeaponHandler {
         return nHits;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#usesClusterTable()
+     */
     @Override
     protected boolean usesClusterTable() {
         return true;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#canDoDirectBlowDamage()
+     */
     @Override
     protected boolean canDoDirectBlowDamage(){
         return false;

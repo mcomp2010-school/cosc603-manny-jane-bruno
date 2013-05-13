@@ -30,42 +30,83 @@ import megamek.common.Targetable;
 import megamek.common.ToHitData;
 import megamek.common.VTOL;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker kicks the target.
  */
 public class KickAttackAction extends PhysicalAttackAction {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1697321306815235635L;
+    
+    /** The Constant BOTH. */
     public static final int BOTH = 0;
+    
+    /** The Constant LEFT. */
     public static final int LEFT = 1;
+    
+    /** The Constant RIGHT. */
     public static final int RIGHT = 2;
+    
+    /** The Constant LEFTMULE. */
     public static final int LEFTMULE = 3;
+    
+    /** The Constant RIGHTMULE. */
     public static final int RIGHTMULE = 4;
 
+    /** The leg. */
     private int leg;
 
+    /**
+     * Instantiates a new kick attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     * @param leg the leg
+     */
     public KickAttackAction(int entityId, int targetId, int leg) {
         super(entityId, targetId);
         this.leg = leg;
     }
 
+    /**
+     * Instantiates a new kick attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param leg the leg
+     */
     public KickAttackAction(int entityId, int targetType, int targetId, int leg) {
         super(entityId, targetType, targetId);
         this.leg = leg;
     }
 
+    /**
+     * Gets the leg.
+     *
+     * @return the leg
+     */
     public int getLeg() {
         return leg;
     }
 
+    /**
+     * Sets the leg.
+     *
+     * @param leg the new leg
+     */
     public void setLeg(int leg) {
         this.leg = leg;
     }
 
     /**
-     * Damage that the specified mech does with a kick
+     * Damage that the specified mech does with a kick.
+     *
+     * @param entity the entity
+     * @param leg the leg
+     * @param targetInfantry the target infantry
+     * @return the damage for
      */
     public static int getDamageFor(Entity entity, int leg,
             boolean targetInfantry) {
@@ -112,13 +153,25 @@ public class KickAttackAction extends PhysicalAttackAction {
         return toReturn;
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return KickAttackAction.toHit(game, getEntityId(), game.getTarget(getTargetType(),
                 getTargetId()), getLeg());
     }
 
     /**
-     * To-hit number for the specified leg to kick
+     * To-hit number for the specified leg to kick.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param leg the leg
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId,
             Targetable target, int leg) {

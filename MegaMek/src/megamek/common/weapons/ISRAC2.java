@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISRAC2.
+ *
  * @author Andrew Hunter
  */
 public class ISRAC2 extends RACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7256023025545151994L;
 
     /**
-     * 
+     * Instantiates a new iSRA c2.
      */
     public ISRAC2() {
         super();

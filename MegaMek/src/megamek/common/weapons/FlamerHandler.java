@@ -31,19 +31,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class FlamerHandler.
+ *
  * @author Sebastian Brocks
  */
 public class FlamerHandler extends WeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7348456582587703751L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new flamer handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public FlamerHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {
@@ -80,9 +85,15 @@ public class FlamerHandler extends WeaponHandler {
     }
 
     /**
+     * Handle special miss.
+     *
+     * @param entityTarget the entity target
+     * @param targetInBuilding the target in building
+     * @param bldg the bldg
+     * @param vPhaseReport the v phase report
      * @return a <code>boolean</code> value indicating wether or not this
-     *         attack needs further calculating, like a missed shot hitting a
-     *         building, or an AMS only shooting down some missiles.
+     * attack needs further calculating, like a missed shot hitting a
+     * building, or an AMS only shooting down some missiles.
      */
     @Override
     protected boolean handleSpecialMiss(Entity entityTarget,
@@ -107,6 +118,9 @@ public class FlamerHandler extends WeaponHandler {
         return true;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleIgnitionDamage(java.util.Vector, megamek.common.Building, boolean, int)
+     */
     @Override
     protected void handleIgnitionDamage(Vector<Report> vPhaseReport,
             Building bldg, boolean bSalvo, int hits) {
@@ -125,6 +139,9 @@ public class FlamerHandler extends WeaponHandler {
         }
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleClearDamage(java.util.Vector, megamek.common.Building, int, boolean)
+     */
     @Override
     protected void handleClearDamage(Vector<Report> vPhaseReport,
             Building bldg, int nDamage, boolean bSalvo) {

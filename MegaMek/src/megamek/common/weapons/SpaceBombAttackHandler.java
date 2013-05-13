@@ -26,20 +26,25 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SpaceBombAttackHandler.
+ *
  * @author Jay Lawson
  */
 public class SpaceBombAttackHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2439937071168853215L;
     //int[] payload;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new space bomb attack handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public SpaceBombAttackHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {
@@ -49,8 +54,8 @@ public class SpaceBombAttackHandler extends WeaponHandler {
     }
 
     /**
-     * Calculate the attack value based on range
-     * 
+     * Calculate the attack value based on range.
+     *
      * @return an <code>int</code> representing the attack value at that range.
      */
     @Override
@@ -68,13 +73,18 @@ public class SpaceBombAttackHandler extends WeaponHandler {
     
     /**
      * Does this attack use the cluster hit table?
-     * necessary to determine how Aero damage should be applied
+     * necessary to determine how Aero damage should be applied.
+     *
+     * @return true, if successful
      */
     @Override
     protected boolean usesClusterTable() {
         return true;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#useAmmo()
+     */
     @Override
     protected void useAmmo() {
         int[] payload = waa.getBombPayload();

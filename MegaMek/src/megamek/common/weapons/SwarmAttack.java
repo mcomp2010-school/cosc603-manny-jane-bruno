@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SwarmAttack.
+ *
  * @author Sebastian Brocks
  */
 public class SwarmAttack extends InfantryAttack {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8593642424068542897L;
 
+    /**
+     * Instantiates a new swarm attack.
+     */
     public SwarmAttack() {
         super();
         this.name = "Swarm Mek";

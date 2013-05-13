@@ -36,6 +36,7 @@ import megamek.common.Targetable;
 import megamek.common.ToHitData;
 import megamek.common.VTOL;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker makes a club attack on the target. This also covers mech melee
  * weapons like hatchets.
@@ -45,14 +46,23 @@ import megamek.common.VTOL;
  */
 public class ClubAttackAction extends PhysicalAttackAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8744665286254604559L;
+    
+    /** The club. */
     private Mounted club;
+    
+    /** The aiming. */
     private int aiming;
 
-    /** Creates new ClubAttackAction */
+    /**
+     * Creates new ClubAttackAction.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     * @param club the club
+     * @param aimTable the aim table
+     */
     public ClubAttackAction(int entityId, int targetId, Mounted club,
             int aimTable) {
         super(entityId, targetId);
@@ -60,6 +70,15 @@ public class ClubAttackAction extends PhysicalAttackAction {
         aiming = aimTable;
     }
 
+    /**
+     * Instantiates a new club attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param club the club
+     * @param aimTable the aim table
+     */
     public ClubAttackAction(int entityId, int targetType, int targetId,
             Mounted club, int aimTable) {
         super(entityId, targetType, targetId);
@@ -68,7 +87,12 @@ public class ClubAttackAction extends PhysicalAttackAction {
     }
 
     /**
-     * Damage that the specified mech does with a club attack
+     * Damage that the specified mech does with a club attack.
+     *
+     * @param entity the entity
+     * @param club the club
+     * @param targetInfantry the target infantry
+     * @return the damage for
      */
     public static int getDamageFor(Entity entity, Mounted club,
             boolean targetInfantry) {
@@ -154,13 +178,26 @@ public class ClubAttackAction extends PhysicalAttackAction {
                 + entity.getCrew().modifyPhysicalDamagaForMeleeSpecialist();
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return ClubAttackAction.toHit(game, getEntityId(), game.getTarget(getTargetType(),
                 getTargetId()), getClub(), aiming);
     }
 
     /**
-     * To-hit number for the specified club to hit
+     * To-hit number for the specified club to hit.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param club the club
+     * @param aimTable the aim table
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId,
             Targetable target, Mounted club, int aimTable) {
@@ -463,10 +500,20 @@ public class ClubAttackAction extends PhysicalAttackAction {
         return toHit;
     }
 
+    /**
+     * Gets the club.
+     *
+     * @return the club
+     */
     public Mounted getClub() {
         return club;
     }
 
+    /**
+     * Sets the club.
+     *
+     * @param club the new club
+     */
     public void setClub(Mounted club) {
         this.club = club;
     }

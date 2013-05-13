@@ -27,30 +27,57 @@ import megamek.common.Report;
 import megamek.common.Tank;
 import megamek.common.Targetable;
 
+// TODO: Auto-generated Javadoc
 /**
  * Used for aiming a searchlight at a target.
  */
 public class SearchlightAttackAction extends AbstractAttackAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6699459935811592434L;
 
     // default to attacking an entity
+    /**
+     * Instantiates a new searchlight attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public SearchlightAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new searchlight attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public SearchlightAttackAction(int entityId, int targetType, int targetId) {
         super(entityId, targetType, targetId);
     }
 
+    /**
+     * Checks if is possible.
+     *
+     * @param game the game
+     * @return true, if is possible
+     */
     public boolean isPossible(IGame game) {
         return SearchlightAttackAction.isPossible(game, getEntityId(), game
                 .getTarget(getTargetType(), getTargetId()), this);
     }
 
+    /**
+     * Checks if is possible.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param exempt the exempt
+     * @return true, if is possible
+     */
     public static boolean isPossible(IGame game, int attackerId,
             Targetable target, SearchlightAttackAction exempt) {
         final Entity attacker = game.getEntity(attackerId);
@@ -78,7 +105,10 @@ public class SearchlightAttackAction extends AbstractAttackAction {
     }
 
     /**
-     * illuminate an entity and all entities that are between us and the hex
+     * illuminate an entity and all entities that are between us and the hex.
+     *
+     * @param game the game
+     * @return the vector
      */
     public Vector<Report> resolveAction(IGame game) {
         Vector<Report> reports = new Vector<Report>();
@@ -128,6 +158,13 @@ public class SearchlightAttackAction extends AbstractAttackAction {
         return reports;
     }
 
+    /**
+     * Will illuminate.
+     *
+     * @param game the game
+     * @param who the who
+     * @return true, if successful
+     */
     public boolean willIlluminate(IGame game, Entity who) {
         if (!isPossible(game))
             return false;

@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISAutoGrenadeLauncher.
+ *
  * @author Andrew Hunter
  */
 public class ISAutoGrenadeLauncher extends Weapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5514157095037913844L;
 
+    /**
+     * Instantiates a new checks if is auto grenade launcher.
+     */
     public ISAutoGrenadeLauncher() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

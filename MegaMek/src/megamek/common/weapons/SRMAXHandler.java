@@ -22,21 +22,24 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SRMAXHandler.
+ *
  * @author Sebastian Brocks
  */
 public class SRMAXHandler extends SRMHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8049199984294733124L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new sRMAX handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public SRMAXHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLightMG.
+ *
  * @author Sebastian Brocks
  */
 public class ISLightMG extends MGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8148848145274790948L;
 
     /**
-     * 
+     * Instantiates a new checks if is light mg.
      */
     public ISLightMG() {
         super();

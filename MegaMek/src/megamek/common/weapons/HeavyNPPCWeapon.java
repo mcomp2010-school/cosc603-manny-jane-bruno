@@ -18,17 +18,19 @@
 package megamek.common.weapons;
 
 
+// TODO: Auto-generated Javadoc
 /**
-* @author Jay Lawson
-*/
+ * The Class HeavyNPPCWeapon.
+ *
+ * @author Jay Lawson
+ */
 public class HeavyNPPCWeapon extends NavalPPCWeapon {
-   /**
-    * 
-    */
+   
+   /** The Constant serialVersionUID. */
    private static final long serialVersionUID = 8756042527483383101L;
 
    /**
-    * 
+    * Instantiates a new heavy nppc weapon.
     */
    public HeavyNPPCWeapon() {
        super();

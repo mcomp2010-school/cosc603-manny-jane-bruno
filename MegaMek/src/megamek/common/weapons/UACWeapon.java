@@ -25,17 +25,19 @@ import megamek.common.WeaponType;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class UACWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class UACWeapon extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8041750694509751561L;
 
     /**
-     * 
+     * Instantiates a new uAC weapon.
      */
     public UACWeapon() {
         super();

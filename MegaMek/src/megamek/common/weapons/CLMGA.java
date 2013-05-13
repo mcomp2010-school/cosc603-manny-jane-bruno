@@ -20,16 +20,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLMGA.
+ *
  * @author Sebastian Brocks
  */
 public class CLMGA extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3727925307251828896L;
 
+    /**
+     * Instantiates a new clmga.
+     */
     public CLMGA() {
         super();
         this.techLevel = TechConstants.T_CLAN_TW;

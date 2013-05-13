@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLHeavyMG.
+ *
  * @author Andrew Hunter
  */
 public class CLHeavyMG extends MGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3031880020233816652L;
 
     /**
-     * 
+     * Instantiates a new cL heavy mg.
      */
     public CLHeavyMG() {
         super();

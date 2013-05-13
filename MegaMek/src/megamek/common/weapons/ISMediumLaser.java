@@ -19,15 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMediumLaser.
+ *
  * @author Andrew Hunter
  */
 public class ISMediumLaser extends LaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2178224725694704541L;
 
+    /**
+     * Instantiates a new checks if is medium laser.
+     */
     public ISMediumLaser() {
         super();
         this.techLevel = TechConstants.T_INTRO_BOXSET;

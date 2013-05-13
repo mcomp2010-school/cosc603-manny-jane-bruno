@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLHeavyGrenadeLauncher.
+ *
  * @author Andrew Hunter
  */
 public class CLHeavyGrenadeLauncher extends Weapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2728566278196446996L;
 
+    /**
+     * Instantiates a new cL heavy grenade launcher.
+     */
     public CLHeavyGrenadeLauncher() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

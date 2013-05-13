@@ -29,19 +29,24 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ACFlechetteHandler.
+ *
  * @author Andrew Hunter
  */
 public class ACFlechetteHandler extends AmmoWeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7965585014230084304L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new aC flechette handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ACFlechetteHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

@@ -38,25 +38,36 @@ import megamek.common.WeaponType;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MissileWeaponHandler.
+ *
  * @author Sebastian Brocks
  */
 public class MissileWeaponHandler extends AmmoWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4801130911083653548L;
+    
+    /** The s salvo type. */
     String sSalvoType = " missile(s) ";
+    
+    /** The ams enganged. */
     boolean amsEnganged = false;
+    
+    /** The n salvo bonus. */
     int nSalvoBonus = 0;
+    
+    /** The advanced ams. */
     boolean advancedAMS = false;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new missile weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public MissileWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {
@@ -288,7 +299,7 @@ public class MissileWeaponHandler extends AmmoWeaponHandler {
     }
 
     /**
-     * Calculate the attack value based on range
+     * Calculate the attack value based on range.
      *
      * @return an <code>int</code> representing the attack value at that range.
      */
@@ -365,6 +376,12 @@ public class MissileWeaponHandler extends AmmoWeaponHandler {
         return true;
     }
 
+    /**
+     * Gets the aMS hits mod.
+     *
+     * @param vPhaseReport the v phase report
+     * @return the aMS hits mod
+     */
     protected int getAMSHitsMod(Vector<Report> vPhaseReport) {
         Entity entityTarget = (target.getTargetType() == Targetable.TYPE_ENTITY) ? (Entity) target
                 : null;
@@ -691,6 +708,11 @@ public class MissileWeaponHandler extends AmmoWeaponHandler {
         return false;
     }
 
+    /**
+     * Checks if is nemesis confusable.
+     *
+     * @return true, if is nemesis confusable
+     */
     protected boolean isNemesisConfusable() {
         // Are we iNarc Nemesis Confusable?
         boolean isNemesisConfusable = false;
@@ -722,11 +744,17 @@ public class MissileWeaponHandler extends AmmoWeaponHandler {
         return isNemesisConfusable;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#usesClusterTable()
+     */
     @Override
     protected boolean usesClusterTable() {
         return true;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#canDoDirectBlowDamage()
+     */
     @Override
     protected boolean canDoDirectBlowDamage(){
         return false;

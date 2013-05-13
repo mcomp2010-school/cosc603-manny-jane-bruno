@@ -15,17 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISBAMagshotGaussRifle.
+ *
  * @author Sebastian Brocks
  */
 public class ISBAMagshotGaussRifle extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 870812653880382979L;
 
     /**
-     * 
+     * Instantiates a new iSBA magshot gauss rifle.
      */
     public ISBAMagshotGaussRifle() {
         super();

@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISTHBUAC20.
+ *
  * @author Andrew Hunter
  */
 public class ISTHBUAC20 extends UACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5199793409417838142L;
 
     /**
-     * 
+     * Instantiates a new iSTHBUA c20.
      */
     public ISTHBUAC20() {
         super();

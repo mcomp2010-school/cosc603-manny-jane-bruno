@@ -25,21 +25,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NarcExplosiveHandler.
+ *
  * @author Sebastian Brocks
  */
 public class NarcExplosiveHandler extends MissileWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1655014339855184419L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new narc explosive handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public NarcExplosiveHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

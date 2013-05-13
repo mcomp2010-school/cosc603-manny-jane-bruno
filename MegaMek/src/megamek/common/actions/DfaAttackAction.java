@@ -44,22 +44,37 @@ import megamek.common.Targetable;
 import megamek.common.ToHitData;
 import megamek.common.VTOL;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class DfaAttackAction.
+ *
  * @author Ben
  * @version
  */
 public class DfaAttackAction extends DisplacementAttackAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3953889779582616903L;
 
-    /** Creates new DfaAttackAction */
+    /**
+     * Creates new DfaAttackAction.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public DfaAttackAction(int entityId, int targetId, Coords targetPos) {
         super(entityId, targetId, targetPos);
     }
 
+    /**
+     * Instantiates a new dfa attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public DfaAttackAction(int entityId, int targetType, int targetId,
             Coords targetPos) {
         super(entityId, targetType, targetId, targetPos);
@@ -67,6 +82,9 @@ public class DfaAttackAction extends DisplacementAttackAction {
 
     /**
      * Damage done to a mech after a successful DFA.
+     *
+     * @param entity the entity
+     * @return the damage taken by
      */
     public static int getDamageTakenBy(Entity entity) {
         return (int) Math.ceil(entity.getWeight() / 5.0);
@@ -74,6 +92,10 @@ public class DfaAttackAction extends DisplacementAttackAction {
 
     /**
      * Damage that a mech does with a successful DFA.
+     *
+     * @param entity the entity
+     * @param targetInfantry the target infantry
+     * @return the damage for
      */
     public static int getDamageFor(Entity entity, boolean targetInfantry) {
         int toReturn = (int) Math.ceil((entity.getWeight() / 10.0) * 3.0);
@@ -91,7 +113,13 @@ public class DfaAttackAction extends DisplacementAttackAction {
 
     /**
      * Checks if a death from above attack can hit the target, including
-     * movement
+     * movement.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param md the md
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId,
             Targetable target, MovePath md) {
@@ -178,6 +206,12 @@ public class DfaAttackAction extends DisplacementAttackAction {
         return toHit(game, attackerId, target, chargeSrc);
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         final Entity entity = game.getEntity(getEntityId());
         return toHit(game, getEntityId(), game.getTarget(getTargetType(),
@@ -186,7 +220,13 @@ public class DfaAttackAction extends DisplacementAttackAction {
 
     /**
      * To-hit number for a death from above attack, assuming that movement has
-     * been handled
+     * been handled.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param src the src
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId,
             Targetable target, Coords src) {
@@ -402,6 +442,12 @@ public class DfaAttackAction extends DisplacementAttackAction {
         return toHit;
     }
 
+    /**
+     * Checks for talons.
+     *
+     * @param entity the entity
+     * @return true, if successful
+     */
     public static boolean hasTalons(Entity entity){
 
         if ( entity instanceof Mech ){

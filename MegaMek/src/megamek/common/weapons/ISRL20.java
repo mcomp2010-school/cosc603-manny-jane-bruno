@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISRL20.
+ *
  * @author Sebastian Brocks
  */
 public class ISRL20 extends RLWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1220608344459915265L;
 
     /**
-     * 
+     * Instantiates a new iSR l20.
      */
     public ISRL20() {
         super();

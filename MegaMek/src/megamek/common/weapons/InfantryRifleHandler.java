@@ -22,20 +22,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryRifleHandler.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryRifleHandler extends InfantryWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7850800163289264583L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new infantry rifle handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public InfantryRifleHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

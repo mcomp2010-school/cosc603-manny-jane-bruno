@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISERPPC.
+ *
  * @author Andrew Hunter
  */
 public class ISERPPC extends PPCWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7175778897598535734L;
 
     /**
-     * 
+     * Instantiates a new iserppc.
      */
     public ISERPPC() {
         super();

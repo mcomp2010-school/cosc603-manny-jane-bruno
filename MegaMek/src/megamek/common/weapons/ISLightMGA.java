@@ -20,16 +20,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLightMGA.
+ *
  * @author Sebastian Brocks
  */
 public class ISLightMGA extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2408433911213524154L;
 
+    /**
+     * Instantiates a new checks if is light mga.
+     */
     public ISLightMGA() {
         super();
         techLevel = TechConstants.T_IS_TW_NON_BOX;

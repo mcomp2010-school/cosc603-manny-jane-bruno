@@ -30,21 +30,24 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BAMGHandler.
+ *
  * @author Sebastian Brockxs
  */
 public class BAMGHandler extends WeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4109377609879352900L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new bAMG handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public BAMGHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

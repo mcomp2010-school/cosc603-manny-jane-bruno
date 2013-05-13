@@ -29,6 +29,7 @@ import megamek.common.Targetable;
 import megamek.common.Terrains;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker pushes the target.
  */
@@ -38,15 +39,36 @@ public class PushAttackAction extends DisplacementAttackAction {
      */
     private static final long serialVersionUID = 6878038939232914083L;
 
+    /**
+     * Instantiates a new push attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public PushAttackAction(int entityId, int targetId, Coords targetPos) {
         super(entityId, targetId, targetPos);
     }
 
+    /**
+     * Instantiates a new push attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public PushAttackAction(int entityId, int targetType, int targetId,
             Coords targetPos) {
         super(entityId, targetType, targetId, targetPos);
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return toHit(game, getEntityId(), game.getTarget(getTargetType(),
                 getTargetId()));
@@ -54,12 +76,12 @@ public class PushAttackAction extends DisplacementAttackAction {
 
     /**
      * pushes are impossible when physical attacks are impossible, or a
-     * retractable blade is extended
+     * retractable blade is extended.
      *
-     * @param game
-     * @param ae
-     * @param target
-     * @return
+     * @param game the game
+     * @param ae the ae
+     * @param target the target
+     * @return the string
      */
     protected static String toHitIsImpossible(IGame game, Entity ae,
             Targetable target) {
@@ -96,7 +118,12 @@ public class PushAttackAction extends DisplacementAttackAction {
     }
 
     /**
-     * To-hit number for the mech to push another mech
+     * To-hit number for the mech to push another mech.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId, Targetable target) {
         final Entity ae = game.getEntity(attackerId);

@@ -18,18 +18,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ThunderBoltWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class ThunderBoltWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3496376576886743383L;
 
     /**
-     * 
+     * Instantiates a new thunder bolt weapon.
      */
     public ThunderBoltWeapon() {
         super();

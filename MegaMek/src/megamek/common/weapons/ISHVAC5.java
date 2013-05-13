@@ -17,16 +17,20 @@
  */
 package megamek.common.weapons;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISHVAC5.
+ *
  * @author Jason Tighe
  */
 public class ISHVAC5 extends HVACWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1116752747486372187L;
 
+    /**
+     * Instantiates a new iSHVA c5.
+     */
     public ISHVAC5() {
         super();
         this.name = "Hyper Velocity Auto Cannon/5";

@@ -19,18 +19,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class FluidGunWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class FluidGunWeapon extends AmmoWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1894568448038229879L;
 
     /**
-     *
+     * Instantiates a new fluid gun weapon.
      */
     public FluidGunWeapon() {
         super();

@@ -14,10 +14,13 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TriggerAPPodAction.
+ */
 public class TriggerAPPodAction extends AbstractEntityAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5237760568077194506L;
     /** Save the equipment ID of the AP Pod being triggered. */
     int podId;

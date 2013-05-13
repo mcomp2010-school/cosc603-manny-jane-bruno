@@ -22,15 +22,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CapitalMissileWeapon.
+ *
  * @author Jay Lawson
  */
 public abstract class CapitalMissileWeapon extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 9186993166684654767L;
 
+    /**
+     * Instantiates a new capital missile weapon.
+     */
     public CapitalMissileWeapon() {
         super();
         this.atClass = CLASS_CAPITAL_MISSILE;

@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISSilverBulletGauss.
+ *
  * @author Andrew Hunter
  */
 public class ISSilverBulletGauss extends GaussWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6873790245999096707L;
 
     /**
-     * 
+     * Instantiates a new checks if is silver bullet gauss.
      */
     public ISSilverBulletGauss() {
         super();

@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NAC35Weapon.
+ *
  * @author Jay Lawson
  */
 public class NAC35Weapon extends NavalACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new nA c35 weapon.
      */
     public NAC35Weapon() {
         super();

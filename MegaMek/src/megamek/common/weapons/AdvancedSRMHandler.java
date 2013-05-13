@@ -18,21 +18,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AdvancedSRMHandler.
+ *
  * @author Sebastian Brocks
  */
 public class AdvancedSRMHandler extends SRMHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1688593262282782251L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new advanced srm handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public AdvancedSRMHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

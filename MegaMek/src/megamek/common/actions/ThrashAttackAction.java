@@ -25,24 +25,42 @@ import megamek.common.Targetable;
 import megamek.common.Terrains;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * The prone attacker thrashes at the target.
  */
 public class ThrashAttackAction extends AbstractAttackAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1527653560370040648L;
 
+    /**
+     * Instantiates a new thrash attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public ThrashAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new thrash attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public ThrashAttackAction(int entityId, int targetType, int targetId) {
         super(entityId, targetType, targetId);
     }
 
+    /**
+     * Instantiates a new thrash attack action.
+     *
+     * @param entityId the entity id
+     * @param target the target
+     */
     public ThrashAttackAction(int entityId, Targetable target) {
         super(entityId, target.getTargetType(), target.getTargetId());
     }

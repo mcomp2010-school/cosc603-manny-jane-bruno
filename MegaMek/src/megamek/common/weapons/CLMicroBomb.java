@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLMicroBomb.
+ *
  * @author Sebastian Brocks
  */
 public class CLMicroBomb extends Weapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1467436625346131281L;
 
     /**
-     *
+     * Instantiates a new cL micro bomb.
      */
     public CLMicroBomb() {
         super();
@@ -54,6 +56,9 @@ public class CLMicroBomb extends Weapon {
         flags |= F_NO_FIRES;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.Weapon#getCorrectHandler(megamek.common.ToHitData, megamek.common.actions.WeaponAttackAction, megamek.common.IGame, megamek.server.Server)
+     */
     @Override
     protected AttackHandler getCorrectHandler(ToHitData toHit,
             WeaponAttackAction waa, IGame game, Server server) {

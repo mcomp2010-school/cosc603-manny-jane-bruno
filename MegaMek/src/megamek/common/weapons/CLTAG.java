@@ -19,16 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLTAG.
+ *
  * @author Sebastian Brocks
  */
 public class CLTAG extends TAGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7446980554102548125L;
 
+    /**
+     * Instantiates a new cltag.
+     */
     public CLTAG() {
         super();
         this.techLevel = TechConstants.T_CLAN_TW;

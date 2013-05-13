@@ -23,23 +23,41 @@ import megamek.common.TargetRoll;
 import megamek.common.Targetable;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LayExplosivesAttackAction.
+ */
 public class LayExplosivesAttackAction extends AbstractAttackAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8799415934269686590L;
 
+    /**
+     * Instantiates a new lay explosives attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public LayExplosivesAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new lay explosives attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public LayExplosivesAttackAction(int entityId, int targetType, int targetId) {
         super(entityId, targetType, targetId);
     }
 
     /**
-     * Damage that the specified platoon does with explosives
+     * Damage that the specified platoon does with explosives.
+     *
+     * @param entity the entity
+     * @return the damage for
      */
     public static int getDamageFor(Entity entity) {
         if (!(entity instanceof Infantry))
@@ -54,6 +72,12 @@ public class LayExplosivesAttackAction extends AbstractAttackAction {
         return 2 << (inf.turnsLayingExplosives - 1);
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return toHit(game, getEntityId(), game.getTarget(getTargetType(),
                 getTargetId()));
@@ -61,6 +85,11 @@ public class LayExplosivesAttackAction extends AbstractAttackAction {
 
     /**
      * To-hit number, i.e. is the action possible
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId, Targetable target) {
         final Entity ae = game.getEntity(attackerId);

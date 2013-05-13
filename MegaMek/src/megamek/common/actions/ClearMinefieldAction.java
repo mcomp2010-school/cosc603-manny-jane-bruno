@@ -15,19 +15,34 @@
 package megamek.common.actions;
 import megamek.common.Minefield;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClearMinefieldAction.
+ */
 public class ClearMinefieldAction extends AbstractEntityAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4465058967763135772L;
     
+    /** The mf. */
     private Minefield mf;
 
+    /**
+     * Instantiates a new clear minefield action.
+     *
+     * @param entityId the entity id
+     * @param mf the mf
+     */
     public ClearMinefieldAction(int entityId, Minefield mf) {
         super(entityId);
         this.mf = mf;
     }
     
+    /**
+     * Gets the minefield.
+     *
+     * @return the minefield
+     */
     public Minefield getMinefield() {
         return mf;
     }

@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MPodWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class MPodWeapon extends AmmoWeapon {
 
     
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3343394645568467135L;
 
     /**
-     * 
+     * Instantiates a new m pod weapon.
      */
     public MPodWeapon() {
         super();

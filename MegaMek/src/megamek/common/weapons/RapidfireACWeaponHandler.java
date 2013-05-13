@@ -29,19 +29,24 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class RapidfireACWeaponHandler.
+ *
  * @author Andrew Hunter
  */
 public class RapidfireACWeaponHandler extends UltraWeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1770392652874842106L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new rapidfire ac weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public RapidfireACWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {
@@ -92,10 +97,16 @@ public class RapidfireACWeaponHandler extends UltraWeaponHandler {
         return false;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.UltraWeaponHandler#usesClusterTable()
+     */
     protected boolean usesClusterTable() {
         return true;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#canDoDirectBlowDamage()
+     */
     protected boolean canDoDirectBlowDamage(){
         return false;
     }

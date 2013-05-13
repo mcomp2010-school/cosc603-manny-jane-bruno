@@ -212,10 +212,12 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
     }
 
 	/**
-	 * @param vPhaseReport
-	 * @param artyAttacker
-	 * @param coords
-	 * @param mineClear
+	 * Accidental mine field clear.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param artyAttacker the arty attacker
+	 * @param coords the coords
+	 * @param mineClear the mine clear
 	 */
 	private void accidentalMineFieldClear(final Vector<Report> vPhaseReport,
 			Entity artyAttacker, Coords coords, boolean mineClear) {
@@ -236,11 +238,13 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param vPhaseReport
-	 * @param isFlak
-	 * @param ae
-	 * @param coords
-	 * @param mineClear
+	 * Mine clear.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param isFlak the is flak
+	 * @param ae the ae
+	 * @param coords the coords
+	 * @param mineClear the mine clear
 	 */
 	private void mineClear(final Vector<Report> vPhaseReport, boolean isFlak,
 			Entity ae, Coords coords, boolean mineClear) {
@@ -267,11 +271,14 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param vPhaseReport
-	 * @param ae
-	 * @param atype
-	 * @param artyAttacker
-	 * @param coords
+	 * Check ammo type.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param ae the ae
+	 * @param atype the atype
+	 * @param artyAttacker the arty attacker
+	 * @param coords the coords
+	 * @return true, if successful
 	 */
 	private boolean checkAmmoType(final Vector<Report> vPhaseReport, Entity ae,
 			final AmmoType atype, Entity artyAttacker, Coords coords) {
@@ -317,9 +324,12 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param vPhaseReport
-	 * @param isFlak
-	 * @param coords
+	 * Miss behavior.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param isFlak the is flak
+	 * @param coords the coords
+	 * @return true, if successful
 	 */
 	private boolean missBehavior(final Vector<Report> vPhaseReport,
 			boolean isFlak, Coords coords) {
@@ -356,10 +366,12 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param vPhaseReport
-	 * @param targetPos
-	 * @param isFlak
-	 * @param coords
+	 * Direct hit.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param targetPos the target pos
+	 * @param isFlak the is flak
+	 * @param coords the coords
 	 */
 	private void directHit(final Vector<Report> vPhaseReport,
 			final Coords targetPos, boolean isFlak, Coords coords) {
@@ -379,10 +391,12 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param vPhaseReport
-	 * @param aaa
-	 * @param targetPos
-	 * @param isFlak
+	 * Sets the artillery text.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param aaa the aaa
+	 * @param targetPos the target pos
+	 * @param isFlak the is flak
 	 */
 	private void setArtilleryText(final Vector<Report> vPhaseReport,
 			ArtilleryAttackAction aaa, final Coords targetPos, boolean isFlak) {
@@ -406,8 +420,11 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param vPhaseReport
-	 * @param target
+	 * Report weapon attack and to hit value.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param target the target
+	 * @return true, if successful
 	 */
 	private boolean reportWeaponAttackAndToHitValue(
 			final Vector<Report> vPhaseReport, final Targetable target) {
@@ -455,10 +472,12 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param aaa
-	 * @param targetPos
-	 * @param bestSpotter
-	 * @param artyAttacker
+	 * Adjust target.
+	 *
+	 * @param aaa the aaa
+	 * @param targetPos the target pos
+	 * @param bestSpotter the best spotter
+	 * @param artyAttacker the arty attacker
 	 */
 	private void adjustTarget(ArtilleryAttackAction aaa,
 			final Coords targetPos, Entity bestSpotter, Entity artyAttacker) {
@@ -500,11 +519,13 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param spottersBefore
-	 * @param target
-	 * @param playerId
-	 * @param bestSpotter
-	 * @return
+	 * Fetch possible spotters.
+	 *
+	 * @param spottersBefore the spotters before
+	 * @param target the target
+	 * @param playerId the player id
+	 * @param bestSpotter the best spotter
+	 * @return the entity
 	 */
 	private Entity fetchPossibleSpotters(final Vector<Integer> spottersBefore,
 			final Targetable target, final int playerId, Entity bestSpotter) {
@@ -542,9 +563,11 @@ public class ArtilleryWeaponIndirectFireHandler extends AmmoWeaponHandler {
 	}
 
 	/**
-	 * @param vPhaseReport
-	 * @param aaa
-	 * @return
+	 * Phase targeting phase.
+	 *
+	 * @param vPhaseReport the v phase report
+	 * @param aaa the aaa
+	 * @return true, if successful
 	 */
 	private boolean phaseTargetingPhase(final Vector<Report> vPhaseReport,
 			ArtilleryAttackAction aaa) {

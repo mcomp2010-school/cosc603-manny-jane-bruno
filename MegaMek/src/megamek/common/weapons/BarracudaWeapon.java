@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BarracudaWeapon.
+ *
  * @author Jay Lawson
  */
 public class BarracudaWeapon extends CapitalMissileWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new barracuda weapon.
      */
     public BarracudaWeapon() {
         super();

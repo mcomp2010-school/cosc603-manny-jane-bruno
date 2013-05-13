@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISTsunamiGaussRifle.
+ *
  * @author Sebastian Brocks
  */
 public class ISTsunamiGaussRifle extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4179313979730970060L;
 
     /**
-     * 
+     * Instantiates a new checks if is tsunami gauss rifle.
      */
     public ISTsunamiGaussRifle() {
         super();

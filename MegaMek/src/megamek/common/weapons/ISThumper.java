@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISThumper.
+ *
  * @author Sebastian Brocks
  */
 public class ISThumper extends ArtilleryWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3256813053043672610L;
 
     /**
-     *
+     * Instantiates a new checks if is thumper.
      */
     public ISThumper() {
         super();

@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISFireExtinguisher.
+ *
  * @author Sebastian Brocks
  */
 public class ISFireExtinguisher extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5387366609676650747L;
 
     /**
-     * 
+     * Instantiates a new checks if is fire extinguisher.
      */
     public ISFireExtinguisher() {
         super();

@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLHeavySmallLaser.
+ *
  * @author Andrew Hunter
  */
 public class CLHeavySmallLaser extends LaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1717918421173868008L;
 
     /**
-     * 
+     * Instantiates a new cL heavy small laser.
      */
     public CLHeavySmallLaser() {
         super();

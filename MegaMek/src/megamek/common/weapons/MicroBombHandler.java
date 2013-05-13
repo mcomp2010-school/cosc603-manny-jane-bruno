@@ -30,19 +30,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MicroBombHandler.
+ *
  * @author Sebastian Brocks
  */
 public class MicroBombHandler extends AmmoWeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2995118961278208244L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new micro bomb handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public MicroBombHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {

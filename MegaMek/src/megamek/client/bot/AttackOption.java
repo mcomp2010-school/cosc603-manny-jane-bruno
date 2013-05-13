@@ -22,27 +22,41 @@ import megamek.common.Mounted;
 import megamek.common.ToHitData;
 import megamek.common.WeaponType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AttackOption.
+ */
 public class AttackOption extends ToHitData {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8566472187475019360L;
 
+    /**
+     * The Class Sorter.
+     */
     static class Sorter implements Comparator<AttackOption> {
-        CEntity primary = null;
+        /** The primary. */
+        private CEntity primary = null;
 
-        public Sorter(CEntity primary_target) {
+        /**
+         * Instantiates a new sorter.
+         *
+         * @param primary_target the primary_target
+         */
+        public Sorter(final CEntity primary_target) {
             primary = primary_target;
         }
 
+        /* (non-Javadoc)
+         * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+         */
         public int compare(AttackOption a, AttackOption a1) {
-            if (a.target.getKey().intValue() == a1.target.getKey().intValue()) {
-                WeaponType w = (WeaponType) a.weapon.getType();
-                WeaponType w1 = (WeaponType) a1.weapon.getType();
+            if (a.getTarget().getKey().intValue() == a1.getTarget().getKey().intValue()) {
+                WeaponType w = (WeaponType) a.getWeapon().getType();
+                WeaponType w1 = (WeaponType) a1.getWeapon().getType();
                 if (w.getDamage() == WeaponType.DAMAGE_MISSILE) {
                     if (w1.getDamage() == WeaponType.DAMAGE_MISSILE) {
-                        if (a.expected > a1.expected) {
+                        if (a.getExpected() > a1.getExpected()) {
                             return -1;
                         }
                         return 1;
@@ -50,39 +64,69 @@ public class AttackOption extends ToHitData {
                     return 1;
                 } else if (w.getDamage() == WeaponType.DAMAGE_MISSILE) {
                     return -1;
-                } else if (a.expected > a1.expected) {
+                } else if (a.getExpected() > a1.getExpected()) {
                     return -1;
                 } else {
                     return 1;
                 }
-            } else if (a.target.getKey().equals(primary.getKey())) {
+            } else if (a.getTarget().getKey().equals(primary.getKey())) {
                 return -1;
             }
             return 1;
         }
     }
 
-    public CEntity target;
-    public double value;
-    public Mounted weapon;
-    public ToHitData toHit;
-    public double odds; // secondary odds
-    public double primary_odds; // primary odds
-    public int heat;
-    public double expected; // damage adjusted by secondary to-hit odds
-    public double primary_expected; // damage adjusted by primary to-hit odds
-    public int ammoLeft = -1; // -1 doesn't use ammo
-    public String use_mode = "None"; // The mode the weapon is set to for
+    /** The target. */
+    private CEntity target;
+    
+    /** The value. */
+    private double value;
+    
+    /** The weapon. */
+    private Mounted weapon;
+    
+    /** The to hit. */
+    private ToHitData toHit;
+    
+    /** The odds. */
+    private double odds; // secondary odds
+    
+    /** The primary_odds. */
+    private double primary_odds; // primary odds
+    
+    /** The heat. */
+    private int heat;
+    
+    /** The expected. */
+    private double expected; // damage adjusted by secondary to-hit odds
+    
+    /** The primary_expected. */
+    private double primary_expected; // damage adjusted by primary to-hit odds
+    
+    /** The ammo left. */
+    private int ammoLeft = -1; // -1 doesn't use ammo
+    
+    /** The use_mode. */
+    private String use_mode = "None"; // The mode the weapon is set to for
 
     // this option
 
-    // TODO: Add argument for the precise bin of ammo being used for this option
+    // Add argument for the precise bin of ammo being used for this option
     // so it can be reloaded later
+    /**
+     * Instantiates a new attack option.
+     *
+     * @param target the target
+     * @param weapon the weapon
+     * @param value the value
+     * @param toHit the to hit
+     * @param sec_mod the sec_mod
+     */
     public AttackOption(CEntity target, Mounted weapon, double value,
             ToHitData toHit, int sec_mod) {
-        this.target = target;
-        this.weapon = weapon;
-        this.toHit = toHit;
+        this.setTarget(target);
+        this.setWeapon(weapon);
+        this.setToHit(toHit);
         this.value = value;
 
         if (target != null && weapon != null) {
@@ -92,22 +136,22 @@ public class AttackOption extends ToHitData {
             WeaponType w = (WeaponType) weapon.getType();
 
             // As a primary attack. Damage is already odds-adjusted.
-            primary_odds = Compute.oddsAbove(toHit.getValue()) / 100.0;
-            primary_expected = this.value;
+            setPrimary_odds(Compute.oddsAbove(toHit.getValue()) / 100.0);
+            setPrimary_expected(this.value);
 
             // As a secondary attack. Raw damage is extracted, then adjusted
             // for secondary to-hit odds. Since units with active Stealth armor
             // cannot be secondary targets, chances of hitting are 0.
 
             if (target.getEntity().isStealthActive()) {
-                odds = 0.0;
+                setOdds(0.0);
             } else {
-                odds = sec_mod <= 12 ? (Compute.oddsAbove(toHit.getValue()
-                        + sec_mod) / 100.0) : 0.0;
+                setOdds(sec_mod <= 12 ? (Compute.oddsAbove(toHit.getValue()
+                        + sec_mod) / 100.0) : 0.0);
             }
-            heat = w.getHeat();
-            expected = this.value / primary_odds;
-            expected = expected * odds;
+            setHeat(w.getHeat());
+            setExpected(this.value / getPrimary_odds());
+            setExpected(getExpected() * getOdds());
 
             // Check for ammo; note that some conventional infantry and BA
             // weapons do NOT return AmmoType.T_NA
@@ -118,11 +162,173 @@ public class AttackOption extends ToHitData {
             final Mounted ammo = usesAmmo ? weapon.getLinked() : null;
             if (usesAmmo && (ammo == null || ammo.getShotsLeft() == 0)) {
                 this.value = 0.0; // should have already been caught...
-                primary_expected = 0.0;
-                expected = 0.0;
+                setPrimary_expected(0.0);
+                setExpected(0.0);
             } else if (usesAmmo) {
-                ammoLeft = ammo.getShotsLeft();
+                setAmmoLeft(ammo.getShotsLeft());
             }
         }
     }
+
+	/**
+	 * Gets the target.
+	 *
+	 * @return the target
+	 */
+	public CEntity getTarget() {
+		return target;
+	}
+
+	/**
+	 * Sets the target.
+	 *
+	 * @param target the new target
+	 */
+	public void setTarget(CEntity target) {
+		this.target = target;
+	}
+
+	/**
+	 * Gets the primary_expected.
+	 *
+	 * @return the primary_expected
+	 */
+	public double getPrimary_expected() {
+		return primary_expected;
+	}
+
+	/**
+	 * Sets the primary_expected.
+	 *
+	 * @param primary_expected the new primary_expected
+	 */
+	public void setPrimary_expected(double primary_expected) {
+		this.primary_expected = primary_expected;
+	}
+
+	/**
+	 * Gets the to hit.
+	 *
+	 * @return the to hit
+	 */
+	public ToHitData getToHit() {
+		return toHit;
+	}
+
+	/**
+	 * Sets the to hit.
+	 *
+	 * @param toHit the new to hit
+	 */
+	public void setToHit(ToHitData toHit) {
+		this.toHit = toHit;
+	}
+
+	/**
+	 * Gets the expected.
+	 *
+	 * @return the expected
+	 */
+	public double getExpected() {
+		return expected;
+	}
+
+	/**
+	 * Sets the expected.
+	 *
+	 * @param expected the new expected
+	 */
+	public void setExpected(double expected) {
+		this.expected = expected;
+	}
+
+	/**
+	 * Gets the heat.
+	 *
+	 * @return the heat
+	 */
+	public int getHeat() {
+		return heat;
+	}
+
+	/**
+	 * Sets the heat.
+	 *
+	 * @param heat the new heat
+	 */
+	public void setHeat(int heat) {
+		this.heat = heat;
+	}
+
+	/**
+	 * Gets the ammo left.
+	 *
+	 * @return the ammo left
+	 */
+	public int getAmmoLeft() {
+		return ammoLeft;
+	}
+
+	/**
+	 * Sets the ammo left.
+	 *
+	 * @param ammoLeft the new ammo left
+	 */
+	public void setAmmoLeft(int ammoLeft) {
+		this.ammoLeft = ammoLeft;
+	}
+
+	/**
+	 * Gets the primary_odds.
+	 *
+	 * @return the primary_odds
+	 */
+	public double getPrimary_odds() {
+		return primary_odds;
+	}
+
+	/**
+	 * Sets the primary_odds.
+	 *
+	 * @param primary_odds the new primary_odds
+	 */
+	public void setPrimary_odds(double primary_odds) {
+		this.primary_odds = primary_odds;
+	}
+
+	/**
+	 * Gets the weapon.
+	 *
+	 * @return the weapon
+	 */
+	public Mounted getWeapon() {
+		return weapon;
+	}
+
+	/**
+	 * Sets the weapon.
+	 *
+	 * @param weapon the new weapon
+	 */
+	public void setWeapon(Mounted weapon) {
+		this.weapon = weapon;
+	}
+
+	/**
+	 * Gets the odds.
+	 *
+	 * @return the odds
+	 */
+	public double getOdds() {
+		return odds;
+	}
+
+	/**
+	 * Sets the odds.
+	 *
+	 * @param odds the new odds
+	 */
+	public void setOdds(double odds) {
+		this.odds = odds;
+	}
 }

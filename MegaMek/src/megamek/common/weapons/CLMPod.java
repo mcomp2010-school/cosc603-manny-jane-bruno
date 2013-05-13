@@ -19,18 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLMPod.
+ *
  * @author Sebastian Brocks
  */
 public class CLMPod extends MPodWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1428507917582780048L;
 
     /**
-     * 
+     * Instantiates a new cLM pod.
      */
     public CLMPod() {
         super();

@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISFiredrakeNeedler.
+ *
  * @author Sebastian Brocks
  */
 public class ISFiredrakeNeedler extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8852176757815947141L;
 
     /**
-     * 
+     * Instantiates a new checks if is firedrake needler.
      */
     public ISFiredrakeNeedler() {
         super();

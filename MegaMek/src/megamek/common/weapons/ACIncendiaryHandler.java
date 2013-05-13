@@ -27,19 +27,24 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ACIncendiaryHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ACIncendiaryHandler extends AmmoWeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3301631731286472616L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new aC incendiary handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ACIncendiaryHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

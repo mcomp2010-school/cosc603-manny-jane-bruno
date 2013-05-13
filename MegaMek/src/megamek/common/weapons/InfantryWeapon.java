@@ -19,15 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.AmmoType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class InfantryWeapon extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4437093890717853422L;
 
+    /**
+     * Instantiates a new infantry weapon.
+     */
     public InfantryWeapon() {
         super();
         this.damage = DAMAGE_VARIABLE;

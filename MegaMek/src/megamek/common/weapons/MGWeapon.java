@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MGWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class MGWeapon extends AmmoWeapon {
 
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 923749421748564257L;
 
     /**
-     * 
+     * Instantiates a new mG weapon.
      */
     public MGWeapon() {
         super();

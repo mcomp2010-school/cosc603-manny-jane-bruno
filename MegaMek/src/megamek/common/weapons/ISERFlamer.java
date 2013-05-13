@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISERFlamer.
+ *
  * @author Sebastian Brocks
  */
 public class ISERFlamer extends ERFlamerWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1414639280093120062L;
 
     /**
-     *
+     * Instantiates a new iSER flamer.
      */
     public ISERFlamer() {
         super();

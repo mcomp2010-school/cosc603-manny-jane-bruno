@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLERPPC.
+ *
  * @author Andrew Hunter
  */
 public class CLERPPC extends PPCWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5108976056064542099L;
 
     /**
-     * 
+     * Instantiates a new clerppc.
      */
     public CLERPPC() {
         super();

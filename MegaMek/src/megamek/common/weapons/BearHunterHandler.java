@@ -25,19 +25,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BearHunterHandler.
+ *
  * @author Sebastian Brocks
  */
 public class BearHunterHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7766588145048155958L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new bear hunter handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public BearHunterHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {

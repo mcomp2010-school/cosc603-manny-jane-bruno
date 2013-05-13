@@ -30,20 +30,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LBXHandler.
+ *
  * @author Andrew Hunter
  */
 public class LBXHandler extends AmmoWeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6803847280685526644L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new lBX handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public LBXHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -67,10 +71,10 @@ public class LBXHandler extends AmmoWeaponHandler {
     }
 
     /**
-     * Calculate the attack value based on range
+     * Calculate the attack value based on range.
      *
      * @return an <code>int</code> representing the attack value at that
-     *         range.
+     * range.
      */
     @Override
     protected int calcAttackValue() {
@@ -158,11 +162,17 @@ public class LBXHandler extends AmmoWeaponHandler {
         return shotsHit;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#usesClusterTable()
+     */
     @Override
     protected boolean usesClusterTable() {
         return ((AmmoType) ammo.getType()).getMunitionType() == AmmoType.M_CLUSTER;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#canDoDirectBlowDamage()
+     */
     @Override
     protected boolean canDoDirectBlowDamage(){
         return false;

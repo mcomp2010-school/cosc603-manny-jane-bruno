@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LBXBayWeapon.
+ *
  * @author Jay Lawson
  */
 public class LBXBayWeapon extends AmmoBayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new lBX bay weapon.
      */
     public LBXBayWeapon() {
         super();

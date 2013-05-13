@@ -14,23 +14,36 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
 /**
  * Concrete implementation of and entity action for unloading entities that are
  * stranded on immobile transports. Please note that the value,
  * <code>Enity.NONE</code> <em>is</em> a valid value for entityId.
  */
 public class UnloadStrandedAction extends AbstractEntityAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8319076127334875298L;
+    
+    /** The player id. */
     private int playerId;
 
+    /**
+     * Instantiates a new unload stranded action.
+     *
+     * @param playerId the player id
+     * @param entityId the entity id
+     */
     public UnloadStrandedAction(int playerId, int entityId) {
         super(entityId);
         this.playerId = playerId;
     }
 
+    /**
+     * Gets the player id.
+     *
+     * @return the player id
+     */
     public int getPlayerId() {
         return playerId;
     }

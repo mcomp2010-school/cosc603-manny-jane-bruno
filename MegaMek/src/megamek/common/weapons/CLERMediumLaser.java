@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLERMediumLaser.
+ *
  * @author Andrew Hunter
  */
 public class CLERMediumLaser extends LaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2063816167191977118L;
 
     /**
-     * 
+     * Instantiates a new cLER medium laser.
      */
     public CLERMediumLaser() {
         super();

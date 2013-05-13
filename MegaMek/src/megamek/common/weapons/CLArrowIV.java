@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLArrowIV.
+ *
  * @author Sebastian Brocks
  */
 public class CLArrowIV extends ArtilleryWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8623816593973861926L;
 
     /**
-     *
+     * Instantiates a new cL arrow iv.
      */
     public CLArrowIV() {
         super();

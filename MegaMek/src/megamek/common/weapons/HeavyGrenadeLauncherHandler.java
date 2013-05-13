@@ -21,16 +21,22 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HeavyGrenadeLauncherHandler.
+ */
 public class HeavyGrenadeLauncherHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6090059700643516801L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new heavy grenade launcher handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public HeavyGrenadeLauncherHandler(ToHitData toHit, WeaponAttackAction waa,
             IGame g, Server s) {

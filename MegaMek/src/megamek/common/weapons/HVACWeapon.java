@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class HVACWeapon.
+ *
  * @author Jason Tighe
  */
 public class HVACWeapon extends ACWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4958849713169213573L;
 
+    /**
+     * Instantiates a new hVAC weapon.
+     */
     public HVACWeapon() {
         super();
         this.techLevel = TechConstants.T_IS_EXPERIMENTAL;

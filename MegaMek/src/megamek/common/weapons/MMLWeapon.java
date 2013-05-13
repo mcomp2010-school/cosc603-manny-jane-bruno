@@ -19,15 +19,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MMLWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class MMLWeapon extends MissileWeapon {
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 110779423352325731L;
 
     /**
-     * 
+     * Instantiates a new mML weapon.
      */
     public MMLWeapon() {
         super();

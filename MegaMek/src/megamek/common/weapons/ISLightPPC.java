@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLightPPC.
+ *
  * @author Sebastian Brocks
  */
 public class ISLightPPC extends PPCWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1376257996653555538L;
 
     /**
-     * 
+     * Instantiates a new checks if is light ppc.
      */
     public ISLightPPC() {
         super();

@@ -19,13 +19,18 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ISLAC20.
+ */
 public class ISLAC20 extends LACWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7135078308771443835L;
 
+    /**
+     * Instantiates a new iSLA c20.
+     */
     public ISLAC20() {
         super();
         this.techLevel = TechConstants.T_IS_EXPERIMENTAL;

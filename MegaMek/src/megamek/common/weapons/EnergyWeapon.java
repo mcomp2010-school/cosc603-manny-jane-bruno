@@ -22,16 +22,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class EnergyWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class EnergyWeapon extends Weapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3128205629152612073L;
 
+    /**
+     * Instantiates a new energy weapon.
+     */
     public EnergyWeapon() {
         flags |= F_ENERGY | F_MECH_WEAPON | F_AERO_WEAPON |  F_TANK_WEAPON;
 

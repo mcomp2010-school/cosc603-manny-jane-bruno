@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ArtilleryBayWeapon.
+ *
  * @author Jay Lawson
  */
 public class ArtilleryBayWeapon extends BayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new artillery bay weapon.
      */
     public ArtilleryBayWeapon() {
         super();

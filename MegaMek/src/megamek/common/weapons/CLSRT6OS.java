@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLSRT6OS.
+ *
  * @author Sebastian Brocks
  */
 public class CLSRT6OS extends SRTWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4262996818773684373L;
 
     /**
-     * 
+     * Instantiates a new cLSR t6 os.
      */
     public CLSRT6OS() {
         super();

@@ -22,12 +22,29 @@ import megamek.client.bot.ga.GA;
 import megamek.common.Compute;
 import megamek.common.Entity;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GALance.
+ */
 public class GALance extends GA {
 
+    /** The moves. */
     protected ArrayList<MoveOption[]> moves;
+    
+    /** The tb. */
     protected TestBot tb;
+    
+    /** The enemy_array. */
     protected Object[] enemy_array;
 
+    /**
+     * Instantiates a new gA lance.
+     *
+     * @param tb the tb
+     * @param moves the moves
+     * @param population the population
+     * @param generations the generations
+     */
     public GALance(TestBot tb, ArrayList<MoveOption[]> moves, int population,
             int generations) {
         super(moves.size(), population, .7, .05, generations, .5);
@@ -39,6 +56,9 @@ public class GALance extends GA {
         this.enemy_array = tb.getEnemyEntities().toArray();
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.ga.GA#initPopulation()
+     */
     protected void initPopulation() {
         // promote max
         try {
@@ -63,6 +83,9 @@ public class GALance extends GA {
     }
 
     // now they have a hard-coded hoard metality
+    /* (non-Javadoc)
+     * @see megamek.client.bot.ga.GA#getFitness(int)
+     */
     protected double getFitness(int iChromIndex) {
         Chromosome chrom = this.chromosomes[iChromIndex];
         ArrayList<MoveOption> possible = new ArrayList<MoveOption>();
@@ -242,6 +265,11 @@ public class GALance extends GA {
         return -result + (max - distance_mod);
     }
 
+    /**
+     * Gets the result.
+     *
+     * @return the result
+     */
     public MoveOption getResult() {
         Chromosome r = this.chromosomes[best];
         ArrayList<MoveOption> possible = new ArrayList<MoveOption>();
@@ -262,6 +290,9 @@ public class GALance extends GA {
         return result;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.ga.GA#doRandomMutation(int)
+     */
     protected void doRandomMutation(int iChromIndex) {
         Chromosome c1 = this.chromosomes[iChromIndex];
         // I don't think we need to mutate an empty chromosome

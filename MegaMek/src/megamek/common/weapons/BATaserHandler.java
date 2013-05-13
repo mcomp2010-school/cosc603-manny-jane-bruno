@@ -29,12 +29,14 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BATaserHandler.
+ */
 public class BATaserHandler extends AmmoWeaponHandler {
 
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1308895663099714573L;
 
     /**
@@ -44,9 +46,12 @@ public class BATaserHandler extends AmmoWeaponHandler {
     }
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new bA taser handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public BATaserHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

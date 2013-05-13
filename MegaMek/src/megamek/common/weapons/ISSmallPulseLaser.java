@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISSmallPulseLaser.
+ *
  * @author Andrew Hunter
  */
 public class ISSmallPulseLaser extends PulseLaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2977404162226570144L;
 
     /**
-     * 
+     * Instantiates a new checks if is small pulse laser.
      */
     public ISSmallPulseLaser() {
         super();

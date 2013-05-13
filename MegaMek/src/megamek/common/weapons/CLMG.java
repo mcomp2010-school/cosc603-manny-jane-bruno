@@ -19,18 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLMG.
+ *
  * @author Andrew Hunter
  */
 public class CLMG extends MGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2557643305248678454L;
 
     /**
-     * 
+     * Instantiates a new clmg.
      */
     public CLMG() {
         super();

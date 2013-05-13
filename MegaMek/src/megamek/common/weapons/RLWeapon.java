@@ -19,18 +19,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class RLWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class RLWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1718301014226423896L;
 
     /**
-     * 
+     * Instantiates a new rL weapon.
      */
     public RLWeapon() {
         super();

@@ -23,16 +23,22 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class VariableSpeedPulseLaserWeaponHandler.
+ */
 public class VariableSpeedPulseLaserWeaponHandler extends EnergyWeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5701939682138221449L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new variable speed pulse laser weapon handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public VariableSpeedPulseLaserWeaponHandler(ToHitData toHit, WeaponAttackAction waa,
             IGame g, Server s) {

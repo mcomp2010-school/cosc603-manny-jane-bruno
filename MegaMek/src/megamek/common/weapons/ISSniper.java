@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISSniper.
+ *
  * @author Sebastian Brocks
  */
 public class ISSniper extends ArtilleryWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5022670163785084036L;
 
     /**
-     *
+     * Instantiates a new checks if is sniper.
      */
     public ISSniper() {
         super();

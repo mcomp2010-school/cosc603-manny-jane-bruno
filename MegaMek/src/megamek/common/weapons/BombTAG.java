@@ -20,17 +20,21 @@ package megamek.common.weapons;
 import megamek.common.BombType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BombTAG.
+ *
  * @author Sebastian Brocks
  */
 public class BombTAG extends TAGWeapon {
 
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7692653575300083613L;
 
+    /**
+     * Instantiates a new bomb tag.
+     */
     public BombTAG() {
         super();
         this.techLevel = TechConstants.T_TW_ALL;

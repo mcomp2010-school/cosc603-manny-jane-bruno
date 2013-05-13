@@ -24,15 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AmmoWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class AmmoWeapon extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1657672242932169730L;
 
+    /**
+     * Instantiates a new ammo weapon.
+     */
     public AmmoWeapon() {
         super();
     }
@@ -52,7 +57,10 @@ public abstract class AmmoWeapon extends Weapon {
     }
 
     /**
-     * 
+     * Check ammo.
+     *
+     * @param waa the waa
+     * @param g the g
      */
     protected void checkAmmo(WeaponAttackAction waa, IGame g) {
         Entity ae = waa.getEntity(g);

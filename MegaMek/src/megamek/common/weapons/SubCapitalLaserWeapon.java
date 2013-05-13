@@ -17,15 +17,20 @@
  */
 package megamek.common.weapons;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SubCapitalLaserWeapon.
+ *
  * @author Jay Lawson
  */
 public abstract class SubCapitalLaserWeapon extends EnergyWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4293264735637352953L;
 
+    /**
+     * Instantiates a new sub capital laser weapon.
+     */
     public SubCapitalLaserWeapon() {
         super();
         this.atClass = CLASS_CAPITAL_LASER;

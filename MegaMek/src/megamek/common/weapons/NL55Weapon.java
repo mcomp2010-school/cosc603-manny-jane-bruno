@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NL55Weapon.
+ *
  * @author Jay Lawson
  */
 public class NL55Weapon extends NavalLaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new n l55 weapon.
      */
     public NL55Weapon() {
         super();

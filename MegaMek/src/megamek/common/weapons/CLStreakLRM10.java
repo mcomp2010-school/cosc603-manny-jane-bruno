@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLStreakLRM10.
+ *
  * @author Sebastian Brocks
  */
 public class CLStreakLRM10 extends StreakLRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7179570524181470428L;
 
     /**
-     * 
+     * Instantiates a new cL streak lr m10.
      */
     public CLStreakLRM10() {
         super();

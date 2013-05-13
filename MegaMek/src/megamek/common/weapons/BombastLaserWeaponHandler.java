@@ -24,16 +24,22 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BombastLaserWeaponHandler.
+ */
 public class BombastLaserWeaponHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2452514543790235562L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new bombast laser weapon handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public BombastLaserWeaponHandler(ToHitData toHit, WeaponAttackAction waa,
             IGame g, Server s) {

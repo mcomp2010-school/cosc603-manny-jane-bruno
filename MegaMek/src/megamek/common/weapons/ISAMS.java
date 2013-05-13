@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISAMS.
+ *
  * @author Sebastian Brocks
  */
 public class ISAMS extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5678281956614161074L;
 
     /**
-     * 
+     * Instantiates a new isams.
      */
     public ISAMS() {
         super();

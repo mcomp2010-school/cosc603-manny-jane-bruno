@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLB10XACPrototype.
+ *
  * @author Andrew Hunter
  */
 public class ISLB10XACPrototype extends LBXACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4586376672142168553L;
 
     /**
-     * 
+     * Instantiates a new iSL b10 xac prototype.
      */
     public ISLB10XACPrototype() {
         super();
@@ -56,6 +58,9 @@ public class ISLB10XACPrototype extends LBXACWeapon {
         this.cost = 400000;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.LBXACWeapon#getCorrectHandler(megamek.common.ToHitData, megamek.common.actions.WeaponAttackAction, megamek.common.IGame, megamek.server.Server)
+     */
     protected AttackHandler getCorrectHandler(ToHitData toHit,
             WeaponAttackAction waa, IGame game, Server server) {
         AmmoType atype = (AmmoType) game.getEntity(waa.getEntityId())

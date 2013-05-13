@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISSRM2.
+ *
  * @author Sebastian Brocks
  */
 public class ISSRM2 extends SRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8486208221700793591L;
 
     /**
-     * 
+     * Instantiates a new iSSR m2.
      */
     public ISSRM2() {
         super();

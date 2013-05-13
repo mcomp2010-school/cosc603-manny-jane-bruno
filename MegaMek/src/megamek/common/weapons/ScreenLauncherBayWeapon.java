@@ -22,17 +22,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ScreenLauncherBayWeapon.
+ *
  * @author Jay Lawson
  */
 public class ScreenLauncherBayWeapon extends AmmoBayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new screen launcher bay weapon.
      */
     public ScreenLauncherBayWeapon() {
         super();

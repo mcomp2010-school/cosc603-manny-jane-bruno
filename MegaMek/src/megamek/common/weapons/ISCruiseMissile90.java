@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISCruiseMissile90.
+ *
  * @author Sebastian Brocks
  */
 public class ISCruiseMissile90 extends ArtilleryWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5323886711682442495L;
 
     /**
-     * 
+     * Instantiates a new checks if is cruise missile90.
      */
     public ISCruiseMissile90() {
         super();

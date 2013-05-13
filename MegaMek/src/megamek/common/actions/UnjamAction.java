@@ -14,13 +14,20 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UnjamAction.
+ */
 public class UnjamAction extends AbstractEntityAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3001837570251595589L;
 
+    /**
+     * Instantiates a new unjam action.
+     *
+     * @param entityId the entity id
+     */
     public UnjamAction(int entityId) {
         super(entityId);
     }

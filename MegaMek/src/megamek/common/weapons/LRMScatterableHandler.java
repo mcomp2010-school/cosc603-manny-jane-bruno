@@ -25,21 +25,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LRMScatterableHandler.
+ *
  * @author Sebastian Brocks
  */
 public class LRMScatterableHandler extends MissileWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3661776853552779877L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new lRM scatterable handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public LRMScatterableHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

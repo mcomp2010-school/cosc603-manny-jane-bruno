@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLLongTom.
+ *
  * @author Sebastian Brocks
  */
 public class CLLongTom extends ArtilleryWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2543864156188708488L;
 
     /**
-     *
+     * Instantiates a new cL long tom.
      */
     public CLLongTom() {
         super();

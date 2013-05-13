@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISVehicleFlamer.
+ *
  * @author Sebastian Brocks
  */
 public class ISVehicleFlamer extends VehicleFlamerWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5209851790302913451L;
 
     /**
-     * 
+     * Instantiates a new checks if is vehicle flamer.
      */
     public ISVehicleFlamer() {
         super();

@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLLRM18.
+ *
  * @author Sebastian Brocks
  */
 public class CLLRM18 extends LRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4616668322148799167L;
 
     /**
-     * 
+     * Instantiates a new cLLR m18.
      */
     public CLLRM18() {
         super();

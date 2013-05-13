@@ -25,20 +25,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class FiredrakeHandler.
+ *
  * @author Sebastian Brocks
  */
 public class FiredrakeHandler extends WeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4147623608122350519L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new firedrake handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public FiredrakeHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

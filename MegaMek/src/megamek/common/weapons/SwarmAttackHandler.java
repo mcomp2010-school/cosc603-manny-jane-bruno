@@ -28,19 +28,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SwarmAttackHandler.
+ *
  * @author Andrew Hunter
  */
 public class SwarmAttackHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2439937071168853215L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new swarm attack handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public SwarmAttackHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {
@@ -48,6 +53,9 @@ public class SwarmAttackHandler extends WeaponHandler {
         generalDamageType = HitData.DAMAGE_NONE;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleEntityDamage(megamek.common.Entity, java.util.Vector, megamek.common.Building, int, int, int, int)
+     */
     protected void handleEntityDamage(Entity entityTarget,
             Vector<Report> vPhaseReport, Building bldg, int hits, int nCluster,
             int nDamPerHit, int bldgAbsorbs) {

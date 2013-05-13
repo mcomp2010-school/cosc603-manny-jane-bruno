@@ -17,16 +17,20 @@ import megamek.common.AmmoType;
 import megamek.common.BombType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AAAMissileWeapon.
+ *
  * @author Jay Lawson
  */
 public class AAAMissileWeapon extends CapitalMissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2043203178614130517L;
 
+    /**
+     * Instantiates a new aAA missile weapon.
+     */
     public AAAMissileWeapon() {
         super();
         this.techLevel = TechConstants.T_IS_ADVANCED;

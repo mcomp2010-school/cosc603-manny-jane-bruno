@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISStreakSRM2OS.
+ *
  * @author Sebastian Brocks
  */
 public class ISStreakSRM2OS extends StreakSRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4837075335425856208L;
 
     /**
-     * 
+     * Instantiates a new checks if is streak sr m2 os.
      */
     public ISStreakSRM2OS() {
         super();

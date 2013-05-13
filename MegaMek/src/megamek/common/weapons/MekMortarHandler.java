@@ -28,22 +28,27 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MekMortarHandler.
+ *
  * @author Jason Tighe
  */
 public class MekMortarHandler extends AmmoWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2073773899108954657L;
+    
+    /** The s salvo type. */
     String sSalvoType =" shell(s) ";
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new mek mortar handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public MekMortarHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -113,10 +118,10 @@ public class MekMortarHandler extends AmmoWeaponHandler {
     }
 
     /**
-     * Calculate the clustering of the hits
+     * Calculate the clustering of the hits.
      *
      * @return a <code>int</code> value saying how much hits are in each
-     *         cluster of damage.
+     * cluster of damage.
      */
     @Override
     protected int calcnCluster() {

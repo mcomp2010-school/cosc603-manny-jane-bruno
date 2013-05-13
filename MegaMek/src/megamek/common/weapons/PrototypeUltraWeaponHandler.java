@@ -26,20 +26,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PrototypeUltraWeaponHandler.
+ *
  * @author Andrew Hunter
  */
 public class PrototypeUltraWeaponHandler extends UltraWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6441106275439235564L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new prototype ultra weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public PrototypeUltraWeaponHandler(ToHitData t, WeaponAttackAction w,
             IGame g, Server s) {

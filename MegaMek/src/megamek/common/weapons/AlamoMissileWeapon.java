@@ -17,17 +17,21 @@ import megamek.common.AmmoType;
 import megamek.common.BombType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AlamoMissileWeapon.
+ *
  * @author Jay Lawson
  */
 public class AlamoMissileWeapon extends CapitalMissileWeapon {
 
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3672430739887768960L;
 
+    /**
+     * Instantiates a new alamo missile weapon.
+     */
     public AlamoMissileWeapon() {
         super();
         this.techLevel = TechConstants.T_IS_EXPERIMENTAL;

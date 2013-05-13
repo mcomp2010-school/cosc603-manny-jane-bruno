@@ -19,15 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.AmmoType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LaserWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class LaserWeapon extends EnergyWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -9210696480919833245L;
 
+    /**
+     * Instantiates a new laser weapon.
+     */
     public LaserWeapon() {
         super();
         flags |= F_LASER | F_DIRECT_FIRE | F_MECH_WEAPON | F_AERO_WEAPON |  F_TANK_WEAPON;

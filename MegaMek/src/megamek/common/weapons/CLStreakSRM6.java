@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLStreakSRM6.
+ *
  * @author Sebastian Brocks
  */
 public class CLStreakSRM6 extends StreakSRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6416567366717880864L;
 
     /**
-     * 
+     * Instantiates a new cL streak sr m6.
      */
     public CLStreakSRM6() {
         this.techLevel = TechConstants.T_CLAN_TW;

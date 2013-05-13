@@ -29,20 +29,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PrototypeGaussHandler.
+ *
  * @author Sebastian Brocks
  */
 public class PrototypeGaussHandler extends AmmoWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -156828547249911617L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new prototype gauss handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public PrototypeGaussHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

@@ -30,23 +30,30 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LRMSwarmHandler.
+ *
  * @author Sebastian Brocks
  */
 public class LRMSwarmHandler extends LRMHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7962873403915683220L;
+    
+    /** The swarm missiles now left. */
     int swarmMissilesNowLeft = 0;
+    
+    /** The handled heat. */
     boolean handledHeat = false;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new lRM swarm handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public LRMSwarmHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -278,6 +285,16 @@ public class LRMSwarmHandler extends LRMHandler {
      *
      * @see megamek.common.weapons.WeaponHandler#handleSpecialMiss(megamek.common.Entity,
      *      boolean, megamek.common.Building, java.util.Vector)
+     */
+    /**
+     * Handle special miss.
+     *
+     * @param entityTarget the entity target
+     * @param targetInBuilding the target in building
+     * @param bldg the bldg
+     * @param vPhaseReport the v phase report
+     * @param phase the phase
+     * @return true, if successful
      */
     protected boolean handleSpecialMiss(Entity entityTarget,
             boolean targetInBuilding, Building bldg,

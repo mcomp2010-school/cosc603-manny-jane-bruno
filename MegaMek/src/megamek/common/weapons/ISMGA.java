@@ -20,16 +20,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMGA.
+ *
  * @author Sebastian Brocks
  */
 public class ISMGA extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5147934062852001336L;
 
+    /**
+     * Instantiates a new ismga.
+     */
     public ISMGA() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

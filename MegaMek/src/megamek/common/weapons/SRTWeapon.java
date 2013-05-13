@@ -19,18 +19,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SRTWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class SRTWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2209880229033489588L;
 
     /**
-     * 
+     * Instantiates a new sRT weapon.
      */
     public SRTWeapon() {
         super();

@@ -19,21 +19,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SantaAnnaHandler.
+ *
  * @author Jay Lawson
  */
 public class SantaAnnaHandler extends AmmoWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2536312899803153911L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new santa anna handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public SantaAnnaHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -41,14 +44,17 @@ public class SantaAnnaHandler extends AmmoWeaponHandler {
     }
     
     /**
-     * Calculate the attack value based on range
-     * 
+     * Calculate the attack value based on range.
+     *
      * @return an <code>int</code> representing the attack value at that range.
      */
     protected int calcAttackValue() {
         return 100;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#getCapMisMod()
+     */
     protected int getCapMisMod() {
         return 9;
     }

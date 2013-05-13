@@ -14,12 +14,20 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DodgeAction.
+ */
 public class DodgeAction extends AbstractEntityAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 918785289096319255L;
 
+    /**
+     * Instantiates a new dodge action.
+     *
+     * @param entityId the entity id
+     */
     public DodgeAction(int entityId) {
         super(entityId);
     }

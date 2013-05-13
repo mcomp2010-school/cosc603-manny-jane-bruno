@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMRM40.
+ *
  * @author Sebastian Brocks
  */
 public class ISMRM40 extends MRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6020264492733884246L;
 
     /**
-     * 
+     * Instantiates a new iSMR m40.
      */
     public ISMRM40() {
         super();

@@ -27,30 +27,55 @@ import megamek.common.TargetRoll;
 import megamek.common.Targetable;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker brushes the target off.
  */
 public class BrushOffAttackAction extends AbstractAttackAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7455082808488032572L;
+    
+    /** The Constant BOTH. */
     public static final int BOTH = 0;
+    
+    /** The Constant LEFT. */
     public static final int LEFT = 1;
+    
+    /** The Constant RIGHT. */
     public static final int RIGHT = 2;
 
+    /** The arm. */
     private int arm;
 
+    /**
+     * Instantiates a new brush off attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param arm the arm
+     */
     public BrushOffAttackAction(int entityId, int targetType, int targetId,
             int arm) {
         super(entityId, targetType, targetId);
         this.arm = arm;
     }
 
+    /**
+     * Gets the arm.
+     *
+     * @return the arm
+     */
     public int getArm() {
         return arm;
     }
 
+    /**
+     * Sets the arm.
+     *
+     * @param arm the new arm
+     */
     public void setArm(int arm) {
         this.arm = arm;
     }

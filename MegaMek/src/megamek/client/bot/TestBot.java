@@ -1057,7 +1057,7 @@ public class TestBot extends BotClient {
                 }
 
                 a = new AttackOption(enemy, mw, expectedDmg, th, starg_mod);
-                if (a.value > max.value) {
+                if (a.getValue() > max.getValue()) {
                     if (best_only) {
                         max = a;
                     } else {
@@ -1068,7 +1068,7 @@ public class TestBot extends BotClient {
                 }
             }
         }
-        if (best_only && max.target != null) {
+        if (best_only && max.getTarget() != null) {
             result.add(max);
         }
         if (result.size() > 0) {
@@ -1143,13 +1143,13 @@ public class TestBot extends BotClient {
                 if (((best_front_po.type == PhysicalOption.PUNCH_LEFT) || (best_front_po.type == PhysicalOption.PUNCH_BOTH))
                         && (mw.getLocation() == Mech.LOC_LARM)) {
                     if (c.size() > 0) {
-                        front_la_dmg += c.get(c.size() - 2).value;
+                        front_la_dmg += c.get(c.size() - 2).getValue();
                     }
                 }
                 if (((best_front_po.type == PhysicalOption.PUNCH_RIGHT) || (best_front_po.type == PhysicalOption.PUNCH_BOTH))
                         && (mw.getLocation() == Mech.LOC_RARM)) {
                     if (c.size() > 0) {
-                        front_ra_dmg += c.get(c.size() - 2).value;
+                        front_ra_dmg += c.get(c.size() - 2).getValue();
                     }
                 }
                 // If this weapon is a push attack and an arm mounted
@@ -1176,11 +1176,11 @@ public class TestBot extends BotClient {
                     if ((best_left_po != null) && (en instanceof Mech)) {
                         if (((best_left_po.type == PhysicalOption.PUNCH_LEFT) || (best_left_po.type == PhysicalOption.PUNCH_BOTH))
                                 && (mw.getLocation() == Mech.LOC_LARM)) {
-                            left_la_dmg += c.get(c.size() - 2).value;
+                            left_la_dmg += c.get(c.size() - 2).getValue();
                         }
                         if (((best_left_po.type == PhysicalOption.PUNCH_RIGHT) || (best_left_po.type == PhysicalOption.PUNCH_BOTH))
                                 && (mw.getLocation() == Mech.LOC_RARM)) {
-                            left_ra_dmg += c.get(c.size() - 2).value;
+                            left_ra_dmg += c.get(c.size() - 2).getValue();
                         }
                     }
                     left.add(c);
@@ -1194,11 +1194,11 @@ public class TestBot extends BotClient {
                     if ((best_right_po != null) && (en instanceof Mech)) {
                         if (((best_right_po.type == PhysicalOption.PUNCH_LEFT) || (best_right_po.type == PhysicalOption.PUNCH_BOTH))
                                 && (mw.getLocation() == Mech.LOC_LARM)) {
-                            right_la_dmg += c.get(c.size() - 2).value;
+                            right_la_dmg += c.get(c.size() - 2).getValue();
                         }
                         if (((best_right_po.type == PhysicalOption.PUNCH_RIGHT) || (best_right_po.type == PhysicalOption.PUNCH_BOTH))
                                 && (mw.getLocation() == Mech.LOC_RARM)) {
-                            right_ra_dmg += c.get(c.size() - 2).value;
+                            right_ra_dmg += c.get(c.size() - 2).getValue();
                         }
                     }
                     right.add(c);
@@ -1274,9 +1274,9 @@ public class TestBot extends BotClient {
                     for (int i = 0; i < attackOptions.size(); i++) {
                         c = attackOptions.get(i);
                         for (int j = 0; j < c.size(); j++) {
-                            if (c.get(j).weapon.getLocation() == Mech.LOC_LARM) {
-                                c.get(j).expected = 0;
-                                c.get(j).primary_expected = 0;
+                            if (c.get(j).getWeapon().getLocation() == Mech.LOC_LARM) {
+                                c.get(j).setExpected(0);
+                                c.get(j).setPrimary_expected(0);
                             }
                         }
                     }
@@ -1287,9 +1287,9 @@ public class TestBot extends BotClient {
                     for (int i = 0; i < attackOptions.size(); i++) {
                         c = attackOptions.get(i);
                         for (int j = 0; j < c.size(); j++) {
-                            if (c.get(j).weapon.getLocation() == Mech.LOC_RARM) {
-                                c.get(j).expected = 0;
-                                c.get(j).primary_expected = 0;
+                            if (c.get(j).getWeapon().getLocation() == Mech.LOC_RARM) {
+                                c.get(j).setExpected(0);
+                                c.get(j).setPrimary_expected(0);
                             }
                         }
                     }
@@ -1300,13 +1300,13 @@ public class TestBot extends BotClient {
                     for (int i = 0; i < attackOptions.size(); i++) {
                         c = attackOptions.get(i);
                         for (int j = 0; j < c.size(); j++) {
-                            if (c.get(j).weapon.getLocation() == Mech.LOC_LARM) {
-                                c.get(j).expected = 0;
-                                c.get(j).primary_expected = 0;
+                            if (c.get(j).getWeapon().getLocation() == Mech.LOC_LARM) {
+                                c.get(j).setExpected(0);
+                                c.get(j).setPrimary_expected(0);
                             }
-                            if (c.get(j).weapon.getLocation() == Mech.LOC_RARM) {
-                                c.get(j).expected = 0;
-                                c.get(j).primary_expected = 0;
+                            if (c.get(j).getWeapon().getLocation() == Mech.LOC_RARM) {
+                                c.get(j).setExpected(0);
+                                c.get(j).setPrimary_expected(0);
                             }
                         }
                     }
@@ -1375,9 +1375,9 @@ public class TestBot extends BotClient {
             for (int i = 0; i < results.length - 1; i++) {
                 if (winner != null) {
                     AttackOption a = winner.get(i).get(results[i]);
-                    if (a.target != null) {
-                        a.target.expected_damage[a.toHit.getSideTable()] += a.value;
-                        a.target.hasTakenDamage = true;
+                    if (a.getTarget() != null) {
+                        a.getTarget().expected_damage[a.getToHit().getSideTable()] += a.getValue();
+                        a.getTarget().hasTakenDamage = true;
                         tm.add(a);
                     }
                 }
@@ -1386,11 +1386,11 @@ public class TestBot extends BotClient {
             while (i.hasNext()) {
                 AttackOption a = i.next();
 
-                WeaponAttackAction new_attack = new WeaponAttackAction(en.getId(), a.target
-                        .getEntity().getId(), en.getEquipmentNum(a.weapon));
+                WeaponAttackAction new_attack = new WeaponAttackAction(en.getId(), a.getTarget()
+                        .getEntity().getId(), en.getEquipmentNum(a.getWeapon()));
 
                 if (en.getEquipment(new_attack.getWeaponId()).getLinked() != null) {
-                    spinner = (WeaponType) a.weapon.getType();
+                    spinner = (WeaponType) a.getWeapon().getType();
 
                     // If this is an ultra-cannon or rotary cannon, try to spin
                     // it up
@@ -1399,7 +1399,7 @@ public class TestBot extends BotClient {
                             || (spinner.getAmmoType() == AmmoType.T_AC_ULTRA_THB)
                             || (spinner.getAmmoType() == AmmoType.T_AC_ROTARY)) {
                         spin_mode = Compute.spinUpCannon(game, new_attack);
-                        super.sendModeChange(en.getId(), en.getEquipmentNum(a.weapon), spin_mode);
+                        super.sendModeChange(en.getId(), en.getEquipmentNum(a.getWeapon()), spin_mode);
                     }
                     Mounted cur_ammo = en.getEquipment(new_attack.getWeaponId()).getLinked();
                     new_attack.setAmmoId(en.getEquipmentNum(cur_ammo));
@@ -1966,8 +1966,8 @@ public class TestBot extends BotClient {
             rear_shot = false;
             for (Iterator<AttackOption> j = attack_tree.iterator(); j.hasNext();) {
                 current_option = j.next();
-                if (current_option.target.getEntity().getId() == test_target) {
-                    int attack_direction = current_option.toHit.getSideTable();
+                if (current_option.getTarget().getEntity().getId() == test_target) {
+                    int attack_direction = current_option.getToHit().getSideTable();
                     if (attack_direction == ToHitData.SIDE_REAR) {
                         rear_shot = true;
                     } else {
@@ -2024,11 +2024,11 @@ public class TestBot extends BotClient {
                 // If the target of the attack option is the current target
 
                 current_option = j.next();
-                if (test_target == current_option.target.getEntity().getId()) {
+                if (test_target == current_option.getTarget().getEntity().getId()) {
 
                     // Get the weapon
 
-                    Mounted test_weapon = current_option.weapon;
+                    Mounted test_weapon = current_option.getWeapon();
 
                     // If the weapon is not LBX cannon or LBX cannon loaded with
                     // slug
@@ -2057,12 +2057,12 @@ public class TestBot extends BotClient {
                         // Get the expected damage, to-hit number, and odds
                         // (0-1) of hitting
 
-                        base_damage = is_primary_target ? current_option.primary_expected
-                                : current_option.expected;
-                        base_to_hit = is_primary_target ? current_option.toHit.getValue()
-                                : current_option.toHit.getValue() + 1;
-                        base_odds = is_primary_target ? current_option.primary_odds
-                                : current_option.odds;
+                        base_damage = is_primary_target ? current_option.getPrimary_expected()
+                                : current_option.getExpected();
+                        base_to_hit = is_primary_target ? current_option.getToHit().getValue()
+                                : current_option.getToHit().getValue() + 1;
+                        base_odds = is_primary_target ? current_option.getPrimary_odds()
+                                : current_option.getOdds();
                         base_damage = base_odds == 0.0 ? 0.0 : base_damage / base_odds;
 
                         // If the target is mobile, only a tcomp can make an

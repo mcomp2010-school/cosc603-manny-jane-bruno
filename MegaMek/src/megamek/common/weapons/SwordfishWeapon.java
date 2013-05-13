@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SwordfishWeapon.
+ *
  * @author Jay Lawson
  */
 public class SwordfishWeapon extends SubCapitalMissileWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3827228773281489872L;
 
     /**
-     * 
+     * Instantiates a new swordfish weapon.
      */
     public SwordfishWeapon() {
         super();

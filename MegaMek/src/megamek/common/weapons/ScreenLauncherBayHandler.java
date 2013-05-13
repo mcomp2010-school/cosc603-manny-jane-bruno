@@ -26,32 +26,37 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ScreenLauncherBayHandler.
+ *
  * @author Jay Lawson
  */
 public class ScreenLauncherBayHandler extends AmmoBayWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     
     private static final long serialVersionUID = -1618484541772117621L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new screen launcher bay handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ScreenLauncherBayHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
     }
     
     /**
-     * handle this weapons firing
-     * 
+     * handle this weapons firing.
+     *
+     * @param phase the phase
+     * @param vPhaseReport the v phase report
      * @return a <code>boolean</code> value indicating wether this should be
-     *         kept or not
+     * kept or not
      */
     public boolean handle(IGame.Phase phase, Vector<Report> vPhaseReport) {
         if (!this.cares(phase)) {

@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CapitalACBayWeapon.
+ *
  * @author Jay Lawson
  */
 public class CapitalACBayWeapon extends AmmoBayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new capital ac bay weapon.
      */
     public CapitalACBayWeapon() {
         super();

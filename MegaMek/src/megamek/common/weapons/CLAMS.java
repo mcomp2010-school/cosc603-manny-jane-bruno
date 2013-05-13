@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLAMS.
+ *
  * @author Sebastian Brocks
  */
 public class CLAMS extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7447941274169853546L;
 
     /**
-     * 
+     * Instantiates a new clams.
      */
     public CLAMS() {
         super();

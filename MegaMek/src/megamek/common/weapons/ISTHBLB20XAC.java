@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISTHBLB20XAC.
+ *
  * @author Andrew Hunter
  */
 public class ISTHBLB20XAC extends LBXACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1568107024307749233L;
 
     /**
-     * 
+     * Instantiates a new iSTHBL b20 xac.
      */
     public ISTHBLB20XAC() {
         super();

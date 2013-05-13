@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISHeavyFlamer.
+ *
  * @author Andrew Hunter
  */
 public class ISHeavyFlamer extends VehicleFlamerWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3957472644909347725L;
 
     /**
-     * 
+     * Instantiates a new checks if is heavy flamer.
      */
     public ISHeavyFlamer() {
         super();

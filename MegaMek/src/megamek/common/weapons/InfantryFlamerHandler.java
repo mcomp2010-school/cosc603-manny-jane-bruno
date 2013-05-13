@@ -22,20 +22,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryFlamerHandler.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryFlamerHandler extends InfantryWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1494295072313582538L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new infantry flamer handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public InfantryFlamerHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

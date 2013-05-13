@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLERLargePulseLaser.
+ *
  * @author Sebastian Brocks
  */
 public class CLERLargePulseLaser extends PulseLaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5795252987498124086L;
 
     /**
-     * 
+     * Instantiates a new cLER large pulse laser.
      */
     public CLERLargePulseLaser() {
         super();

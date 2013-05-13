@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLSniper.
+ *
  * @author Sebastian Brocks
  */
 public class CLSniper extends ArtilleryWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -599648142688689572L;
 
     /**
-     *
+     * Instantiates a new cL sniper.
      */
     public CLSniper() {
         super();

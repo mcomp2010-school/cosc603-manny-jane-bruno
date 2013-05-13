@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMML9.
+ *
  * @author Sebastian Brocks
  */
 public class ISMML9 extends MMLWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6856580158397507743L;
 
     /**
-     * 
+     * Instantiates a new iSMM l9.
      */
     public ISMML9() {
         super();

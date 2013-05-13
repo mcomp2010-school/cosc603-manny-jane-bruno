@@ -23,15 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class TAGWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class TAGWeapon extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6794299593713032006L;
 
+    /**
+     * Instantiates a new tAG weapon.
+     */
     public TAGWeapon() {
         super();
         flags |= F_TAG | F_NO_FIRES | F_MECH_WEAPON | F_AERO_WEAPON |  F_TANK_WEAPON;

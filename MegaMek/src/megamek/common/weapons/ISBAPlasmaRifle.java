@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISBAPlasmaRifle.
+ *
  * @author Sebastian Brocks
  */
 public class ISBAPlasmaRifle extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4885473724392214253L;
 
     /**
-     * 
+     * Instantiates a new iSBA plasma rifle.
      */
     public ISBAPlasmaRifle() {
         super();

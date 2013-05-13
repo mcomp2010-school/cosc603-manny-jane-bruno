@@ -30,16 +30,22 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MineLauncherHandler.
+ */
 public class MineLauncherHandler extends AmmoWeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6179453250580148965L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new mine launcher handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public MineLauncherHandler(ToHitData toHit, WeaponAttackAction waa,
             IGame g, Server s) {

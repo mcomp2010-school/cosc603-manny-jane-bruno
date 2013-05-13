@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISPlasmaRifle.
+ *
  * @author Sebastian Brocks
  */
 public class ISPlasmaRifle extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7919371014161089388L;
 
+    /**
+     * Instantiates a new checks if is plasma rifle.
+     */
     public ISPlasmaRifle() {
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;
         this.name = "Plasma Rifle";

@@ -19,15 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.AmmoType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NavalACWeapon.
+ *
  * @author Jay Lawson
  */
 public abstract class NavalACWeapon extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4293264735637352953L;
 
+    /**
+     * Instantiates a new naval ac weapon.
+     */
     public NavalACWeapon() {
         super();
         this.ammoType = AmmoType.T_NAC;

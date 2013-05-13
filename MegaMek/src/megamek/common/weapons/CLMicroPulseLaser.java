@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLMicroPulseLaser.
+ *
  * @author Andrew Hunter
  */
 public class CLMicroPulseLaser extends PulseLaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3335298535182304490L;
 
     /**
-     * 
+     * Instantiates a new cL micro pulse laser.
      */
     public CLMicroPulseLaser() {
         super();

@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLUAC2.
+ *
  * @author Andrew Hunter
  */
 public class CLUAC2 extends UACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7982946203794957045L;
 
     /**
-     * 
+     * Instantiates a new cLUA c2.
      */
     public CLUAC2() {
         super();

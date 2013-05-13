@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISIHGaussRifle.
+ *
  * @author Jason Tighe
  */
 public class ISIHGaussRifle extends GaussWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2379383217525139478L;
 
     /**
-     * 
+     * Instantiates a new iSIH gauss rifle.
      */
     public ISIHGaussRifle() {
         super();

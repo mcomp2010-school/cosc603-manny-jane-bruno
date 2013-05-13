@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLRAC2.
+ *
  * @author Sebastian Brocks
  */
 public class CLRAC2 extends RACWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2134880724662962943L;
 
     /**
-     *
+     * Instantiates a new cLRA c2.
      */
     public CLRAC2() {
         super();

@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLProtoMechAC2.
+ *
  * @author Jason Tighe
  */
 public class CLProtoMechAC2 extends ACWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4371171653960292873L;
 
     /**
-     *
+     * Instantiates a new cL proto mech a c2.
      */
     public CLProtoMechAC2() {
         super();

@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISERSmallLaser.
+ *
  * @author Andrew Hunter
  */
 public class ISERSmallLaser extends LaserWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4997798107691083605L;
 
     /**
-     * 
+     * Instantiates a new iSER small laser.
      */
     public ISERSmallLaser() {
         super();

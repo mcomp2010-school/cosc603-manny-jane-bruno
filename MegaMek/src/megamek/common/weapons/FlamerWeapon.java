@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class FlamerWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class FlamerWeapon extends EnergyWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8198014543155920036L;
 
+    /**
+     * Instantiates a new flamer weapon.
+     */
     public FlamerWeapon() {
         super();
         this.flags |= F_FLAMER;
@@ -43,6 +47,9 @@ public abstract class FlamerWeapon extends EnergyWeapon {
         this.atClass = CLASS_POINT_DEFENSE;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.EnergyWeapon#getCorrectHandler(megamek.common.ToHitData, megamek.common.actions.WeaponAttackAction, megamek.common.IGame, megamek.server.Server)
+     */
     protected AttackHandler getCorrectHandler(ToHitData toHit,
             WeaponAttackAction waa, IGame game, Server server) {
         if ((game.getEntity(waa.getEntityId()).getEquipment(waa.getWeaponId())

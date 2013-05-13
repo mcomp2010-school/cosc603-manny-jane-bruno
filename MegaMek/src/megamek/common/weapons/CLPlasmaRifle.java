@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLPlasmaRifle.
+ *
  * @author Sebastian Brocks
  */
 public class CLPlasmaRifle extends PlasmaMFUKWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1758452784566087479L;
 
     /**
-     * 
+     * Instantiates a new cL plasma rifle.
      */
     public CLPlasmaRifle() {
         super();

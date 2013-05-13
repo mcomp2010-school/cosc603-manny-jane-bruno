@@ -22,17 +22,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AR10BayWeapon.
+ *
  * @author Jay Lawson
  */
 public class AR10BayWeapon extends AmmoBayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new a r10 bay weapon.
      */
     public AR10BayWeapon() {
         super();

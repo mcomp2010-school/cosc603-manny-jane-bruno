@@ -19,16 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISTAG.
+ *
  * @author Sebastian Brocks
  */
 public class ISTAG extends TAGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2474477168563228542L;
 
+    /**
+     * Instantiates a new istag.
+     */
     public ISTAG() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

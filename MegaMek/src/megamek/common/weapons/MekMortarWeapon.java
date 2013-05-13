@@ -19,16 +19,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MekMortarWeapon.
+ *
  * @author Jason Tighe
  */
 public abstract class MekMortarWeapon extends AmmoWeapon {
 
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4887277242270179970L;
 
     /**
-     * 
+     * Instantiates a new mek mortar weapon.
      */
     public MekMortarWeapon() {
         super();

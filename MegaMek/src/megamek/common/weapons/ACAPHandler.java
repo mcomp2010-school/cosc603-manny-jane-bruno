@@ -34,20 +34,27 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ACAPHandler.
+ *
  * @author Andrew Hunter
  */
 public class ACAPHandler extends AmmoWeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4251291510045646817L;
+    
+    /** The general damage type. */
     protected int generalDamageType = HitData.DAMAGE_ARMOR_PIERCING;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new aCAP handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ACAPHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

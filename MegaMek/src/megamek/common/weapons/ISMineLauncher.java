@@ -25,17 +25,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMineLauncher.
+ *
  * @author Andrew Hunter
  */
 public class ISMineLauncher extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3445048091894801251L;
 
     /**
-     * 
+     * Instantiates a new checks if is mine launcher.
      */
     public ISMineLauncher() {
         super();

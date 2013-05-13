@@ -17,16 +17,20 @@ import megamek.common.AmmoType;
 import megamek.common.BombType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LAAMissileWeapon.
+ *
  * @author Jay Lawson
  */
 public class LAAMissileWeapon extends CapitalMissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6262048986109960442L;
 
+    /**
+     * Instantiates a new lAA missile weapon.
+     */
     public LAAMissileWeapon() {
         super();
         this.techLevel = TechConstants.T_IS_ADVANCED;

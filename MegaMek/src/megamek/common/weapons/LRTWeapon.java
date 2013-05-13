@@ -19,16 +19,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LRTWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class LRTWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7350712286691532142L;
 
+    /**
+     * Instantiates a new lRT weapon.
+     */
     public LRTWeapon() {
         super();
         this.ammoType = AmmoType.T_LRM_TORPEDO;

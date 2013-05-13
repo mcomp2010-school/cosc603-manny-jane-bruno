@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISBombastLaser.
+ *
  * @author Jason Tighe
  */
 public class ISBombastLaser extends LaserWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3379805005243042138L;
 
+    /**
+     * Instantiates a new checks if is bombast laser.
+     */
     public ISBombastLaser() {
         super();
         this.techLevel = TechConstants.T_IS_EXPERIMENTAL;

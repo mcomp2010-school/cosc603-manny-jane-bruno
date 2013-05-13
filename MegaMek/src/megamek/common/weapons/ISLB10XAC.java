@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLB10XAC.
+ *
  * @author Andrew Hunter
  */
 public class ISLB10XAC extends LBXACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6873790245999096707L;
 
     /**
-     * 
+     * Instantiates a new iSL b10 xac.
      */
     public ISLB10XAC() {
         super();

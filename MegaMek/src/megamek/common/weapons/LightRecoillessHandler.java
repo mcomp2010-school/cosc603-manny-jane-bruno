@@ -25,19 +25,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LightRecoillessHandler.
+ *
  * @author Sebastian Brocks
  */
 public class LightRecoillessHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 702082996466252816L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new light recoilless handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public LightRecoillessHandler(ToHitData toHit, WeaponAttackAction waa,
             IGame g, Server s) {

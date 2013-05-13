@@ -28,23 +28,28 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class StreakHandler.
+ *
  * @author Sebastian Brocks
  */
 public class StreakHandler extends MissileWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4122111574368642492L;
+    
+    /** The is angel ecm affected. */
     boolean isAngelECMAffected = Compute.isAffectedByAngelECM(ae, ae
             .getPosition(), target.getPosition());
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new streak handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public StreakHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -216,6 +221,9 @@ public class StreakHandler extends MissileWeaponHandler {
         return false;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.MissileWeaponHandler#canDoDirectBlowDamage()
+     */
     @Override
     protected boolean canDoDirectBlowDamage(){
         return false;

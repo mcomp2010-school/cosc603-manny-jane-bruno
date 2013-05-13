@@ -42,55 +42,114 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class WeaponHandler.
+ *
  * @author Andrew Hunter A basic, simple attack handler. May or may not work for
- *         any particular weapon; must be overloaded to support special rules.
+ * any particular weapon; must be overloaded to support special rules.
  */
 public class WeaponHandler implements AttackHandler, Serializable {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7137408139594693559L;
+    
+    /** The to hit. */
     public ToHitData toHit;
+    
+    /** The waa. */
     public WeaponAttackAction waa;
+    
+    /** The roll. */
     public int roll;
 
+    /** The game. */
     protected IGame game;
+    
+    /** The server. */
     protected transient Server server; // must not save the server
+    
+    /** The r. */
     protected Report r;
+    
+    /** The b missed. */
     protected boolean bMissed;
+    
+    /** The b salvo. */
     protected boolean bSalvo = false;
+    
+    /** The b glancing. */
     protected boolean bGlancing = false;
+    
+    /** The b direct. */
     protected boolean bDirect = false;
+    
+    /** The nuke s2 s. */
     protected boolean nukeS2S = false;
+    
+    /** The wtype. */
     protected WeaponType wtype;
+    
+    /** The weapon. */
     protected Mounted weapon;
+    
+    /** The ae. */
     protected Entity ae;
+    
+    /** The target. */
     protected Targetable target;
+    
+    /** The subject id. */
     protected int subjectId;
+    
+    /** The n range. */
     protected int nRange;
+    
+    /** The n dam per hit. */
     protected int nDamPerHit;
+    
+    /** The attack value. */
     protected int attackValue;
+    
+    /** The through front. */
     protected boolean throughFront;
+    
+    /** The under water. */
     protected boolean underWater;
+    
+    /** The announced entity firing. */
     protected boolean announcedEntityFiring = false;
+    
+    /** The missed. */
     protected boolean missed = false;
+    
+    /** The damage type. */
     protected DamageType damageType;
+    
+    /** The general damage type. */
     protected int generalDamageType = HitData.DAMAGE_NONE;
+    
+    /** The inserted attacks. */
     protected Vector<Integer> insertedAttacks = new Vector<Integer>();
+    
+    /** The nweapons. */
     protected int nweapons; //for capital fighters/fighter squadrons
 
 
     /**
-     * return the <code>int</code> Id of the attacking <code>Entity</code>
+     * return the <code>int</code> Id of the attacking <code>Entity</code>.
+     *
+     * @return the attacker id
      */
     public int getAttackerId() {
         return ae.getId();
     }
 
     /**
-     * Do we care about the specified phase?
+     * Do we care about the specified phase?.
+     *
+     * @param phase the phase
+     * @return true, if successful
      */
     public boolean cares(IGame.Phase phase) {
         if (phase == IGame.Phase.PHASE_FIRING) {
@@ -100,18 +159,33 @@ public class WeaponHandler implements AttackHandler, Serializable {
     }
 
     /**
+     * Do checks.
+     *
      * @param vPhaseReport - A <code>Vector</code> containing the phasereport.
      * @return a <code>boolean</code> value indicating wether or not the
-     *         attack misses because of a failed check.
+     * attack misses because of a failed check.
      */
     protected boolean doChecks(Vector<Report> vPhaseReport) {
         return false;
     }
 
+    /**
+     * Write object.
+     *
+     * @param out the out
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
     }
 
+    /**
+     * Read object.
+     *
+     * @param in the in
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws ClassNotFoundException the class not found exception
+     */
     private void readObject(ObjectInputStream in) throws IOException,
             ClassNotFoundException {
         in.defaultReadObject();
@@ -120,9 +194,15 @@ public class WeaponHandler implements AttackHandler, Serializable {
     }
 
     /**
+     * Handle special miss.
+     *
+     * @param entityTarget the entity target
+     * @param targetInBuilding the target in building
+     * @param bldg the bldg
+     * @param vPhaseReport the v phase report
      * @return a <code>boolean</code> value indicating wether or not this
-     *         attack needs further calculating, like a missed shot hitting a
-     *         building, or an AMS only shooting down some missiles.
+     * attack needs further calculating, like a missed shot hitting a
+     * building, or an AMS only shooting down some missiles.
      */
     protected boolean handleSpecialMiss(Entity entityTarget,
             boolean targetInBuilding, Building bldg, Vector<Report> vPhaseReport) {
@@ -147,10 +227,10 @@ public class WeaponHandler implements AttackHandler, Serializable {
     }
 
     /**
-     * Calculate the number of hits
+     * Calculate the number of hits.
      *
      * @param vPhaseReport - the <code>Vector</code> containing the phase
-     *            report.
+     * report.
      * @return an <code>int</code> containing the number of hits.
      */
     protected int calcHits(Vector<Report> vPhaseReport) {
@@ -210,20 +290,22 @@ public class WeaponHandler implements AttackHandler, Serializable {
     }
 
     /**
-     * Calculate the clustering of the hits
+     * Calculate the clustering of the hits.
      *
      * @return a <code>int</code> value saying how much hits are in each
-     *         cluster of damage.
+     * cluster of damage.
      */
     protected int calcnCluster() {
         return 1;
     }
 
     /**
-     * handle this weapons firing
+     * handle this weapons firing.
      *
+     * @param phase the phase
+     * @param vPhaseReport the v phase report
      * @return a <code>boolean</code> value indicating wether this should be
-     *         kept or not
+     * kept or not
      */
     public boolean handle(IGame.Phase phase, Vector<Report> vPhaseReport) {
         if (!cares(phase)) {
@@ -479,7 +561,7 @@ public class WeaponHandler implements AttackHandler, Serializable {
     }
 
     /**
-     * Calculate the attack value based on range
+     * Calculate the attack value based on range.
      *
      * @return an <code>int</code> representing the attack value at that range.
      */
@@ -499,8 +581,11 @@ public class WeaponHandler implements AttackHandler, Serializable {
         return av;
     }
 
-    /****
-     * adjustment factor on attack value for fighter squadrons
+    /**
+     * **
+     * adjustment factor on attack value for fighter squadrons.
+     *
+     * @return the bracketing multiplier
      */
     protected double getBracketingMultiplier() {
         double mult = 1.0;
@@ -519,6 +604,11 @@ public class WeaponHandler implements AttackHandler, Serializable {
     /*
      * Return the capital missile target for criticals. Zero if not a capital missile
      */
+    /**
+     * Gets the cap mis mod.
+     *
+     * @return the cap mis mod
+     */
     protected int getCapMisMod() {
         return 0;
     }
@@ -526,13 +616,13 @@ public class WeaponHandler implements AttackHandler, Serializable {
     /**
      * Handle damage against an entity, called once per hit by default.
      *
-     * @param entityTarget
-     * @param vPhaseReport
-     * @param bldg
-     * @param hits
-     * @param nCluster
-     * @param nDamPerHit
-     * @param bldgAbsorbs
+     * @param entityTarget the entity target
+     * @param vPhaseReport the v phase report
+     * @param bldg the bldg
+     * @param hits the hits
+     * @param nCluster the n cluster
+     * @param nDamPerHit the n dam per hit
+     * @param bldgAbsorbs the bldg absorbs
      */
     protected void handleEntityDamage(Entity entityTarget,
             Vector<Report> vPhaseReport, Building bldg, int hits, int nCluster,
@@ -623,6 +713,14 @@ public class WeaponHandler implements AttackHandler, Serializable {
         }
     }
 
+    /**
+     * Handle ignition damage.
+     *
+     * @param vPhaseReport the v phase report
+     * @param bldg the bldg
+     * @param bSalvo the b salvo
+     * @param hits the hits
+     */
     protected void handleIgnitionDamage(Vector<Report> vPhaseReport,
             Building bldg, boolean bSalvo, int hits) {
         if (!bSalvo) {
@@ -640,6 +738,14 @@ public class WeaponHandler implements AttackHandler, Serializable {
         }
     }
 
+    /**
+     * Handle clear damage.
+     *
+     * @param vPhaseReport the v phase report
+     * @param bldg the bldg
+     * @param nDamage the n damage
+     * @param bSalvo the b salvo
+     */
     protected void handleClearDamage(Vector<Report> vPhaseReport,
             Building bldg, int nDamage, boolean bSalvo) {
         if (!bSalvo) {
@@ -670,6 +776,15 @@ public class WeaponHandler implements AttackHandler, Serializable {
         return;
     }
 
+    /**
+     * Handle building damage.
+     *
+     * @param vPhaseReport the v phase report
+     * @param bldg the bldg
+     * @param nDamage the n damage
+     * @param bSalvo the b salvo
+     * @param coords the coords
+     */
     protected void handleBuildingDamage(Vector<Report> vPhaseReport,
             Building bldg, int nDamage, boolean bSalvo, Coords coords) {
         if (!bSalvo) {
@@ -689,6 +804,11 @@ public class WeaponHandler implements AttackHandler, Serializable {
         server.damageInfantryIn(bldg, nDamage, coords);
     }
 
+    /**
+     * All shots hit.
+     *
+     * @return true, if successful
+     */
     protected boolean allShotsHit() {
         if ((((target.getTargetType() == Targetable.TYPE_BLDG_IGNITE) || (target
                 .getTargetType() == Targetable.TYPE_BUILDING)) && (nRange <= 1))
@@ -698,6 +818,11 @@ public class WeaponHandler implements AttackHandler, Serializable {
         return false;
     }
 
+    /**
+     * Report miss.
+     *
+     * @param vPhaseReport the v phase report
+     */
     protected void reportMiss(Vector<Report> vPhaseReport) {
         // Report the miss.
         r = new Report(3220);
@@ -712,6 +837,14 @@ public class WeaponHandler implements AttackHandler, Serializable {
     }
 
     // Among other things, basically a refactored Server#preTreatWeaponAttack
+    /**
+     * Instantiates a new weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
+     */
     public WeaponHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         damageType = DamageType.NONE;
         toHit = t;
@@ -743,14 +876,23 @@ public class WeaponHandler implements AttackHandler, Serializable {
         attackValue = (int)Math.floor(getBracketingMultiplier() * calcAttackValue());
     }
 
+    /**
+     * Use ammo.
+     */
     protected void useAmmo() {
         setDone();
     }
 
+    /**
+     * Sets the done.
+     */
     protected void setDone() {
         weapon.setUsedThisRound(true);
     }
 
+    /**
+     * Adds the heat.
+     */
     protected void addHeat() {
         if (!(toHit.getValue() == TargetRoll.IMPOSSIBLE)) {
             ae.heatBuildup += (wtype.getHeat());
@@ -759,20 +901,22 @@ public class WeaponHandler implements AttackHandler, Serializable {
 
     /**
      * Does this attack use the cluster hit table?
-     * necessary to determine how Aero damage should be applied
+     * necessary to determine how Aero damage should be applied.
+     *
+     * @return true, if successful
      */
     protected boolean usesClusterTable() {
         return false;
     }
 
     /**
-     * special resolution, like minefields and arty
+     * special resolution, like minefields and arty.
      *
      * @param vPhaseReport - a <code>Vector</code> containing the phase report
      * @param entityTarget - the <code>Entity</code> targeted, or
-     *            <code>null</code>, if no Entity targeted
+     * <code>null</code>, if no Entity targeted
      * @param bMissed - a <code>boolean</code> value indicating wether the
-     *            attack missed or hit
+     * attack missed or hit
      * @return true when done with processing, false when not
      */
     protected boolean specialResolution(Vector<Report> vPhaseReport,
@@ -780,18 +924,35 @@ public class WeaponHandler implements AttackHandler, Serializable {
         return false;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.AttackHandler#announcedEntityFiring()
+     */
     public boolean announcedEntityFiring() {
         return announcedEntityFiring;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.AttackHandler#setAnnouncedEntityFiring(boolean)
+     */
     public void setAnnouncedEntityFiring(boolean announcedEntityFiring) {
         this.announcedEntityFiring = announcedEntityFiring;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.AttackHandler#getWaa()
+     */
     public WeaponAttackAction getWaa() {
         return waa;
     }
 
+    /**
+     * Check terrain.
+     *
+     * @param nDamage the n damage
+     * @param entityTarget the entity target
+     * @param vPhaseReport the v phase report
+     * @return the int
+     */
     public int checkTerrain(int nDamage, Entity entityTarget, Vector<Report>vPhaseReport){
         if ( game.getOptions().booleanOption("tacops_woods_cover") &&
                 (game.getBoard().getHex(entityTarget.getPosition()).containsTerrain(Terrains.WOODS)
@@ -826,18 +987,28 @@ public class WeaponHandler implements AttackHandler, Serializable {
         return nDamage;
     }
 
+    /**
+     * Can do direct blow damage.
+     *
+     * @return true, if successful
+     */
     protected boolean canDoDirectBlowDamage(){
         return true;
     }
 
     /**
-     * Insert any additionaly attacks that should occur before this attack
+     * Insert any additionaly attacks that should occur before this attack.
+     *
+     * @param phase the phase
+     * @param vPhaseReport the v phase report
      */
     protected void insertAttacks(IGame.Phase phase, Vector<Report> vPhaseReport) {
         return;
     }
 
     /**
+     * Gets the number weapons.
+     *
      * @return the number of weapons of this type firing (for squadron weapon groups)
      */
     protected int getNumberWeapons() {

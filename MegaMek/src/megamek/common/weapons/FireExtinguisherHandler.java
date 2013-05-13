@@ -29,19 +29,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class FireExtinguisherHandler.
+ *
  * @author Sebastian Brocks
  */
 public class FireExtinguisherHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7047033962986081773L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new fire extinguisher handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public FireExtinguisherHandler(ToHitData toHit, WeaponAttackAction waa,
             IGame g, Server s) {

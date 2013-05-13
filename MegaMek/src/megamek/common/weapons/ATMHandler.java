@@ -36,21 +36,24 @@ import megamek.common.WeaponType;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ATMHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ATMHandler extends MissileWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2536312899803153911L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new aTM handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ATMHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -121,7 +124,7 @@ public class ATMHandler extends MissileWeaponHandler {
     }
 
     /**
-     * Calculate the attack value based on range
+     * Calculate the attack value based on range.
      *
      * @return an <code>int</code> representing the attack value at that range.
      */
@@ -165,6 +168,12 @@ public class ATMHandler extends MissileWeaponHandler {
      * (non-Javadoc)
      *
      * @see megamek.common.weapons.WeaponHandler#calcHits(java.util.Vector)
+     */
+    /**
+     * Calc standard and extended ammo hits.
+     *
+     * @param vPhaseReport the v phase report
+     * @return the int
      */
     protected int calcStandardAndExtendedAmmoHits(Vector<Report> vPhaseReport) {
         // conventional infantry gets hit in one lump
@@ -334,6 +343,9 @@ public class ATMHandler extends MissileWeaponHandler {
         return missilesHit;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#specialResolution(java.util.Vector, megamek.common.Entity, boolean)
+     */
     @Override
     protected boolean specialResolution(Vector<Report> vPhaseReport,
             Entity entityTarget, boolean bMissed) {

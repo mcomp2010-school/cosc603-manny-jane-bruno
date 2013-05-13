@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class StingrayWeapon.
+ *
  * @author Jay Lawson
  */
 public class StingrayWeapon extends SubCapitalMissileWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3827228773281489872L;
 
     /**
-     * 
+     * Instantiates a new stingray weapon.
      */
     public StingrayWeapon() {
         super();

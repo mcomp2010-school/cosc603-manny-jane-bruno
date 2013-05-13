@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLATM12.
+ *
  * @author Sebastian Brocks
  */
 public class CLATM12 extends ATMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7902048944230263372L;
 
     /**
-     * 
+     * Instantiates a new cLAT m12.
      */
     public CLATM12() {
         super();

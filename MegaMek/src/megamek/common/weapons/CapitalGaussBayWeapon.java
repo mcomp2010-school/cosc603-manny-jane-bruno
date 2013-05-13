@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CapitalGaussBayWeapon.
+ *
  * @author Jay Lawson
  */
 public class CapitalGaussBayWeapon extends AmmoBayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new capital gauss bay weapon.
      */
     public CapitalGaussBayWeapon() {
         super();

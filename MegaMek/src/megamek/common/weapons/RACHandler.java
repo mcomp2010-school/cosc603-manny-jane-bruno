@@ -25,20 +25,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class RACHandler.
+ *
  * @author Andrew Hunter
  */
 public class RACHandler extends UltraWeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4859480151505343638L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new rAC handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public RACHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -136,10 +140,16 @@ public class RACHandler extends UltraWeaponHandler {
         ammo.setShotsLeft(ammo.getShotsLeft() - shotsNeedFiring);
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.UltraWeaponHandler#usesClusterTable()
+     */
     protected boolean usesClusterTable() {
         return true;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#canDoDirectBlowDamage()
+     */
     protected boolean canDoDirectBlowDamage(){
         return false;
     }

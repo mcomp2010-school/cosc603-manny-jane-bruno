@@ -22,15 +22,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PPCWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class PPCWeapon extends EnergyWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8128018700095507410L;
 
+    /**
+     * Instantiates a new pPC weapon.
+     */
     public PPCWeapon() {
         super();
         this.flags |= F_PPC | F_DIRECT_FIRE;

@@ -212,11 +212,13 @@ public class PhysicalAttackAction extends AbstractAttackAction {
     }
 
 	/**
-	 * @param toHit
-	 * @param game
-	 * @param ae
-	 * @param target
-	 * @param targetId
+	 * Process targetable entity.
+	 *
+	 * @param toHit the to hit
+	 * @param game the game
+	 * @param ae the ae
+	 * @param target the target
+	 * @param targetId the target id
 	 */
 	private static void processTargetableEntity(ToHitData toHit, IGame game,
 			Entity ae, Targetable target, int targetId) {
@@ -257,8 +259,11 @@ public class PhysicalAttackAction extends AbstractAttackAction {
 	}
 
 	/**
-	 * @param toHit
-	 * @param ae
+	 * Calculate blind penalty.
+	 *
+	 * @param toHit the to hit
+	 * @param ae the ae
+	 * @return true, if successful
 	 */
 	private static boolean calculateBlindPenalty(ToHitData toHit, Entity ae) {
 		int sensorHits = ae.getBadCriticals(CriticalSlot.TYPE_SYSTEM,

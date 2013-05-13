@@ -24,21 +24,29 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AmmoBayWeapon.
+ *
  * @author Jay Lawson
  * This is my attempt to get weapon bays treated as normal weapons
  * rather than the current hack in place
  */
 public abstract class AmmoBayWeapon extends BayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4718603486868464292L;
 
+    /**
+     * Instantiates a new ammo bay weapon.
+     */
     public AmmoBayWeapon() {
         super();
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.BayWeapon#fire(megamek.common.actions.WeaponAttackAction, megamek.common.IGame, megamek.server.Server)
+     */
     public AttackHandler fire(WeaponAttackAction waa, IGame game, Server server) {
         // Just in case. Often necessary when/if multiple ammo weapons are
         // fired; if this line not present
@@ -48,7 +56,10 @@ public abstract class AmmoBayWeapon extends BayWeapon {
     }
     
     /**
-     * 
+     * Check ammo.
+     *
+     * @param waa the waa
+     * @param g the g
      */
     protected void checkAmmo(WeaponAttackAction waa, IGame g) {
         Entity ae = waa.getEntity(g);

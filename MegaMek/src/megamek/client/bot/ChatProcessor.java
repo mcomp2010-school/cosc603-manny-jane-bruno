@@ -24,8 +24,18 @@ import megamek.common.Player;
 import megamek.common.event.GameEvent;
 import megamek.common.event.GamePlayerChatEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ChatProcessor.
+ */
 public class ChatProcessor {
 
+    /**
+     * Process chat.
+     *
+     * @param ge the ge
+     * @param tb the tb
+     */
     protected void processChat(GamePlayerChatEvent ge, TestBot tb) {
         if (ge.getType() != GameEvent.GAME_PLAYER_CHAT)
             return;

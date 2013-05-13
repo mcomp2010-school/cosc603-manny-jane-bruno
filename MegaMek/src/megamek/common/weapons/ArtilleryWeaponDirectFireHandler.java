@@ -22,21 +22,25 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ArtilleryWeaponDirectFireHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ArtilleryWeaponDirectFireHandler extends
         ArtilleryWeaponIndirectFireHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7116191142234200717L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new artillery weapon direct fire handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ArtilleryWeaponDirectFireHandler(ToHitData t, WeaponAttackAction w,
             IGame g, Server s) {

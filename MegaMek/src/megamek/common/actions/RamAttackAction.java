@@ -41,6 +41,7 @@ import megamek.common.Targetable;
 import megamek.common.ToHitData;
 import megamek.common.Warship;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents one unit charging another. Stores information about where the
  * target is supposed to be for the charge to be successful, as well as normal
@@ -50,23 +51,38 @@ import megamek.common.Warship;
  */
 public class RamAttackAction extends AbstractAttackAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3549351664290057785L;
 
+    /**
+     * Instantiates a new ram attack action.
+     *
+     * @param attacker the attacker
+     * @param target the target
+     */
     public RamAttackAction(Entity attacker, Targetable target) {
         this(attacker.getId(), target.getTargetType(), target.getTargetId(),
                 target.getPosition());
     }
 
+    /**
+     * Instantiates a new ram attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public RamAttackAction(int entityId, int targetType, int targetId,
             Coords targetPos) {
         super(entityId, targetType, targetId);
     }
 
     /**
-     * To-hit number for a ram, assuming that movement has been handled
+     * To-hit number for a ram, assuming that movement has been handled.
+     *
+     * @param game the game
+     * @return the to hit data
      */
     public ToHitData toHit(IGame game) {
         final Entity entity = game.getEntity(getEntityId());
@@ -76,7 +92,15 @@ public class RamAttackAction extends AbstractAttackAction {
     }
     
     /**
-     * To-hit number for a ram, assuming that movement has been handled
+     * To-hit number for a ram, assuming that movement has been handled.
+     *
+     * @param game the game
+     * @param target the target
+     * @param src the src
+     * @param elevation the elevation
+     * @param priorSrc the prior src
+     * @param movement the movement
+     * @return the to hit data
      */
     public ToHitData toHit(IGame game, Targetable target, Coords src,
             int elevation, Coords priorSrc, int movement) {
@@ -225,7 +249,11 @@ public class RamAttackAction extends AbstractAttackAction {
     }
 
     /**
-     * Checks if a ram can hit the target, taking account of movement
+     * Checks if a ram can hit the target, taking account of movement.
+     *
+     * @param game the game
+     * @param md the md
+     * @return the to hit data
      */
     public ToHitData toHit(IGame game, MovePath md) {
         final Entity ae = game.getEntity(getEntityId());
@@ -266,8 +294,11 @@ public class RamAttackAction extends AbstractAttackAction {
     }
 
     /**
-     * Damage that an Aero does on a successful ramming attack
-     * 
+     * Damage that an Aero does on a successful ramming attack.
+     *
+     * @param entity the entity
+     * @param target the target
+     * @return the damage for
      */
    public static int getDamageFor(Aero entity, Aero target) {
        int avel = entity.getCurrentVelocity();
@@ -275,6 +306,16 @@ public class RamAttackAction extends AbstractAttackAction {
        return getDamageFor(entity, target, entity.getPriorPosition(), avel, tvel);
    }
    
+   /**
+    * Gets the damage for.
+    *
+    * @param entity the entity
+    * @param target the target
+    * @param atthex the atthex
+    * @param avel the avel
+    * @param tvel the tvel
+    * @return the damage for
+    */
    public static int getDamageFor(Aero entity, Aero target, Coords atthex, int avel, int tvel) {
        int netv = Compute.getNetVelocity(atthex, target, avel, tvel);
        return (int) Math.ceil(
@@ -283,6 +324,10 @@ public class RamAttackAction extends AbstractAttackAction {
      
    /**
     * Damage that an Aero suffers after a successful charge.
+    *
+    * @param entity the entity
+    * @param target the target
+    * @return the damage taken by
     */
    public static int getDamageTakenBy(Aero entity, Aero target) {
        int avel = entity.getCurrentVelocity();
@@ -290,6 +335,16 @@ public class RamAttackAction extends AbstractAttackAction {
        return getDamageTakenBy(entity, target, entity.getPriorPosition(), avel, tvel);
    }
    
+   /**
+    * Gets the damage taken by.
+    *
+    * @param entity the entity
+    * @param target the target
+    * @param atthex the atthex
+    * @param avel the avel
+    * @param tvel the tvel
+    * @return the damage taken by
+    */
    public static int getDamageTakenBy(Aero entity, Aero target, Coords atthex, int avel, int tvel) {
        int netv = Compute.getNetVelocity(atthex, target, avel, tvel);
        return (int) Math.ceil(

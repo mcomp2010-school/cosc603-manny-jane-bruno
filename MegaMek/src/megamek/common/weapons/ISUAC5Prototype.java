@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISUAC5Prototype.
+ *
  * @author Andrew Hunter
  */
 public class ISUAC5Prototype extends UACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2740269177146528640L;
 
     /**
-     * 
+     * Instantiates a new iSUA c5 prototype.
      */
     public ISUAC5Prototype() {
         super();

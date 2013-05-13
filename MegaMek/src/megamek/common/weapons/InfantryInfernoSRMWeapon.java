@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryInfernoSRMWeapon.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryInfernoSRMWeapon extends InfantryWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7788576728727248931L;
 
+    /**
+     * Instantiates a new infantry inferno srm weapon.
+     */
     public InfantryInfernoSRMWeapon() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

@@ -22,30 +22,33 @@ import megamek.common.WeaponType;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BayWeaponHandler.
+ *
  * @author Jay Lawson
  */
 public class BayWeaponHandler extends WeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     
     private static final long serialVersionUID = -1618484541772117621L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new bay weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public BayWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
     }
  
     /**
-     * Calculate the attack value based on range
-     * 
+     * Calculate the attack value based on range.
+     *
      * @return an <code>int</code> representing the attack value at that range.
      */
     protected int calcAttackValue() {
@@ -72,6 +75,9 @@ public class BayWeaponHandler extends WeaponHandler {
         return (int)Math.ceil(av);
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#addHeat()
+     */
     protected void addHeat() {
         if (!(toHit.getValue() == TargetRoll.IMPOSSIBLE)) {
             if(game.getOptions().booleanOption("heat_by_bay")) {

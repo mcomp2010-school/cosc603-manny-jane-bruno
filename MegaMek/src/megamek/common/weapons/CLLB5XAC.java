@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLLB5XAC.
+ *
  * @author Andrew Hunter
  */
 public class CLLB5XAC extends LBXACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 722040764690180243L;
 
     /**
-     * 
+     * Instantiates a new cLL b5 xac.
      */
     public CLLB5XAC() {
         super();

@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PiranhaWeapon.
+ *
  * @author Jay Lawson
  */
 public class PiranhaWeapon extends SubCapitalMissileWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3827228773282489872L;
 
     /**
-     * 
+     * Instantiates a new piranha weapon.
      */
     public PiranhaWeapon() {
         super();

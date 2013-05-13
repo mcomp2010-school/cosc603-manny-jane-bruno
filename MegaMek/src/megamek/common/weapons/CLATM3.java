@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLATM3.
+ *
  * @author Sebastian Brocks
  */
 public class CLATM3 extends ATMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 107949833660086492L;
 
     /**
-     * 
+     * Instantiates a new cLAT m3.
      */
     public CLATM3() {
         super();

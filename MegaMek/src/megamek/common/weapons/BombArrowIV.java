@@ -21,17 +21,21 @@ import megamek.common.AmmoType;
 import megamek.common.BombType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BombArrowIV.
+ *
  * @author Jay Lawson
  */
 public class BombArrowIV extends AmmoWeapon {
 
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1321502140176775035L;
 
+    /**
+     * Instantiates a new bomb arrow iv.
+     */
     public BombArrowIV() {
         super();
         this.techLevel = TechConstants.T_IS_ADVANCED;

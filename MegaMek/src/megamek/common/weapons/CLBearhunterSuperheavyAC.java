@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLBearhunterSuperheavyAC.
+ *
  * @author Andrew Hunter
  */
 public class CLBearhunterSuperheavyAC extends Weapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1042154309245048380L;
 
     /**
-     *
+     * Instantiates a new cL bearhunter superheavy ac.
      */
     public CLBearhunterSuperheavyAC() {
         super();

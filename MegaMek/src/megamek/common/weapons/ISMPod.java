@@ -19,18 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMPod.
+ *
  * @author Sebastian Brocks
  */
 public class ISMPod extends MPodWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7462050177159480L;
 
     /**
-     * 
+     * Instantiates a new iSM pod.
      */
     public ISMPod() {
         super();

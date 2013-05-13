@@ -22,18 +22,25 @@ import megamek.common.ToHitData;
 import megamek.common.WeaponType;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
+// TODO: Auto-generated Javadoc
+
 /**
+ * The Class AmmoBayWeaponHandler.
+ *
  * @author Jay Lawson
  */
 public class AmmoBayWeaponHandler extends BayWeaponHandler {
     
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1618484541772117621L;
     
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new ammo bay weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public AmmoBayWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -114,6 +121,16 @@ public class AmmoBayWeaponHandler extends BayWeaponHandler {
      * TODO: it might be better to have unique weapon handlers 
      * for these by bay, but I am lazy
      */   
+    /**
+     * Update a vfor ammo.
+     *
+     * @param current_av the current_av
+     * @param atype the atype
+     * @param wtype the wtype
+     * @param range the range
+     * @param wId the w id
+     * @return the double
+     */
     protected double updateAVforAmmo(double current_av, AmmoType atype, WeaponType wtype, int range, int wId) {     
         
         //check for artemisIV

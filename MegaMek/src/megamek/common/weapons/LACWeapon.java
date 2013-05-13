@@ -19,13 +19,18 @@ package megamek.common.weapons;
 
 import megamek.common.AmmoType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LACWeapon.
+ */
 public abstract class LACWeapon extends ACWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1273558621868218173L;
 
+    /**
+     * Instantiates a new lAC weapon.
+     */
     public LACWeapon() {
         super();
         this.ammoType = AmmoType.T_LAC;

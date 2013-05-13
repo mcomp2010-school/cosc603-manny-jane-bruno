@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISExtendedLRM15.
+ *
  * @author Sebastian Brocks
  */
 public class ISExtendedLRM15 extends ExtendedLRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7039029686193601958L;
 
     /**
-     * 
+     * Instantiates a new checks if is extended lr m15.
      */
     public ISExtendedLRM15() {
         super();

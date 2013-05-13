@@ -28,32 +28,35 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BPodHandler.
+ *
  * @author Jason Tighe
  */
 public class BPodHandler extends AmmoWeaponHandler {
 
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6710600713016145831L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new b pod handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public BPodHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
     }
 
     /**
-     * Calculate the clustering of the hits
+     * Calculate the clustering of the hits.
      *
      * @return a <code>int</code> value saying how much hits are in each
-     *         cluster of damage.
+     * cluster of damage.
      */
     @Override
     protected int calcnCluster() {

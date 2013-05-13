@@ -20,29 +20,32 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AR10Handler.
+ *
  * @author Jay Lawson
  */
 public class AR10Handler extends AmmoWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2536312899803153911L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new a r10 handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public AR10Handler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
     }
     
     /**
-     * Calculate the attack value based on range
-     * 
+     * Calculate the attack value based on range.
+     *
      * @return an <code>int</code> representing the attack value at that range.
      */
     protected int calcAttackValue() {
@@ -58,6 +61,9 @@ public class AR10Handler extends AmmoWeaponHandler {
         return av;
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#getCapMisMod()
+     */
     protected int getCapMisMod() {
         int mod = 0;
         AmmoType atype = (AmmoType) ammo.getType();

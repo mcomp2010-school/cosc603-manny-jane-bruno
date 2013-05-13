@@ -16,25 +16,38 @@ package megamek.common.actions;
 
 import java.io.Serializable;
 
+// TODO: Auto-generated Javadoc
 /**
  * Abstract superclass for any action that an entity takes.
  */
 public abstract class AbstractEntityAction implements Serializable,
         EntityAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -758003433608975464L;
+    
+    /** The entity id. */
     private int entityId;
 
+    /**
+     * Instantiates a new abstract entity action.
+     *
+     * @param entityId the entity id
+     */
     public AbstractEntityAction(int entityId) {
         this.entityId = entityId;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.actions.EntityAction#getEntityId()
+     */
     public int getEntityId() {
         return entityId;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.actions.EntityAction#setEntityId(int)
+     */
     public void setEntityId(int entityId) {
         this.entityId = entityId;
     }

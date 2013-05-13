@@ -22,21 +22,29 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BayWeapon.
+ *
  * @author Jay Lawson
  * This is my attempt to get weapon bays treated as normal weapons
  * rather than the current hack in place
  */
 public abstract class BayWeapon extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1787970217528405766L;
 
+    /**
+     * Instantiates a new bay weapon.
+     */
     public BayWeapon() {
         super();
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.Weapon#fire(megamek.common.actions.WeaponAttackAction, megamek.common.IGame, megamek.server.Server)
+     */
     public AttackHandler fire(WeaponAttackAction waa, IGame game, Server server) {
         // Just in case. Often necessary when/if multiple ammo weapons are
         // fired; if this line not present

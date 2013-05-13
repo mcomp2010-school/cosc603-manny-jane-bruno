@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MantaRayWeapon.
+ *
  * @author Jay Lawson
  */
 public class MantaRayWeapon extends SubCapitalMissileWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2277255235440703333L;
 
     /**
-     * 
+     * Instantiates a new manta ray weapon.
      */
     public MantaRayWeapon() {
         super();

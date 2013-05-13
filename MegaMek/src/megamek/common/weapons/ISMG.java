@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMG.
+ *
  * @author Sebastian Brocks
  */
 public class ISMG extends MGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4431163118750064849L;
 
     /**
-     * 
+     * Instantiates a new ismg.
      */
     public ISMG() {
         super();

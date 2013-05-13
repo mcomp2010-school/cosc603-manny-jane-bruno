@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLightMortar.
+ *
  * @author Sebastian Brocks
  */
 public class ISLightMortar extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -141763207003813118L;
 
     /**
-     * 
+     * Instantiates a new checks if is light mortar.
      */
     public ISLightMortar() {
         super();

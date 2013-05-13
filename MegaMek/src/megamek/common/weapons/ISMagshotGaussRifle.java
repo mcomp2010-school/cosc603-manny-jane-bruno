@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISMagshotGaussRifle.
+ *
  * @author Sebastian Brocks
  */
 public class ISMagshotGaussRifle extends GaussWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 651029127510862887L;
 
     /**
-     *
+     * Instantiates a new checks if is magshot gauss rifle.
      */
     public ISMagshotGaussRifle() {
         super();

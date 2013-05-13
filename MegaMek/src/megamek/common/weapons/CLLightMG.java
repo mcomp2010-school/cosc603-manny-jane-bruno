@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLLightMG.
+ *
  * @author Andrew Hunter
  */
 public class CLLightMG extends MGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4070411380374344272L;
 
     /**
-     * 
+     * Instantiates a new cL light mg.
      */
     public CLLightMG() {
         super();

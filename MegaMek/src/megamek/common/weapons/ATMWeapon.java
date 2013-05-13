@@ -19,16 +19,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ATMWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class ATMWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1735365348213073649L;
 
+    /**
+     * Instantiates a new aTM weapon.
+     */
     public ATMWeapon() {
         super();
         this.ammoType = AmmoType.T_ATM;

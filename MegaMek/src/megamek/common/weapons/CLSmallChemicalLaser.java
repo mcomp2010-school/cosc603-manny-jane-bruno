@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLSmallChemicalLaser.
+ *
  * @author Jason Tighe
  */
 public class CLSmallChemicalLaser extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 322396740172378519L;
 
+    /**
+     * Instantiates a new cL small chemical laser.
+     */
     public CLSmallChemicalLaser() {
         this.techLevel = TechConstants.T_CLAN_EXPERIMENTAL;
         this.name = "Small Chem Laser";

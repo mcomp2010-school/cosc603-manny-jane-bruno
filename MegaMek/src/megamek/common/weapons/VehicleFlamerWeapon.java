@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class VehicleFlamerWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class VehicleFlamerWeapon extends AmmoWeapon {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8729838198434670197L;
 
     /**
-     *
+     * Instantiates a new vehicle flamer weapon.
      */
     public VehicleFlamerWeapon() {
         super();
@@ -46,6 +48,9 @@ public abstract class VehicleFlamerWeapon extends AmmoWeapon {
         atClass = CLASS_POINT_DEFENSE;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.AmmoWeapon#getCorrectHandler(megamek.common.ToHitData, megamek.common.actions.WeaponAttackAction, megamek.common.IGame, megamek.server.Server)
+     */
     @Override
     protected AttackHandler getCorrectHandler(ToHitData toHit,
             WeaponAttackAction waa, IGame game, Server server) {

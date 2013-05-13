@@ -20,21 +20,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PrototypeLaserHandler.
+ *
  * @author Sebastian Brocks
  */
 public class PrototypeLaserHandler extends EnergyWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6832340682515730916L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new prototype laser handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public PrototypeLaserHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

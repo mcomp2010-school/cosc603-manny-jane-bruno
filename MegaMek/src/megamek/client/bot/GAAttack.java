@@ -25,21 +25,49 @@ import megamek.common.Mech;
 import megamek.common.Terrains;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
- * Need to test the function that moves all firing to a single target
+ * Need to test the function that moves all firing to a single target.
  */
 public class GAAttack extends GA {
 
+    /** The attack. */
     protected ArrayList<ArrayList<AttackOption>> attack;
+    
+    /** The attacker. */
     protected CEntity attacker;
+    
+    /** The game. */
     protected IGame game;
+    
+    /** The targets. */
     protected CEntity.Table targets;
+    
+    /** The target_array. */
     protected ArrayList<Entity> target_array = null;
+    
+    /** The valid_target_indexes. */
     protected ArrayList<Integer> valid_target_indexes = null;
+    
+    /** The overheat_eligible. */
     protected boolean overheat_eligible = false;
+    
+    /** The firing_arc. */
     protected int firing_arc = 0;
+    
+    /** The damages. */
     double[] damages = null;
 
+    /**
+     * Instantiates a new gA attack.
+     *
+     * @param tb the tb
+     * @param attacker the attacker
+     * @param attack the attack
+     * @param population the population
+     * @param generations the generations
+     * @param isEnemy the is enemy
+     */
     public GAAttack(TestBot tb, CEntity attacker,
             ArrayList<ArrayList<AttackOption>> attack, int population,
             int generations, boolean isEnemy) {
@@ -66,10 +94,21 @@ public class GAAttack extends GA {
         }
     }
 
+    /**
+     * Gets the result chromosome.
+     *
+     * @return the result chromosome
+     */
     public int[] getResultChromosome() {
         return ((chromosomes[populationDim - 1]).genes);
     }
 
+    /**
+     * Gets the damage utility.
+     *
+     * @param to the to
+     * @return the damage utility
+     */
     public double getDamageUtility(CEntity to) {
         if (damages == null) {
             damages = getDamageUtilities();
@@ -83,6 +122,11 @@ public class GAAttack extends GA {
         return 0;
     }
 
+    /**
+     * Gets the damage utilities.
+     *
+     * @return the damage utilities
+     */
     public double[] getDamageUtilities() {
         int iChromIndex = populationDim - 1;
         targets.clear(); // could use ArrayList and not hashtable
@@ -98,17 +142,17 @@ public class GAAttack extends GA {
                 .get(chromArrayList.genes[chromosomeDim - 1]);
         for (int iGene = 0; iGene < chromosomeDim - 1; iGene++) {
             AttackOption a = attack.get(iGene).get(chromArrayList.genes[iGene]);
-            if (a.target != null) { // if not the no fire option
-                targets.put(a.target);
+            if (a.getTarget() != null) { // if not the no fire option
+                targets.put(a.getTarget());
                 double mod = 1;
-                if (a.target.entity.getId() == target.getId()) {
-                    a.target.possible_damage[a.toHit.getSideTable()] += mod
-                            * a.primary_expected;
+                if (a.getTarget().entity.getId() == target.getId()) {
+                    a.getTarget().possible_damage[a.getToHit().getSideTable()] += mod
+                            * a.getPrimary_expected();
                 } else {
-                    a.target.possible_damage[a.toHit.getSideTable()] += mod
-                            * a.expected;
+                    a.getTarget().possible_damage[a.getToHit().getSideTable()] += mod
+                            * a.getExpected();
                 }
-                heat_total += a.heat;
+                heat_total += a.getHeat();
             }
         }
 
@@ -124,6 +168,12 @@ public class GAAttack extends GA {
         return result;
     }
 
+    /**
+     * Gets the thread utility.
+     *
+     * @param enemy the enemy
+     * @return the thread utility
+     */
     private double getThreadUtility(CEntity enemy) {
         if (enemy.possible_damage[ToHitData.SIDE_FRONT] > 0) {
             return enemy.getThreatUtility(
@@ -145,11 +195,20 @@ public class GAAttack extends GA {
         return 0;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.ga.GA#getFitness(int)
+     */
     @Override
     protected double getFitness(int iChromIndex) {
         return this.getFitness(chromosomes[iChromIndex]);
     }
 
+    /**
+     * Gets the fitness.
+     *
+     * @param chromArrayList the chrom array list
+     * @return the fitness
+     */
     protected double getFitness(Chromosome chromArrayList) {
         targets.clear(); // could use ArrayList and not hashtable
         int heat_total = 0;
@@ -165,34 +224,34 @@ public class GAAttack extends GA {
         for (int iGene = 0; iGene < chromosomeDim - 1; iGene++) {
             final int[] genes = chromArrayList.genes;
             AttackOption a = attack.get(iGene).get(genes[iGene]);
-            if (a.target != null) { // if not the no fire option
-                targets.put(a.target);
+            if (a.getTarget() != null) { // if not the no fire option
+                targets.put(a.getTarget());
                 double mod = 1;
-                if (a.primary_odds <= 0) {
+                if (a.getPrimary_odds() <= 0) {
                     mod = 0; // If there's no chance to hit at all...
-                } else if (a.ammoLeft != -1) {
+                } else if (a.getAmmoLeft() != -1) {
                     if (attacker.overall_armor_percent < .5) {
                         mod = 1.5; // get rid of it
-                    } else if (a.ammoLeft < 12
+                    } else if (a.getAmmoLeft() < 12
                             && attacker.overall_armor_percent > .75) {
-                        if (a.primary_odds < .1) {
+                        if (a.getPrimary_odds() < .1) {
                             mod = 0;
-                        } else if (a.ammoLeft < 6 && a.primary_odds < .25) {
+                        } else if (a.getAmmoLeft() < 6 && a.getPrimary_odds() < .25) {
                             mod = 0;
                         } else {
-                            mod = a.primary_odds; // low percentage shots will
+                            mod = a.getPrimary_odds(); // low percentage shots will
                             // be frowned upon
                         }
                     }
                 }
-                if (a.target.entity.getId() == target.getId()) {
-                    a.target.possible_damage[a.toHit.getSideTable()] += mod
-                            * a.primary_expected;
+                if (a.getTarget().entity.getId() == target.getId()) {
+                    a.getTarget().possible_damage[a.getToHit().getSideTable()] += mod
+                            * a.getPrimary_expected();
                 } else {
-                    a.target.possible_damage[a.toHit.getSideTable()] += mod
-                            * a.expected;
+                    a.getTarget().possible_damage[a.getToHit().getSideTable()] += mod
+                            * a.getExpected();
                 }
-                heat_total += a.heat;
+                heat_total += a.getHeat();
             }
         }
         double total_utility = 0;
@@ -300,7 +359,9 @@ public class GAAttack extends GA {
     /**
      * since the low fitness members have the least chance of getting selected,
      * but the highest chance of mutation, this is where we use the primary
-     * target heuristic to drive convergence
+     * target heuristic to drive convergence.
+     *
+     * @param iChromIndex the i chrom index
      */
     @Override
     protected void doRandomMutation(int iChromIndex) {
@@ -326,8 +387,8 @@ public class GAAttack extends GA {
         for (int i = 0; (i < c1.genes.length - 1) && !done; i++) {
             int iGene = (i + r1) % (c1.genes.length - 1);
             AttackOption a = attack.get(iGene).get(c1.genes[iGene]);
-            if (a.target != null) {
-                target = a.target;
+            if (a.getTarget() != null) {
+                target = a.getTarget();
                 done = true;
             }
         }
@@ -339,8 +400,8 @@ public class GAAttack extends GA {
                 c1.genes[r1] = Compute.randomInt(attack.get(0).size() - 1);
             }
             AttackOption a = attack.get(r1).get(c1.genes[r1]);
-            if (a.target != null) {
-                c1.genes[c1.genes.length - 1] = a.target.enemy_num;
+            if (a.getTarget() != null) {
+                c1.genes[c1.genes.length - 1] = a.getTarget().enemy_num;
             }
         } else { // let's switch as many attacks as we can to this guy
             for (int i = 0; (i < (c1.genes.length - 1)) && (i < attack.size()); i++) {
@@ -349,7 +410,7 @@ public class GAAttack extends GA {
                     done = false;
                     for (int w = 0; (w < weapon.length - 1) && !done; w++) {
                         AttackOption a = (AttackOption) weapon[w];
-                        if (a.target.enemy_num == target.enemy_num) {
+                        if (a.getTarget().enemy_num == target.enemy_num) {
                             c1.genes[i] = w;
                             done = true;
                         }
@@ -360,6 +421,9 @@ public class GAAttack extends GA {
         }
     }
 
+    /* (non-Javadoc)
+     * @see megamek.client.bot.ga.GA#initPopulation()
+     */
     @Override
     protected void initPopulation() {
         // promote max
@@ -369,7 +433,7 @@ public class GAAttack extends GA {
 
         // use first weapon target as primary, not smart but good enough...
         AttackOption a = attack.get(0).get(0);
-        (chromosomes[0]).genes[chromosomeDim - 1] = a.target.enemy_num;
+        (chromosomes[0]).genes[chromosomeDim - 1] = a.getTarget().enemy_num;
 
         for (int i = 1; i < populationDim; i++) {
             Chromosome cv = chromosomes[i];
@@ -389,14 +453,29 @@ public class GAAttack extends GA {
         }
     }
 
+    /**
+     * Gets the firing arc.
+     *
+     * @return the firing arc
+     */
     public int getFiringArc() {
         return firing_arc;
     }
 
+    /**
+     * Sets the firing arc.
+     *
+     * @param firing_arc the new firing arc
+     */
     public void setFiringArc(int firing_arc) {
         this.firing_arc = firing_arc;
     }
 
+    /**
+     * Gets the attack.
+     *
+     * @return the attack
+     */
     public ArrayList<ArrayList<AttackOption>> getAttack() {
         return attack;
     }

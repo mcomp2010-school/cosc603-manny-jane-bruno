@@ -20,16 +20,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLHeavyMGA.
+ *
  * @author Sebastian Brocks
  */
 public class CLHeavyMGA extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7515050923963957889L;
 
+    /**
+     * Instantiates a new cL heavy mga.
+     */
     public CLHeavyMGA() {
         super();
         this.techLevel = TechConstants.T_CLAN_TW;

@@ -23,27 +23,63 @@ import megamek.common.IGame;
 import megamek.common.Report;
 import megamek.common.actions.WeaponAttackAction;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Interface AttackHandler.
+ *
  * @author Andrew Hunter Describes a set of methods a class can use to represent
- *         an attack from some weapon.
+ * an attack from some weapon.
  */
 public interface AttackHandler {
 
     // Does it care?
+    /**
+     * Cares.
+     *
+     * @param phase the phase
+     * @return true, if successful
+     */
     public boolean cares(IGame.Phase phase);
 
     // If it cares, call this. If it needs to remain in queue, returns true,
     // else false.
+    /**
+     * Handle.
+     *
+     * @param phase the phase
+     * @param vPhaseReports the v phase reports
+     * @return true, if successful
+     */
     public boolean handle(IGame.Phase phase, Vector<Report> vPhaseReports);
 
     // Frankly, wish I could get rid of this, but I think certain things
     // occaisonly need to know the firer.
+    /**
+     * Gets the attacker id.
+     *
+     * @return the attacker id
+     */
     public int getAttackerId();
 
+    /**
+     * Announced entity firing.
+     *
+     * @return true, if successful
+     */
     public boolean announcedEntityFiring();
 
+    /**
+     * Sets the announced entity firing.
+     *
+     * @param announcedEntityFiring the new announced entity firing
+     */
     public void setAnnouncedEntityFiring(boolean announcedEntityFiring);
 
+    /**
+     * Gets the waa.
+     *
+     * @return the waa
+     */
     public WeaponAttackAction getWaa();
 
 }

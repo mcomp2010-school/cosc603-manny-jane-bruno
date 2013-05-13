@@ -23,27 +23,33 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CapitalMissileBayHandler.
+ *
  * @author Jay Lawson
  */
 public class CapitalMissileBayHandler extends AmmoBayWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     
     private static final long serialVersionUID = -1618484541772117621L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new capital missile bay handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public CapitalMissileBayHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
     }
  
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#getCapMisMod()
+     */
     protected int getCapMisMod() {
         int mod = 0;
         for(int wId: weapon.getBayWeapons()) {
@@ -62,6 +68,12 @@ public class CapitalMissileBayHandler extends AmmoBayWeaponHandler {
     
     /*
      * get the cap mis mod given a single ammo type
+     */
+    /**
+     * Gets the crit mod.
+     *
+     * @param atype the atype
+     * @return the crit mod
      */
     protected int getCritMod(AmmoType atype) {
         if(atype == null || atype.getAmmoType() == AmmoType.T_PIRANHA) 
@@ -83,7 +95,10 @@ public class CapitalMissileBayHandler extends AmmoBayWeaponHandler {
     }
     
     /**
-     * Insert any additionaly attacks that should occur before this attack
+     * Insert any additionaly attacks that should occur before this attack.
+     *
+     * @param phase the phase
+     * @param vPhaseReport the v phase report
      */
     protected void insertAttacks(IGame.Phase phase, Vector<Report> vPhaseReport) {
         for(int wId: insertedAttacks) {

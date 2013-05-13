@@ -19,15 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.AmmoType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SubCapitalCannonWeapon.
+ *
  * @author Jay Lawson
  */
 public abstract class SubCapitalCannonWeapon extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4293264735637352953L;
 
+    /**
+     * Instantiates a new sub capital cannon weapon.
+     */
     public SubCapitalCannonWeapon() {
         super();
         this.ammoType = AmmoType.T_SCC;

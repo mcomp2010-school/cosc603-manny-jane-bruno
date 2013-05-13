@@ -18,22 +18,27 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LRMSwarmIHandler.
+ *
  * @author Sebastian Brocks
  */
 public class LRMSwarmIHandler extends LRMSwarmHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6522069260223528740L;
+    
+    /** The swarm missiles now left. */
     int swarmMissilesNowLeft = 0;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new lRM swarm i handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public LRMSwarmIHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

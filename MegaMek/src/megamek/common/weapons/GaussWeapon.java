@@ -17,15 +17,20 @@
  */
 package megamek.common.weapons;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class GaussWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class GaussWeapon extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8640523093316267351L;
 
+    /**
+     * Instantiates a new gauss weapon.
+     */
     public GaussWeapon() {
         super();
         this.flags |= F_DIRECT_FIRE | F_NO_FIRES | F_BALLISTIC;

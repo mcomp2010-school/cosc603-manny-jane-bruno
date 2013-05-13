@@ -28,28 +28,55 @@ import megamek.common.Targetable;
 import megamek.common.ToHitData;
 import megamek.common.VTOL;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker punches the target.
  */
 public class PunchAttackAction extends PhysicalAttackAction {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3684646558944678180L;
+    
+    /** The Constant BOTH. */
     public static final int BOTH = 0;
+    
+    /** The Constant LEFT. */
     public static final int LEFT = 1;
+    
+    /** The Constant RIGHT. */
     public static final int RIGHT = 2;
 
+    /** The arm. */
     private int arm;
     //booleans for retractable blade extension
+    /** The left blade. */
     private boolean leftBlade = false;
+    
+    /** The right blade. */
     private boolean rightBlade = false;
 
+    /**
+     * Instantiates a new punch attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     * @param arm the arm
+     */
     public PunchAttackAction(int entityId, int targetId, int arm) {
         super(entityId, targetId);
         this.arm = arm;
     }
 
+    /**
+     * Instantiates a new punch attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param arm the arm
+     * @param leftBlade the left blade
+     * @param rightBlade the right blade
+     */
     public PunchAttackAction(int entityId, int targetType, int targetId, int arm, boolean leftBlade, boolean rightBlade) {
         super(entityId, targetType, targetId);
         this.arm = arm;
@@ -57,14 +84,30 @@ public class PunchAttackAction extends PhysicalAttackAction {
         this.rightBlade = rightBlade;
     }
 
+    /**
+     * Gets the arm.
+     *
+     * @return the arm
+     */
     public int getArm() {
         return arm;
     }
 
+    /**
+     * Sets the arm.
+     *
+     * @param arm the new arm
+     */
     public void setArm(int arm) {
         this.arm = arm;
     }
 
+    /**
+     * Checks if is blade extended.
+     *
+     * @param arm the arm
+     * @return true, if is blade extended
+     */
     public boolean isBladeExtended(int arm) {
         if(arm == LEFT) {
             return leftBlade;
@@ -75,6 +118,12 @@ public class PunchAttackAction extends PhysicalAttackAction {
         return false;
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return PunchAttackAction.toHit(game, getEntityId(), game.getTarget(getTargetType(),
                 getTargetId()), getArm());
@@ -82,12 +131,13 @@ public class PunchAttackAction extends PhysicalAttackAction {
 
     /**
      * punches are impossible when physical attacks are impossible, or a
-     * retractable blade is extended
+     * retractable blade is extended.
      *
-     * @param game
-     * @param ae
-     * @param target
-     * @return
+     * @param game the game
+     * @param ae the ae
+     * @param target the target
+     * @param arm the arm
+     * @return the string
      */
     protected static String toHitIsImpossible(IGame game, Entity ae,
             Targetable target, int arm) {
@@ -159,7 +209,13 @@ public class PunchAttackAction extends PhysicalAttackAction {
     }
 
     /**
-     * To-hit number for the specified arm to punch
+     * To-hit number for the specified arm to punch.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param arm the arm
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId,
             Targetable target, int arm) {
@@ -277,6 +333,11 @@ public class PunchAttackAction extends PhysicalAttackAction {
 
     /**
      * Damage that the specified mech does with a punch.
+     *
+     * @param entity the entity
+     * @param arm the arm
+     * @param targetInfantry the target infantry
+     * @return the damage for
      */
     public static int getDamageFor(Entity entity, int arm,
             boolean targetInfantry) {

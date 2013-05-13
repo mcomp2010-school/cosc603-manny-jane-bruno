@@ -19,18 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISBALightMG.
+ *
  * @author Sebastian Brocks
  */
 public class ISBALightMG extends BAMGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1314457483959053741L;
 
     /**
-     * 
+     * Instantiates a new iSBA light mg.
      */
     public ISBALightMG() {
         super();

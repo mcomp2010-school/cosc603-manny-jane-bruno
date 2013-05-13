@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryMGWeapon.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryMGWeapon extends InfantryWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3434311797513896108L;
 
+    /**
+     * Instantiates a new infantry mg weapon.
+     */
     public InfantryMGWeapon() {
         super();
         this.techLevel = TechConstants.T_INTRO_BOXSET;

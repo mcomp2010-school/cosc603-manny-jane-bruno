@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLAdvancedSRM6OS.
+ *
  * @author Sebastian Brocks
  */
 public class CLAdvancedSRM6OS extends AdvancedSRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6710415894545970512L;
 
     /**
-     * 
+     * Instantiates a new cL advanced sr m6 os.
      */
     public CLAdvancedSRM6OS() {
         super();

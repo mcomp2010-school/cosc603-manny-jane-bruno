@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLThumper.
+ *
  * @author Sebastian Brocks
  */
 public class CLThumper extends ArtilleryWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1816815968973747103L;
 
     /**
-     *
+     * Instantiates a new cL thumper.
      */
     public CLThumper() {
         super();

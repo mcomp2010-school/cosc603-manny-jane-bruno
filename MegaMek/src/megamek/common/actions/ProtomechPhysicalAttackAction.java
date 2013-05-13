@@ -28,20 +28,32 @@ import megamek.common.Targetable;
 import megamek.common.Terrains;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacking Protomech makes it's combo physical attack action.
  */
 public class ProtomechPhysicalAttackAction extends AbstractAttackAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1432011536091665084L;
 
+    /**
+     * Instantiates a new protomech physical attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public ProtomechPhysicalAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new protomech physical attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public ProtomechPhysicalAttackAction(int entityId, int targetType,
             int targetId) {
         super(entityId, targetType, targetId);
@@ -49,6 +61,9 @@ public class ProtomechPhysicalAttackAction extends AbstractAttackAction {
 
     /**
      * Damage a Protomech does with its Combo-physicalattack.
+     *
+     * @param entity the entity
+     * @return the damage for
      */
     public static int getDamageFor(Entity entity) {
         int toReturn;
@@ -64,11 +79,25 @@ public class ProtomechPhysicalAttackAction extends AbstractAttackAction {
         return toReturn;
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return toHit(game, getEntityId(), game.getTarget(getTargetType(),
                 getTargetId()));
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @return the to hit data
+     */
     public static ToHitData toHit(IGame game, int attackerId, Targetable target) {
         final Entity ae = game.getEntity(attackerId);
         int targetId = Entity.NONE;

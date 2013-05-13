@@ -26,30 +26,53 @@ import megamek.common.TargetRoll;
 import megamek.common.Targetable;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker kicks the target.
  */
 public class TripAttackAction extends PhysicalAttackAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8639566786588420601L;
 
+    /**
+     * Instantiates a new trip attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public TripAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new trip attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public TripAttackAction(int entityId, int targetType, int targetId) {
         super(entityId, targetType, targetId);
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return TripAttackAction.toHit(game, getEntityId(), game.getTarget(getTargetType(), getTargetId()));
     }
 
     /**
-     * To-hit number for the specified leg to kick
+     * To-hit number for the specified leg to kick.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId, Targetable target) {
         final Entity ae = game.getEntity(attackerId);
@@ -212,6 +235,13 @@ public class TripAttackAction extends PhysicalAttackAction {
         return toHit;
     }
 
+    /**
+     * Gets the limb modifier.
+     *
+     * @param loc the loc
+     * @param ae the ae
+     * @return the limb modifier
+     */
     private static ToHitData getLimbModifier(int loc, Entity ae) {
         ToHitData toHit = new ToHitData();
         // damaged or missing actuators

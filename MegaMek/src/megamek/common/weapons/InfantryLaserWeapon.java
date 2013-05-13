@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryLaserWeapon.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryLaserWeapon extends InfantryWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -9065123199493897216L;
 
+    /**
+     * Instantiates a new infantry laser weapon.
+     */
     public InfantryLaserWeapon() {
         super();
         this.techLevel = TechConstants.T_ALLOWED_ALL;

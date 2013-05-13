@@ -24,14 +24,18 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AmmoWeaponHandler.
+ *
  * @author Andrew Hunter
  */
 public class AmmoWeaponHandler extends WeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4934490646657484486L;
+    
+    /** The ammo. */
     Mounted ammo;
 
     /**
@@ -41,9 +45,12 @@ public class AmmoWeaponHandler extends WeaponHandler {
     }
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new ammo weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public AmmoWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {
@@ -72,6 +79,9 @@ public class AmmoWeaponHandler extends WeaponHandler {
         super.useAmmo();
     }
 
+    /**
+     * Check ammo.
+     */
     protected void checkAmmo() {
         ammo = weapon.getLinked();
         if (ammo == null) {
@@ -81,7 +91,8 @@ public class AmmoWeaponHandler extends WeaponHandler {
     }
 
     /**
-     * For ammo weapons, this number can be less than the full number if the amount of ammo is not high enough
+     * For ammo weapons, this number can be less than the full number if the amount of ammo is not high enough.
+     *
      * @return the number of weapons of this type firing (for squadron weapon groups)
      */
     @Override

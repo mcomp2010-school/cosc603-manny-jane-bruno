@@ -17,15 +17,20 @@
  */
 package megamek.common.weapons;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NavalLaserWeapon.
+ *
  * @author Jay Lawson
  */
 public abstract class NavalLaserWeapon extends EnergyWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3039645862661842495L;
 
+    /**
+     * Instantiates a new naval laser weapon.
+     */
     public NavalLaserWeapon() {
         super();
         this.atClass = CLASS_CAPITAL_LASER;

@@ -22,20 +22,32 @@ import megamek.common.TargetRoll;
 import megamek.common.Targetable;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker grapples the target.
  */
 public class BreakGrappleAttackAction extends PhysicalAttackAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5615694825997720537L;
 
+    /**
+     * Instantiates a new break grapple attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public BreakGrappleAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new break grapple attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public BreakGrappleAttackAction(int entityId, int targetType, int targetId) {
         super(entityId, targetType, targetId);
     }
@@ -53,7 +65,12 @@ public class BreakGrappleAttackAction extends PhysicalAttackAction {
     }
 
     /**
-     * To-hit number
+     * To-hit number.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId, Targetable target) {
         final Entity ae = game.getEntity(attackerId);

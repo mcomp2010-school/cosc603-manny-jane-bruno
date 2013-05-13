@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class HeavySCCWeapon.
+ *
  * @author Jay Lawson
  */
 public class HeavySCCWeapon extends SubCapitalCannonWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new heavy scc weapon.
      */
     public HeavySCCWeapon() {
         super();

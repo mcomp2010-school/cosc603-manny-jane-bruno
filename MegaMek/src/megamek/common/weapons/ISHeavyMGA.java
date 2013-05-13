@@ -20,16 +20,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISHeavyMGA.
+ *
  * @author Sebastian Brocks
  */
 public class ISHeavyMGA extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2647621717483237437L;
 
+    /**
+     * Instantiates a new checks if is heavy mga.
+     */
     public ISHeavyMGA() {
         super();
         techLevel = TechConstants.T_IS_TW_NON_BOX;

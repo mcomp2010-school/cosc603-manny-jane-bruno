@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LegAttack.
+ *
  * @author Sebastian Brocks
  */
 public class LegAttack extends InfantryAttack {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5647733828977232900L;
 
+    /**
+     * Instantiates a new leg attack.
+     */
     public LegAttack() {
         super();
         this.name = "Leg Attack";

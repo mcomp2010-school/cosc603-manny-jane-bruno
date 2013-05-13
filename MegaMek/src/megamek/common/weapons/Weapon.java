@@ -27,21 +27,33 @@ import megamek.common.WeaponType;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Weapon.
+ *
  * @author Andrew Hunter A class representing a weapon.
  */
 public abstract class Weapon extends WeaponType implements Serializable {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8781224279449654544L;
 
+    /**
+     * Instantiates a new weapon.
+     */
     public Weapon() {
         this.ammoType = AmmoType.T_NA;
         this.minimumRange = WEAPON_NA;
     }
 
+    /**
+     * Fire.
+     *
+     * @param waa the waa
+     * @param game the game
+     * @param server the server
+     * @return the attack handler
+     */
     public AttackHandler fire(WeaponAttackAction waa, IGame game, Server server) {
         ToHitData toHit = waa.toHit(game);
         // FIXME: SUPER DUPER EVIL HACK: swarm missile handlers must be returned
@@ -56,6 +68,15 @@ public abstract class Weapon extends WeaponType implements Serializable {
                 : ah;
     }
 
+    /**
+     * Gets the correct handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param game the game
+     * @param server the server
+     * @return the correct handler
+     */
     protected AttackHandler getCorrectHandler(ToHitData toHit,
             WeaponAttackAction waa, IGame game, Server server) {
         return new WeaponHandler(toHit, waa, game, server);

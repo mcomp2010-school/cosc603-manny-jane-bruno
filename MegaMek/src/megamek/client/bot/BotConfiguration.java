@@ -17,8 +17,13 @@ package megamek.client.bot;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BotConfiguration.
+ */
 public class BotConfiguration {
 
+    /** The Bot properties. */
     static Properties BotProperties = new Properties();
 
     static {
@@ -30,6 +35,11 @@ public class BotConfiguration {
         }
     }
 
+    /**
+     * Gets the ignore level.
+     *
+     * @return the ignore level
+     */
     public int getIgnoreLevel() {
         int difficulty = 3;
         try {
@@ -49,6 +59,11 @@ public class BotConfiguration {
         }
     }
 
+    /**
+     * Checks if is forced individual.
+     *
+     * @return true, if is forced individual
+     */
     public boolean isForcedIndividual() {
         boolean forced = false;
         try {
@@ -60,6 +75,11 @@ public class BotConfiguration {
         return forced;
     }
 
+    /**
+     * Checks if is debug.
+     *
+     * @return true, if is debug
+     */
     public boolean isDebug() {
         try {
             if ("true".equalsIgnoreCase(BotProperties.getProperty("Debug",

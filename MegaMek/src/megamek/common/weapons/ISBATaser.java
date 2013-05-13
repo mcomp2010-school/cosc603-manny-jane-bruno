@@ -20,18 +20,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISBATaser.
+ *
  * @author Sebastian Brocks
  */
 public class ISBATaser extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4393086562754363816L;
 
     /**
-     * 
+     * Instantiates a new iSBA taser.
      */
     public ISBATaser() {
         super();

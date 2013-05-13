@@ -23,15 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class HAGWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class HAGWeapon extends GaussWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2890339452762009216L;
 
+    /**
+     * Instantiates a new hAG weapon.
+     */
     public HAGWeapon() {
         super();
         this.damage = DAMAGE_VARIABLE;

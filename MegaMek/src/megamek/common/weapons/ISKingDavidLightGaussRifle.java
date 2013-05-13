@@ -20,17 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISKingDavidLightGaussRifle.
+ *
  * @author Sebastian Brocks
  */
 public class ISKingDavidLightGaussRifle extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3358799424901447503L;
 
     /**
-     * 
+     * Instantiates a new checks if is king david light gauss rifle.
      */
     public ISKingDavidLightGaussRifle() {
         super();

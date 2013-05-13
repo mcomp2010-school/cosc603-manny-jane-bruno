@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ArtilleryWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class ArtilleryWeapon extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -732023379991213890L;
 
+    /**
+     * Instantiates a new artillery weapon.
+     */
     public ArtilleryWeapon() {
         super();
         flags |= F_ARTILLERY | F_SPLITABLE | F_MECH_WEAPON | F_AERO_WEAPON |  F_TANK_WEAPON;

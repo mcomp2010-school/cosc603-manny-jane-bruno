@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLMekMortar4.
+ *
  * @author Jason Tighe
  */
 public class CLMekMortar4 extends MekMortarWeapon{
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7326848486069567891L;
 
     /**
-     * 
+     * Instantiates a new cL mek mortar4.
      */
     public CLMekMortar4() {
         super();

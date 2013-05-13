@@ -19,26 +19,32 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class WhiteSharkHandler.
+ *
  * @author Jay Lawson
  */
 public class WhiteSharkHandler extends AmmoWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2536312899803153911L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new white shark handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public WhiteSharkHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
     }
     
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#getCapMisMod()
+     */
     protected int getCapMisMod() {
         return 9;
     }

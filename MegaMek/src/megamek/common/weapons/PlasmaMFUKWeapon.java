@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PlasmaMFUKWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class PlasmaMFUKWeapon extends EnergyWeapon {
 
     
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6903718412622554494L;
 
     /**
-     * 
+     * Instantiates a new plasma mfuk weapon.
      */
     public PlasmaMFUKWeapon() {
         super();

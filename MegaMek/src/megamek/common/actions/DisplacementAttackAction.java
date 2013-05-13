@@ -22,34 +22,61 @@ package megamek.common.actions;
 
 import megamek.common.Coords;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class DisplacementAttackAction.
+ *
  * @author Ben
  * @version
  */
 public class DisplacementAttackAction extends AbstractAttackAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1713221946987876208L;
+    
+    /** The target pos. */
     private Coords targetPos;
 
-    /** Creates new DisplacementAttackAction */
+    /**
+     * Creates new DisplacementAttackAction.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public DisplacementAttackAction(int entityId, int targetId, Coords targetPos) {
         super(entityId, targetId);
         this.targetPos = targetPos;
     }
 
+    /**
+     * Instantiates a new displacement attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public DisplacementAttackAction(int entityId, int targetType, int targetId,
             Coords targetPos) {
         super(entityId, targetType, targetId);
         this.targetPos = targetPos;
     }
 
+    /**
+     * Gets the target pos.
+     *
+     * @return the target pos
+     */
     public Coords getTargetPos() {
         return targetPos;
     }
 
+    /**
+     * Sets the target pos.
+     *
+     * @param targetPos the new target pos
+     */
     public void setTargetPos(Coords targetPos) {
         this.targetPos = targetPos;
     }

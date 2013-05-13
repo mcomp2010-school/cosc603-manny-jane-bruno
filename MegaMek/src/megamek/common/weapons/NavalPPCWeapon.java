@@ -17,15 +17,20 @@
  */
 package megamek.common.weapons;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class NavalPPCWeapon.
+ *
  * @author Jay Lawson
  */
 public abstract class NavalPPCWeapon extends EnergyWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 414010600231978506L;
 
+    /**
+     * Instantiates a new naval ppc weapon.
+     */
     public NavalPPCWeapon() {
         super();
         this.atClass = CLASS_CAPITAL_PPC;

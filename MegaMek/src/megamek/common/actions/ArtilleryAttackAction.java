@@ -23,22 +23,38 @@ import megamek.common.EquipmentType;
 import megamek.common.IGame;
 import megamek.common.WeaponType;
 
+// TODO: Auto-generated Javadoc
 /**
  * ArtilleryAttackAction Holds the data needed for an artillery attack in
  * flight.
  */
 public class ArtilleryAttackAction extends WeaponAttackAction implements
         Serializable {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3893844894076028005L;
+    
+    /** The turns til hit. */
     public int turnsTilHit;
+    
+    /** The spotter ids. */
     private Vector<Integer> spotterIds; // IDs of possible spotters, won't know
                                         // until it lands.
-    protected int playerId;
+    /** The player id. */
+                                        protected int playerId;
+    
+    /** The firing coords. */
     private Coords firingCoords;
 
+    /**
+     * Instantiates a new artillery attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param weaponId the weapon id
+     * @param game the game
+     */
     public ArtilleryAttackAction(int entityId, int targetType, int targetId,
             int weaponId, IGame game) {
         super(entityId, targetType, targetId, weaponId);
@@ -67,22 +83,47 @@ public class ArtilleryAttackAction extends WeaponAttackAction implements
         }
     }
 
+    /**
+     * Gets the spotter ids.
+     *
+     * @return the spotter ids
+     */
     public Vector<Integer> getSpotterIds() {
         return spotterIds;
     }
 
+    /**
+     * Gets the player id.
+     *
+     * @return the player id
+     */
     public int getPlayerId() {
         return playerId;
     }
 
+    /**
+     * Sets the spotter ids.
+     *
+     * @param spotterIds the new spotter ids
+     */
     public void setSpotterIds(Vector<Integer> spotterIds) {
         this.spotterIds = spotterIds;
     }
 
+    /**
+     * Sets the coords.
+     *
+     * @param coords the new coords
+     */
     public void setCoords(Coords coords) {
         this.firingCoords = coords;
     }
 
+    /**
+     * Gets the coords.
+     *
+     * @return the coords
+     */
     public Coords getCoords() {
         return this.firingCoords;
     }

@@ -1782,13 +1782,15 @@ public class WeaponAttackAction extends AbstractAttackAction implements
     }
 
 	/**
-	 * @param ae
-	 * @param weapon
-	 * @param wtype
-	 * @param usesAmmo
-	 * @param atype
-	 * @param MPMelevationHack
-	 * @return
+	 * Elevation hack check.
+	 *
+	 * @param ae the ae
+	 * @param weapon the weapon
+	 * @param wtype the wtype
+	 * @param usesAmmo the uses ammo
+	 * @param atype the atype
+	 * @param MPMelevationHack the mP melevation hack
+	 * @return true, if successful
 	 */
 	private static boolean elevationHackCheck(final Entity ae,
 			final Mounted weapon, final WeaponType wtype,
@@ -1808,12 +1810,14 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param ae
-	 * @param te
-	 * @param atype
-	 * @param isTargetECMAffected
-	 * @param isINarcGuided
-	 * @return
+	 * Checks if is narc guided check.
+	 *
+	 * @param ae the ae
+	 * @param te the te
+	 * @param atype the atype
+	 * @param isTargetECMAffected the is target ecm affected
+	 * @param isINarcGuided the is i narc guided
+	 * @return true, if is narc guided check
 	 */
 	private static boolean isNarcGuidedCheck(final Entity ae, Entity te,
 			final AmmoType atype, boolean isTargetECMAffected,
@@ -1831,9 +1835,11 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param atype
-	 * @param mLinker
-	 * @return
+	 * B apollo.
+	 *
+	 * @param atype the atype
+	 * @param mLinker the m linker
+	 * @return true, if successful
 	 */
 	private static boolean bApollo(final AmmoType atype, Mounted mLinker) {
 		return ((mLinker != null)
@@ -1845,8 +1851,10 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param atype
-	 * @return
+	 * B ftl.
+	 *
+	 * @param atype the atype
+	 * @return true, if successful
 	 */
 	private static boolean bFTL(final AmmoType atype) {
 		return (atype != null)
@@ -1856,8 +1864,10 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param atype
-	 * @return
+	 * B heat seeking.
+	 *
+	 * @param atype the atype
+	 * @return true, if successful
 	 */
 	private static boolean bHeatSeeking(final AmmoType atype) {
 		return (atype != null)
@@ -1868,12 +1878,14 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param target
-	 * @param te
-	 * @param usesAmmo
-	 * @param atype
-	 * @param isArtilleryDirect
-	 * @return
+	 * Checks if is artillery flak.
+	 *
+	 * @param target the target
+	 * @param te the te
+	 * @param usesAmmo the uses ammo
+	 * @param atype the atype
+	 * @param isArtilleryDirect the is artillery direct
+	 * @return true, if is artillery flak
 	 */
 	private static boolean isArtilleryFLAK(Targetable target, Entity te,
 			final boolean usesAmmo, final AmmoType atype,
@@ -1886,9 +1898,11 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param game
-	 * @param wtype
-	 * @return
+	 * Checks if is artillery indirect.
+	 *
+	 * @param game the game
+	 * @param wtype the wtype
+	 * @return true, if is artillery indirect
 	 */
 	private static boolean isArtilleryIndirect(final IGame game,
 			final WeaponType wtype) {
@@ -1898,9 +1912,11 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param weapon
-	 * @param wtype
-	 * @return
+	 * Checks if is indirect.
+	 *
+	 * @param weapon the weapon
+	 * @param wtype the wtype
+	 * @return true, if is indirect
 	 */
 	private static boolean isIndirect(final Mounted weapon,
 			final WeaponType wtype) {
@@ -1909,9 +1925,11 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param game
-	 * @param wtype
-	 * @return
+	 * Checks if is artillery direct.
+	 *
+	 * @param game the game
+	 * @param wtype the wtype
+	 * @return true, if is artillery direct
 	 */
 	private static boolean isArtilleryDirect(final IGame game,
 			final WeaponType wtype) {
@@ -1920,10 +1938,12 @@ public class WeaponAttackAction extends AbstractAttackAction implements
 	}
 
 	/**
-	 * @param wtype
-	 * @param isWeaponInfantry
-	 * @param atype
-	 * @return
+	 * Checks if is inferno.
+	 *
+	 * @param wtype the wtype
+	 * @param isWeaponInfantry the is weapon infantry
+	 * @param atype the atype
+	 * @return true, if is inferno
 	 */
 	private static boolean isInferno(final WeaponType wtype,
 			boolean isWeaponInfantry, final AmmoType atype) {

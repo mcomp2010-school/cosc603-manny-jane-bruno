@@ -21,17 +21,21 @@ import megamek.common.WeaponType;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SpaceBombAttack.
+ *
  * @author Jay Lawson
  */
 public class SpaceBombAttack extends Weapon {
 
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7842514353177676459L;
 
+    /**
+     * Instantiates a new space bomb attack.
+     */
     public SpaceBombAttack() {
         this.name = "Space Bomb";
         this.setInternalName(Aero.SPACE_BOMB_ATTACK);

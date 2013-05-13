@@ -15,18 +15,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISNarcOS.
+ *
  * @author Sebastian Brocks
  */
 public class ISNarcOS extends NarcWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8610275030183400408L;
 
     /**
-     * 
+     * Instantiates a new checks if is narc os.
      */
     public ISNarcOS() {
         super();

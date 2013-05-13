@@ -26,21 +26,24 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SRMAntiTSMHandler.
+ *
  * @author Sebastian Brocks
  */
 public class SRMAntiTSMHandler extends SRMHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6380017303917455020L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new sRM anti tsm handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public SRMAntiTSMHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

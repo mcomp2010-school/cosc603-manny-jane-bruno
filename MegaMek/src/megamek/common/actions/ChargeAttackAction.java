@@ -44,6 +44,7 @@ import megamek.common.Targetable;
 import megamek.common.Terrains;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents one unit charging another. Stores information about where the
  * target is supposed to be for the charge to be successful, as well as normal
@@ -53,33 +54,64 @@ import megamek.common.ToHitData;
  */
 public class ChargeAttackAction extends DisplacementAttackAction {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3549351664290057785L;
 
+    /**
+     * Instantiates a new charge attack action.
+     *
+     * @param attacker the attacker
+     * @param target the target
+     */
     public ChargeAttackAction(Entity attacker, Targetable target) {
         this(attacker.getId(), target.getTargetType(), target.getTargetId(), target.getPosition());
     }
 
+    /**
+     * Instantiates a new charge attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     * @param targetPos the target pos
+     */
     public ChargeAttackAction(int entityId, int targetType, int targetId, Coords targetPos) {
         super(entityId, targetType, targetId, targetPos);
     }
 
     /**
-     * To-hit number for a charge, assuming that movement has been handled
+     * To-hit number for a charge, assuming that movement has been handled.
+     *
+     * @param game the game
+     * @return the to hit data
      */
     public ToHitData toHit(IGame game) {
         return toHit(game, false);
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @param skid the skid
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game, boolean skid) {
         final Entity entity = game.getEntity(getEntityId());
         return toHit(game, game.getTarget(getTargetType(), getTargetId()), entity.getPosition(), entity.getElevation(), entity.moved, skid, false);
     }
 
     /**
-     * To-hit number for a charge, assuming that movement has been handled
+     * To-hit number for a charge, assuming that movement has been handled.
+     *
+     * @param game the game
+     * @param target the target
+     * @param src the src
+     * @param elevation the elevation
+     * @param movement the movement
+     * @param skid the skid
+     * @param gotUp the got up
+     * @return the to hit data
      */
     public ToHitData toHit(IGame game, Targetable target, Coords src, int elevation, int movement, boolean skid, boolean gotUp) {
         final Entity ae = getEntity(game);
@@ -297,7 +329,11 @@ public class ChargeAttackAction extends DisplacementAttackAction {
     }
 
     /**
-     * Checks if a charge can hit the target, taking account of movement
+     * Checks if a charge can hit the target, taking account of movement.
+     *
+     * @param game the game
+     * @param md the md
+     * @return the to hit data
      */
     public ToHitData toHit(IGame game, MovePath md) {
         final Entity ae = game.getEntity(getEntityId());
@@ -355,19 +391,49 @@ public class ChargeAttackAction extends DisplacementAttackAction {
     /**
      * Damage that a mech does with a successful charge. Assumes that
      * delta_distance is correct.
+     *
+     * @param entity the entity
+     * @return the damage for
      */
     public static int getDamageFor(Entity entity) {
         return getDamageFor(entity, entity, false, 0, entity.delta_distance);
     }
 
+    /**
+     * Gets the damage for.
+     *
+     * @param entity the entity
+     * @param tacops the tacops
+     * @param hexesMoved the hexes moved
+     * @return the damage for
+     */
     public static int getDamageFor(Entity entity, boolean tacops, int hexesMoved) {
         return getDamageFor(entity, entity, tacops, 0, hexesMoved);
     }
 
+    /**
+     * Gets the damage for.
+     *
+     * @param entity the entity
+     * @param target the target
+     * @param tacops the tacops
+     * @param mos the mos
+     * @return the damage for
+     */
     public static int getDamageFor(Entity entity, Entity target, boolean tacops, int mos) {
         return getDamageFor(entity, target, tacops, mos , entity.delta_distance);
     }
 
+    /**
+     * Gets the damage for.
+     *
+     * @param entity the entity
+     * @param target the target
+     * @param tacops the tacops
+     * @param mos the mos
+     * @param hexesMoved the hexes moved
+     * @return the damage for
+     */
     public static int getDamageFor(Entity entity, Entity target, boolean tacops, int mos, int hexesMoved) {
         if ( !tacops ) {
             if (hexesMoved == 0) {
@@ -380,20 +446,49 @@ public class ChargeAttackAction extends DisplacementAttackAction {
 
     /**
      * Damage that a mech suffers after a successful charge.
+     *
+     * @param entity the entity
+     * @param bldg the bldg
+     * @param coords the coords
+     * @return the damage taken by
      */
     public static int getDamageTakenBy(Entity entity, Building bldg, Coords coords) {
         // ASSUMPTION: 10% of buildings CF at start of phase, round up.
         return (int) Math.ceil(bldg.getPhaseCF(coords) / 10.0);
     }
 
+    /**
+     * Gets the damage taken by.
+     *
+     * @param entity the entity
+     * @param target the target
+     * @return the damage taken by
+     */
     public static int getDamageTakenBy(Entity entity, Entity target) {
         return getDamageTakenBy(entity, target, false, 0);
     }
 
+    /**
+     * Gets the damage taken by.
+     *
+     * @param entity the entity
+     * @param target the target
+     * @param tacops the tacops
+     * @return the damage taken by
+     */
     public static int getDamageTakenBy(Entity entity, Entity target, boolean tacops) {
         return getDamageTakenBy(entity, target, tacops, entity.delta_distance);
     }
 
+    /**
+     * Gets the damage taken by.
+     *
+     * @param entity the entity
+     * @param target the target
+     * @param tacops the tacops
+     * @param distance the distance
+     * @return the damage taken by
+     */
     public static int getDamageTakenBy(Entity entity, Entity target, boolean tacops, int distance) {
         if (!tacops) {
             return (int) Math.ceil(target.getWeight() / 10.0 * (entity.getLocationStatus(1) == ILocationExposureStatus.WET ? 0.5 : 1));

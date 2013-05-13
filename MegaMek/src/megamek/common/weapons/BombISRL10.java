@@ -17,17 +17,21 @@ import megamek.common.AmmoType;
 import megamek.common.BombType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BombISRL10.
+ *
  * @author Jay Lawson
  */
 public class BombISRL10 extends MissileWeapon {
 
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5763858241912399084L;
 
+    /**
+     * Instantiates a new bomb isr l10.
+     */
     public BombISRL10() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

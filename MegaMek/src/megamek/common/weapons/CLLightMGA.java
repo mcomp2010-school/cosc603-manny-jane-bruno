@@ -20,16 +20,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLLightMGA.
+ *
  * @author Sebastian Brocks
  */
 public class CLLightMGA extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5151562824587975407L;
 
+    /**
+     * Instantiates a new cL light mga.
+     */
     public CLLightMGA() {
         super();
         this.techLevel = TechConstants.T_CLAN_TW;

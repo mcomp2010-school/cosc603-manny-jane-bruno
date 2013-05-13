@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISHeavyMG.
+ *
  * @author Sebastian Brocks
  */
 public class ISHeavyMG extends MGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 9170779598178306077L;
 
     /**
-     * 
+     * Instantiates a new checks if is heavy mg.
      */
     public ISHeavyMG() {
         super();

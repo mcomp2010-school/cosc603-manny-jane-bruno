@@ -19,16 +19,20 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLHAG30.
+ *
  * @author Sebastian Brocks
  */
 public class CLHAG30 extends HAGWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7189182993830405980L;
 
+    /**
+     * Instantiates a new cLHA g30.
+     */
     public CLHAG30() {
         super();
         techLevel = TechConstants.T_CLAN_TW;

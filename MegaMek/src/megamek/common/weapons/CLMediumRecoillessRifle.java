@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLMediumRecoillessRifle.
+ *
  * @author Andrew Hunter
  */
 public class CLMediumRecoillessRifle extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8244299318168866609L;
 
     /**
-     * 
+     * Instantiates a new cL medium recoilless rifle.
      */
     public CLMediumRecoillessRifle() {
         super();

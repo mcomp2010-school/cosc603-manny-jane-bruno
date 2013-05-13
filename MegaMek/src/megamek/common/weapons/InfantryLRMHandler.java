@@ -22,20 +22,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryLRMHandler.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryLRMHandler extends InfantryWeaponHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 234646912767994265L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new infantry lrm handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public InfantryLRMHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

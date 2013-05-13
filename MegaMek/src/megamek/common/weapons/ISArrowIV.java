@@ -20,18 +20,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISArrowIV.
+ *
  * @author Sebastian Brocks
  */
 public class ISArrowIV extends ArtilleryWeapon {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4495524659692575107L;
 
     /**
-     *
+     * Instantiates a new checks if is arrow iv.
      */
     public ISArrowIV() {
         super();

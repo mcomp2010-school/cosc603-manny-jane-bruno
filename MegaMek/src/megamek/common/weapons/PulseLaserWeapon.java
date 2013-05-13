@@ -18,16 +18,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PulseLaserWeapon.
+ *
  * @author beerockxs
  */
 public class PulseLaserWeapon extends LaserWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -731162221147163665L;
 
+    /**
+     * Instantiates a new pulse laser weapon.
+     */
     public PulseLaserWeapon() {
         super();
         this.flags |= F_PULSE;

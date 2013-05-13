@@ -27,22 +27,33 @@ import megamek.common.Targetable;
 import megamek.common.TeleMissile;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
- * Represents one tele-controlled missile attack
- * 
+ * Represents one tele-controlled missile attack.
+ *
  * @author Ben Mazur
  */
 public class TeleMissileAttackAction extends AbstractAttackAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1054613811287285482L;
 
+    /**
+     * Instantiates a new tele missile attack action.
+     *
+     * @param attacker the attacker
+     * @param target the target
+     */
     public TeleMissileAttackAction(Entity attacker, Targetable target) {
         super(attacker.getId(), target.getTargetType(), target.getTargetId());
     }
 
+    /**
+     * Gets the damage for.
+     *
+     * @param entity the entity
+     * @return the damage for
+     */
     public static int getDamageFor(Entity entity) {      
         if(entity instanceof TeleMissile) {
             return ((TeleMissile)entity).getDamageValue();
@@ -52,12 +63,22 @@ public class TeleMissileAttackAction extends AbstractAttackAction {
     }
     
     /**
-     * To-hit number for a charge, assuming that movement has been handled
+     * To-hit number for a charge, assuming that movement has been handled.
+     *
+     * @param game the game
+     * @return the to hit data
      */
     public ToHitData toHit(IGame game) {
         return toHit(game, game.getTarget(getTargetType(), getTargetId()));
     }
     
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @param target the target
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game, Targetable target) {
         final Entity ae = getEntity(game);
 

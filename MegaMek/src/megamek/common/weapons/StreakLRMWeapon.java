@@ -19,17 +19,21 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class StreakLRMWeapon.
+ *
  * @author Sebastian Brocks
  */
 
 public abstract class StreakLRMWeapon extends LRMWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2552069184709782928L;
 
+    /**
+     * Instantiates a new streak lrm weapon.
+     */
     public StreakLRMWeapon() {
         super();
         this.ammoType = AmmoType.T_LRM_STREAK;

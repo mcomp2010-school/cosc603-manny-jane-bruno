@@ -14,19 +14,34 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RepairWeaponMalfunctionAction.
+ */
 public class RepairWeaponMalfunctionAction extends AbstractEntityAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7947928598199505776L;
+    
+    /** The weapon id. */
     private int weaponId;
 
+    /**
+     * Instantiates a new repair weapon malfunction action.
+     *
+     * @param entityId the entity id
+     * @param weaponId the weapon id
+     */
     public RepairWeaponMalfunctionAction(int entityId, int weaponId) {
         super(entityId);
         this.weaponId = weaponId;
     }
 
+    /**
+     * Gets the weapon id.
+     *
+     * @return the weapon id
+     */
     public int getWeaponId() {
         return weaponId;
     }

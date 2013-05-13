@@ -17,15 +17,20 @@
  */
 package megamek.common.weapons;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SubCapitalMissileWeapon.
+ *
  * @author Jay Lawson
  */
 public abstract class SubCapitalMissileWeapon extends AmmoWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 9186993166684654767L;
 
+    /**
+     * Instantiates a new sub capital missile weapon.
+     */
     public SubCapitalMissileWeapon() {
         super();
         this.atClass = CLASS_CAPITAL_MISSILE;

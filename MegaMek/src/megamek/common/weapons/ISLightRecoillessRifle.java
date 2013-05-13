@@ -24,17 +24,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLightRecoillessRifle.
+ *
  * @author Andrew Hunter
  */
 public class ISLightRecoillessRifle extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5411130862469650277L;
 
     /**
-     * 
+     * Instantiates a new checks if is light recoilless rifle.
      */
     public ISLightRecoillessRifle() {
         super();

@@ -19,18 +19,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SRMWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class SRMWeapon extends MissileWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3636219178276978444L;
 
     /**
-     * 
+     * Instantiates a new sRM weapon.
      */
     public SRMWeapon() {
         super();

@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLFlamer.
+ *
  * @author Andrew Hunter
  */
 public class CLFlamer extends FlamerWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8782512971175525221L;
 
     /**
-     * 
+     * Instantiates a new cL flamer.
      */
     public CLFlamer() {
         super();

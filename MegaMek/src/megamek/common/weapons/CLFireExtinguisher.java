@@ -23,17 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLFireExtinguisher.
+ *
  * @author Sebastian Brocks
  */
 public class CLFireExtinguisher extends Weapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5190894967392738394L;
 
     /**
-     * 
+     * Instantiates a new cL fire extinguisher.
      */
     public CLFireExtinguisher() {
         super();

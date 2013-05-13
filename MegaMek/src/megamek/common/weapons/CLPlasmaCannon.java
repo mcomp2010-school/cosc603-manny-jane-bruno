@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CLPlasmaCannon.
+ *
  * @author Sebastian Brocks
  */
 public class CLPlasmaCannon extends AmmoWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 322396740172378519L;
 
+    /**
+     * Instantiates a new cL plasma cannon.
+     */
     public CLPlasmaCannon() {
         this.techLevel = TechConstants.T_CLAN_TW;
         this.name = "Plasma Cannon";

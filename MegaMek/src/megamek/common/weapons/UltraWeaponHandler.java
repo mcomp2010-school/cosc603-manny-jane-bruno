@@ -30,20 +30,27 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class UltraWeaponHandler.
+ *
  * @author Andrew Hunter
  */
 public class UltraWeaponHandler extends AmmoWeaponHandler {
-    /**
-     *
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7551194199079004134L;
+    
+    /** The how many shots. */
     int howManyShots;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new ultra weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public UltraWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);
@@ -231,6 +238,9 @@ public class UltraWeaponHandler extends AmmoWeaponHandler {
         return (int) toReturn;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#usesClusterTable()
+     */
     @Override
     protected boolean usesClusterTable() {
         return true;

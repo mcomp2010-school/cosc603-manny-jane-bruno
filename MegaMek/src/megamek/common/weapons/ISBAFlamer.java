@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISBAFlamer.
+ *
  * @author Andrew Hunter
  */
 public class ISBAFlamer extends FlamerWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1414639280093120062L;
 
     /**
-     * 
+     * Instantiates a new iSBA flamer.
      */
     public ISBAFlamer() {
         super();

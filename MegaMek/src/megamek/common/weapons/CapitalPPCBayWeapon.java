@@ -18,17 +18,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CapitalPPCBayWeapon.
+ *
  * @author Jay Lawson
  */
 public class CapitalPPCBayWeapon extends BayWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new capital ppc bay weapon.
      */
     public CapitalPPCBayWeapon() {
         super();

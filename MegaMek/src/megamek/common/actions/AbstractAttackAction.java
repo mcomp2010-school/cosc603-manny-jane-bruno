@@ -28,52 +28,93 @@ import megamek.common.Targetable;
 import megamek.common.ToHitData;
 import megamek.common.WeaponType;
 
+// TODO: Auto-generated Javadoc
 /**
  * Abstract superclass for any action where an entity is attacking another
  * entity.
  */
 public abstract class AbstractAttackAction extends AbstractEntityAction
         implements AttackAction {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -897197664652217134L;
+    
+    /** The target type. */
     private int targetType;
+    
+    /** The target id. */
     private int targetId;
 
     // default to attacking an entity, since this is what most of them are
+    /**
+     * Instantiates a new abstract attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public AbstractAttackAction(int entityId, int targetId) {
         super(entityId);
         this.targetType = Targetable.TYPE_ENTITY;
         this.targetId = targetId;
     }
 
+    /**
+     * Instantiates a new abstract attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public AbstractAttackAction(int entityId, int targetType, int targetId) {
         super(entityId);
         this.targetType = targetType;
         this.targetId = targetId;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.actions.AttackAction#getTargetType()
+     */
     public int getTargetType() {
         return targetType;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.actions.AttackAction#getTargetId()
+     */
     public int getTargetId() {
         return targetId;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.actions.AttackAction#setTargetType(int)
+     */
     public void setTargetType(int targetType) {
         this.targetType = targetType;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.actions.AttackAction#setTargetId(int)
+     */
     public void setTargetId(int targetId) {
         this.targetId = targetId;
     }
 
+    /**
+     * Gets the target.
+     *
+     * @param g the g
+     * @return the target
+     */
     public Targetable getTarget(IGame g) {
         return g.getTarget(getTargetType(), getTargetId());
     }
 
+    /**
+     * Gets the entity.
+     *
+     * @param g the g
+     * @return the entity
+     */
     public Entity getEntity(IGame g) {
         Entity e = g.getEntity(getEntityId());
         // if we have an artyattack, we might need to get an out-of-game entity
@@ -86,7 +127,14 @@ public abstract class AbstractAttackAction extends AbstractEntityAction
 
     /**
      * used by the toHit of derived classes atype may be null if not using an
-     * ammo based weapon
+     * ammo based weapon.
+     *
+     * @param game the game
+     * @param target the target
+     * @param atype the atype
+     * @param attacker the attacker
+     * @param isWeapon the is weapon
+     * @return the to hit data
      */
     public static ToHitData nightModifiers(IGame game, Targetable target,
             AmmoType atype, Entity attacker, boolean isWeapon) {

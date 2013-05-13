@@ -14,6 +14,7 @@
  */
 package megamek.client.bot;
 
+// TODO: Auto-generated Javadoc
 /**
  * Container for strategy modifiers
  *
@@ -24,13 +25,16 @@ public class Strategy {
     /*
      * 0 full out retreat (damage shy) +inf full out attack (damage preference)
      */
+    /** The attack. */
     public double attack = 1;
 
     /*
      * Modify attacks against me based upon this. i.e. how strongly do people
      * want to attack me
      */
+    /** The target. */
     public double target = 1;
 
+    /** The Main target. */
     static CEntity MainTarget;
 }

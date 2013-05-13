@@ -23,16 +23,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISERLargeLaserPrototype.
+ *
  * @author Andrew Hunter
  */
 public class ISERLargeLaserPrototype extends LaserWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4745756742469577788L;
 
+    /**
+     * Instantiates a new iSER large laser prototype.
+     */
     public ISERLargeLaserPrototype() {
         super();
         this.techLevel = TechConstants.T_IS_EXPERIMENTAL;

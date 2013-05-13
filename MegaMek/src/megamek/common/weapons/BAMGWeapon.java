@@ -23,15 +23,19 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BAMGWeapon.
+ *
  * @author Sebastian Brocks
  */
 public abstract class BAMGWeapon extends Weapon {
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6222214456392675786L;
 
     /**
-     *
+     * Instantiates a new bAMG weapon.
      */
     public BAMGWeapon() {
         super();

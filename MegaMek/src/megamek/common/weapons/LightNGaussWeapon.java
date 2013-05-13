@@ -19,17 +19,19 @@ package megamek.common.weapons;
 import megamek.common.AmmoType;
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LightNGaussWeapon.
+ *
  * @author Jay Lawson
  */
 public class LightNGaussWeapon extends NavalGaussWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8756042527483383101L;
 
     /**
-     * 
+     * Instantiates a new light n gauss weapon.
      */
     public LightNGaussWeapon() {
         super();

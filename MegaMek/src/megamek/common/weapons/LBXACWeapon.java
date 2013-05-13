@@ -23,11 +23,15 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LBXACWeapon.
+ *
  * @author Andrew Hunter
  */
 public abstract class LBXACWeapon extends AmmoWeapon {
 
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5478539267390524833L;
 
     /**
@@ -52,6 +56,9 @@ public abstract class LBXACWeapon extends AmmoWeapon {
         }
     }
 
+    /**
+     * Instantiates a new lBXAC weapon.
+     */
     public LBXACWeapon() {
         super();
         this.flags |= F_DIRECT_FIRE | F_BALLISTIC;

@@ -27,35 +27,67 @@ import megamek.common.TargetRoll;
 import megamek.common.Targetable;
 import megamek.common.ToHitData;
 
+// TODO: Auto-generated Javadoc
 /**
  * The attacker grapples the target.
  */
 public class GrappleAttackAction extends PhysicalAttackAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4178252788550426489L;
 
+    /**
+     * Instantiates a new grapple attack action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public GrappleAttackAction(int entityId, int targetId) {
         super(entityId, targetId);
     }
 
+    /**
+     * Instantiates a new grapple attack action.
+     *
+     * @param entityId the entity id
+     * @param targetType the target type
+     * @param targetId the target id
+     */
     public GrappleAttackAction(int entityId, int targetType, int targetId) {
         super(entityId, targetType, targetId);
     }
 
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @return the to hit data
+     */
     public ToHitData toHit(IGame game) {
         return toHit(game, getEntityId(), game.getTarget(getTargetType(), getTargetId()));
     }
 
     /**
-     * To-hit number
+     * To-hit number.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @return the to hit data
      */
     public static ToHitData toHit(IGame game, int attackerId, Targetable target) {
         return toHit(game,attackerId,target,Entity.GRAPPLE_BOTH);
     }
     
+    /**
+     * To hit.
+     *
+     * @param game the game
+     * @param attackerId the attacker id
+     * @param target the target
+     * @param grappleSide the grapple side
+     * @return the to hit data
+     */
     public static ToHitData toHit(IGame game, int attackerId, Targetable target, int grappleSide) {
         final Entity ae = game.getEntity(attackerId);
         if (ae == null)

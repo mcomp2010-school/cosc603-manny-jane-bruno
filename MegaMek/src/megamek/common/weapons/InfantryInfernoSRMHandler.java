@@ -30,20 +30,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryInfernoSRMHandler.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryInfernoSRMHandler extends InfantrySRMHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5917196139361672006L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new infantry inferno srm handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public InfantryInfernoSRMHandler(ToHitData t, WeaponAttackAction w,
             IGame g, Server s) {

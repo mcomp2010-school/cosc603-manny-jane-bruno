@@ -28,6 +28,7 @@ import megamek.common.IHex;
 import megamek.common.Mech;
 import megamek.common.Terrains;
 
+// TODO: Auto-generated Javadoc
 /**
  * The entity tries to find a club.
  * 
@@ -36,18 +37,24 @@ import megamek.common.Terrains;
  */
 public class FindClubAction extends AbstractEntityAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8948591442556777640L;
 
-    /** Creates new FindClubAction */
+    /**
+     * Creates new FindClubAction.
+     *
+     * @param entityId the entity id
+     */
     public FindClubAction(int entityId) {
         super(entityId);
     }
 
     /**
-     * Returns whether an entity can find a club in its current location
+     * Returns whether an entity can find a club in its current location.
+     *
+     * @param game the game
+     * @param entityId the entity id
+     * @return true, if successful
      */
     public static boolean canMechFindClub(IGame game, int entityId) {
         final Entity entity = game.getEntity(entityId);

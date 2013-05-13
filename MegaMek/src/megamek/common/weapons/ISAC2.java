@@ -19,17 +19,19 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISAC2.
+ *
  * @author Andrew Hunter
  */
 public class ISAC2 extends ACWeapon {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 49211848611799265L;
 
     /**
-     * 
+     * Instantiates a new iSA c2.
      */
     public ISAC2() {
         super();

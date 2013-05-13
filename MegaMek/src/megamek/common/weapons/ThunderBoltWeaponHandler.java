@@ -22,21 +22,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ThunderBoltWeaponHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ThunderBoltWeaponHandler extends MissileWeaponHandler {
 
-    /**
-     *
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 6329291710822071023L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new thunder bolt weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ThunderBoltWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

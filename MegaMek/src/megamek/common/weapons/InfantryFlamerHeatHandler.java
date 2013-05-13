@@ -31,20 +31,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class InfantryFlamerHeatHandler.
+ *
  * @author Sebastian Brocks
  */
 public class InfantryFlamerHeatHandler extends InfantryFlamerHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4808077901373647109L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new infantry flamer heat handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public InfantryFlamerHeatHandler(ToHitData t, WeaponAttackAction w,
             IGame g, Server s) {
@@ -71,6 +75,9 @@ public class InfantryFlamerHeatHandler extends InfantryFlamerHandler {
         return 1;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleEntityDamage(megamek.common.Entity, java.util.Vector, megamek.common.Building, int, int, int, int)
+     */
     protected void handleEntityDamage(Entity entityTarget,
             Vector<Report> vPhaseReport, Building bldg, int hits, int nCluster,
             int nDamPerHit, int bldgAbsorbs) {

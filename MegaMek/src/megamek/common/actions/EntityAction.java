@@ -14,8 +14,23 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface EntityAction.
+ */
 public interface EntityAction {
+    
+    /**
+     * Gets the entity id.
+     *
+     * @return the entity id
+     */
     public int getEntityId();
 
+    /**
+     * Sets the entity id.
+     *
+     * @param entityId the new entity id
+     */
     public void setEntityId(int entityId);
 }

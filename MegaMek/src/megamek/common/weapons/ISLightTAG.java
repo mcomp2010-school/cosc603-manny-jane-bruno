@@ -19,17 +19,21 @@ package megamek.common.weapons;
 
 import megamek.common.TechConstants;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ISLightTAG.
+ *
  * @author Sebastian Brocks This servers both as the Fa-Shih's Light TAG and the
- *         Kage's IS Compact TAG, as the stats are the same.
+ * Kage's IS Compact TAG, as the stats are the same.
  */
 public class ISLightTAG extends TAGWeapon {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3038539726901030186L;
 
+    /**
+     * Instantiates a new checks if is light tag.
+     */
     public ISLightTAG() {
         super();
         this.techLevel = TechConstants.T_IS_TW_NON_BOX;

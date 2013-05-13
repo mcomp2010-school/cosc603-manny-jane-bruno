@@ -28,20 +28,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PrototypeLBXHandler.
+ *
  * @author Sebastian Brocks
  */
 public class PrototypeLBXHandler extends LBXHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -5200908977142584431L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
-     * @param s
+     * Instantiates a new prototype lbx handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public PrototypeLBXHandler(ToHitData t, WeaponAttackAction w, IGame g,
             Server s) {

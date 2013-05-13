@@ -22,21 +22,25 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ArtilleryWeaponDirectHomingHandler.
+ *
  * @author Sebastian Brocks
  */
 public class ArtilleryWeaponDirectHomingHandler extends
         ArtilleryWeaponIndirectHomingHandler {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 7543333005465757983L;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new artillery weapon direct homing handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public ArtilleryWeaponDirectHomingHandler(ToHitData t,
             WeaponAttackAction w, IGame g, Server s) {

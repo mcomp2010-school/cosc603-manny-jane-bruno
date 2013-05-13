@@ -30,21 +30,30 @@ import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 import megamek.server.Server.DamageType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MGAWeaponHandler.
+ *
  * @author Sebastian Brocks
  */
 public class MGAWeaponHandler extends MGHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8675420566952393440L;
+    
+    /** The how many shots. */
     int howManyShots;
+    
+    /** The hit. */
     HitData hit;
 
     /**
-     * @param t
-     * @param w
-     * @param g
+     * Instantiates a new mGA weapon handler.
+     *
+     * @param t the t
+     * @param w the w
+     * @param g the g
+     * @param s the s
      */
     public MGAWeaponHandler(ToHitData t, WeaponAttackAction w, IGame g, Server s) {
         super(t, w, g, s);

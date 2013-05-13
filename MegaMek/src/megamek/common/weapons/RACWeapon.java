@@ -24,16 +24,20 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class RACWeapon.
+ *
  * @author Andrew Hunter TODO: is this the right hierarchy location?
  */
 public abstract class RACWeapon extends UACWeapon {
 
     
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 659000035767322660L;
 
     /**
-     * 
+     * Instantiates a new rAC weapon.
      */
     public RACWeapon() {
         super();

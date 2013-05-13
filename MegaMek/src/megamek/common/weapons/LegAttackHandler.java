@@ -30,19 +30,24 @@ import megamek.common.ToHitData;
 import megamek.common.actions.WeaponAttackAction;
 import megamek.server.Server;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class LegAttackHandler.
+ *
  * @author Sebastian Brocks
  */
 public class LegAttackHandler extends WeaponHandler {
-    /**
-     * 
-     */
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 4429993211361286138L;
 
     /**
-     * @param toHit
-     * @param waa
-     * @param g
+     * Instantiates a new leg attack handler.
+     *
+     * @param toHit the to hit
+     * @param waa the waa
+     * @param g the g
+     * @param s the s
      */
     public LegAttackHandler(ToHitData toHit, WeaponAttackAction waa, IGame g,
             Server s) {
@@ -58,6 +63,9 @@ public class LegAttackHandler extends WeaponHandler {
         return 1;
     }
 
+    /* (non-Javadoc)
+     * @see megamek.common.weapons.WeaponHandler#handleEntityDamage(megamek.common.Entity, java.util.Vector, megamek.common.Building, int, int, int, int)
+     */
     protected void handleEntityDamage(Entity entityTarget,
             Vector<Report> vPhaseReport, Building bldg, int hits, int nCluster,
             int nDamPerHit, int bldgAbsorbs) {

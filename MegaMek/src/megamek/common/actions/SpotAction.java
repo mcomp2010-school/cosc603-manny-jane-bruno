@@ -14,19 +14,34 @@
 
 package megamek.common.actions;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SpotAction.
+ */
 public class SpotAction extends AbstractEntityAction {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 3629300334304478911L;
+    
+    /** The target id. */
     private int targetId;
 
+    /**
+     * Instantiates a new spot action.
+     *
+     * @param entityId the entity id
+     * @param targetId the target id
+     */
     public SpotAction(int entityId, int targetId) {
         super(entityId);
         this.targetId = targetId;
     }
 
+    /**
+     * Gets the target id.
+     *
+     * @return the target id
+     */
     public int getTargetId() {
         return targetId;
     }

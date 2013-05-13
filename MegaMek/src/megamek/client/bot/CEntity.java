@@ -39,24 +39,47 @@ import megamek.common.Terrains;
 import megamek.common.ToHitData;
 import megamek.common.WeaponType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CEntity.
+ */
 public class CEntity {
 
+    /**
+     * The Class Table.
+     */
     static class Table extends HashMap<Integer, CEntity> {
 
-        /**
-         *
-         */
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 6437109733397107056L;
+        
+        /** The tb. */
         private TestBot tb;
 
+        /**
+         * Instantiates a new table.
+         *
+         * @param tb the tb
+         */
         public Table(TestBot tb) {
             this.tb = tb;
         }
 
+        /**
+         * Put.
+         *
+         * @param es the es
+         */
         public void put(CEntity es) {
             this.put(es.getKey(), es);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param es the es
+         * @return the c entity
+         */
         public CEntity get(Entity es) {
             CEntity result = null;
             if ((result = super.get(new Integer(es.getId()))) == null) {
@@ -66,6 +89,12 @@ public class CEntity {
             return result;
         }
 
+        /**
+         * Gets the.
+         *
+         * @param id the id
+         * @return the c entity
+         */
         public CEntity get(int id) {
             return get(new Integer(id));
         }
@@ -77,8 +106,11 @@ public class CEntity {
     // table
 
     // Tank armor is either the side hit or the turret
+    /** The Constant TANK_ARMOR. */
     final static double TANK_ARMOR[][] = { { 0, 1.0, 0, 0, 0 },
             { 0, 0, 0, 0, 1.0 }, { 0, 0, 0, 1.0, 0 }, { 0, 0, 1.0, 0, 0 } };
+    
+    /** The Constant TANK_WT_ARMOR. */
     final static double TANK_WT_ARMOR[][] = {
             { 0, 31.0 / 36, 0, 0, 0, 5.0 / 36 },
             { 0, 0, 0, 0, 31.0 / 36, 5.0 / 36 },
@@ -86,26 +118,36 @@ public class CEntity {
             { 0, 0, 31.0 / 36, 0, 0, 5.0 / 36 } };
 
     // Infantry don't have a facing. In fact, they don't have armor...
+    /** The Constant INFANTRY_ARMOR. */
     final static double INFANTRY_ARMOR[][] = { { 1.0 }, { 1.0 }, { 1.0 },
             { 1.0 } };
 
     // Battle armor units have multiple suits
+    /** The Constant ISBA_ARMOR. */
     final static double ISBA_ARMOR[][] = { { 0.25, 0.25, 0.25, 0.25 },
             { 0.25, 0.25, 0.25, 0.25 }, { 0.25, 0.25, 0.25, 0.25 },
             { 0.25, 0.25, 0.25, 0.25 } };
+    
+    /** The Constant CLBA_ARMOR. */
     final static double CLBA_ARMOR[][] = { { 0.2, 0.2, 0.2, 0.2, 0.2 },
             { 0.2, 0.2, 0.2, 0.2, 0.2 }, { 0.2, 0.2, 0.2, 0.2, 0.2 },
             { 0.2, 0.2, 0.2, 0.2, 0.2 } };
+    
+    /** The Constant PROTOMECH_ARMOR. */
     final static double PROTOMECH_ARMOR[][] = {
             { 1.0 / 31, 16.0 / 31, 3.0 / 31, 3.0 / 31, 8.0 / 31 },
             { 1.0 / 31, 16.0 / 31, 3.0 / 31, 3.0 / 31, 8.0 / 31 },
             { 1.0 / 31, 16.0 / 31, 3.0 / 31, 3.0 / 31, 8.0 / 31 },
             { 1.0 / 31, 16.0 / 31, 3.0 / 31, 3.0 / 31, 8.0 / 31 } };
+    
+    /** The Constant PROTOMECH_MG_ARMOR. */
     final static double PROTOMECH_MG_ARMOR[][] = {
             { 1.0 / 32, 16.0 / 32, 3.0 / 32, 3.0 / 32, 8.0 / 32, 1.0 / 32 },
             { 1.0 / 31, 16.0 / 32, 3.0 / 32, 3.0 / 32, 8.0 / 32, 1.0 / 32 },
             { 1.0 / 31, 16.0 / 32, 3.0 / 32, 3.0 / 32, 8.0 / 32, 1.0 / 32 },
             { 1.0 / 31, 16.0 / 32, 3.0 / 32, 3.0 / 32, 8.0 / 32, 1.0 / 32 } };
+    
+    /** The Constant MECH_ARMOR. */
     final static double MECH_ARMOR[][] = {
             { 1.0 / 36, 7.0 / 36, 6.0 / 36, 6.0 / 36, 4.0 / 36, 4.0 / 36,
                     4.0 / 36, 4.0 / 36 },
@@ -115,118 +157,217 @@ public class CEntity {
                     2.0 / 36, 8.0 / 36 },
             { 1.0 / 36, 6.0 / 36, 7.0 / 36, 4.0 / 36, 6.0 / 36, 2.0 / 36,
                     8.0 / 36, 2.0 / 36 } };
+    
+    /** The Constant GUN_EMPLACEMENT_ARMOR. */
     final static double GUN_EMPLACEMENT_ARMOR[][] = { { 1.0 / 4, 0, 0, 0 },
             { 1.0 / 4, 0, 0, 0 }, { 1.0 / 4, 0, 0, 0 }, { 1.0 / 4, 0, 0, 0 } };
+    
+    /** The Constant GUN_EMPLACEMENT_TURRET_ARMOR. */
     final static double GUN_EMPLACEMENT_TURRET_ARMOR[][] = {
             { 1.0 / 3, 0, 0, 0, 5.0 / 36 }, { 1.0 / 3, 0, 0, 0, 5.0 / 36 },
             { 1.0 / 3, 0, 0, 0, 5.0 / 36 }, { 1.0 / 3, 0, 0, 0, 5.0 / 36 } };
 
+    /** The Constant MAX_RANGE. */
     public static final int MAX_RANGE = 36; // Updated to reflect longer ranges
                                             // of level 2 equipment
-    public static final int MIN_BRACKET = 6;
+    /** The Constant MIN_BRACKET. */
+                                            public static final int MIN_BRACKET = 6;
 
+    /** The Constant OVERHEAT_NONE. */
     public static final int OVERHEAT_NONE = 0;
+    
+    /** The Constant OVERHEAT_LOW. */
     public static final int OVERHEAT_LOW = 1;
+    
+    /** The Constant OVERHEAT_HIGH. */
     public static final int OVERHEAT_HIGH = 2;
 
+    /** The Constant RANGE_SHORT. */
     public static final int RANGE_SHORT = 0;
+    
+    /** The Constant RANGE_MEDIUM. */
     public static final int RANGE_MEDIUM = 1;
+    
+    /** The Constant RANGE_LONG. */
     public static final int RANGE_LONG = 2;
+    
+    /** The Constant RANGE_ALL. */
     public static final int RANGE_ALL = 3;
 
+    /** The Constant FIRST_ARC. */
     public static final int FIRST_ARC = 0;
+    
+    /** The Constant LAST_PRIMARY_ARC. */
     public static final int LAST_PRIMARY_ARC = 3;
+    
+    /** The Constant LAST_ARC. */
     public static final int LAST_ARC = 4;
 
+    /** The Constant TT. */
     public static final int TT = 4;
 
+    /** The Constant LEFT_LEG. */
     public static final int LEFT_LEG = 0;
+    
+    /** The Constant RIGHT_LEG. */
     public static final int RIGHT_LEG = 1;
 
+    /** The entity. */
     Entity entity;
+    
+    /** The current. */
     MoveOption current;
+    
+    /** The last. */
     MoveOption last; // set only after movement
 
+    /** The moves. */
     private MoveOption.Table moves;
+    
+    /** The pass. */
     MoveOption.Table pass = new MoveOption.Table();
+    
+    /** The run mp. */
     public int runMP;
+    
+    /** The jump mp. */
     public int jumpMP;
     // For MASC/supercharger useage. Set to true if failure is bad.
+    /** The masc_threat. */
     public boolean masc_threat = false;
 
+    /** The is physical target. */
     boolean isPhysicalTarget = false;
 
     // Heat characterization of this unit
+    /** The overheat. */
     int overheat = OVERHEAT_NONE;
 
     // Ideal engagement ranges
+    /** The range. */
     int range = RANGE_ALL;
+    
+    /** The long_range. */
     int long_range = 0;
+    
+    /** The range_damages. */
     double range_damages[] = new double[4];
+    
+    /** The rd_bracket. */
     int rd_bracket = 0;
 
+    /** The base_psr_odds. */
     double base_psr_odds = 1.0;
 
+    /** The has taken damage. */
     boolean hasTakenDamage = false;
+    
+    /** The strategy. */
     public Strategy strategy = new Strategy();
 
     // A subjective measure of the armor quality indexed by ToHitData
     // location static variables (front, rear, left, right)
+    /** The armor_health. */
     double[] armor_health = { 0, 0, 0, 0, 0, 0, 0, 0 };
+    
+    /** The armor_percent. */
     double[] armor_percent = { 0, 0, 0, 0, 0, 0, 0, 0 };
     // Armor averaged over all locations
     // TODO: replace with array, one element per arc
+    /** The avg_armor. */
     double avg_armor = 0;
     // Average internal structure
     // TODO: replace with array, one element per arc
+    /** The avg_iarmor. */
     double avg_iarmor = 0;
 
     // used to determine the utility of combining attacks
+    /** The expected_damage. */
     double[] expected_damage = { 0, 0, 0, 0, 0, 0, 0, 0 };
+    
+    /** The possible_damage. */
     double[] possible_damage = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
+    /** The leg_health. */
     double[] leg_health = { 0, 0 };
 
+    /** The overall_armor_percent. */
     double overall_armor_percent = 0.0;
+    
+    /** The damages. */
     double[][] damages = new double[6][MAX_RANGE + 1];
 
     // the battle value of the mech
+    /** The bv. */
     int bv;
 
     // relative position in the enemy array
+    /** The enemy_num. */
     int enemy_num;
 
+    /** The tb. */
     private TestBot tb;
 
+    /** The engaged. */
     boolean engaged = false; // am i fighting
+    
+    /** The moved. */
     boolean moved = false;
+    
+    /** The just moved. */
     boolean justMoved = false;
 
     // TSM equipped Mechs work better at 9+ heat, so flag if mounted
+    /** The tsm_offset. */
     boolean tsm_offset = false;
 
+    /** The min range mods. */
     int[] minRangeMods = new int[MIN_BRACKET + 1];
 
+    /**
+     * Instantiates a new c entity.
+     *
+     * @param en the en
+     * @param tb the tb
+     */
     public CEntity(Entity en, TestBot tb) {
         entity = en;
         this.tb = tb;
         reset();
     }
 
+    /**
+     * Gets the entity.
+     *
+     * @return the entity
+     */
     public Entity getEntity() {
         return entity;
     }
 
+    /**
+     * Can move.
+     *
+     * @return true, if successful
+     */
     public boolean canMove() {
         return (entity.isSelectableThisTurn()
                 && !(entity.isProne() && (base_psr_odds < .2)) && !entity
                 .isImmobile());
     }
 
+    /**
+     * Just moved.
+     *
+     * @return true, if successful
+     */
     public boolean justMoved() {
         return (!moved && !entity.isSelectableThisTurn()) || justMoved;
     }
 
+    /**
+     * Reset.
+     */
     public void reset() {
         entity = tb.game.getEntity(entity.getId()); // fresh entity
         for (int a = FIRST_ARC; a <= LAST_ARC; a++) {
@@ -242,6 +383,9 @@ public class CEntity {
         isPhysicalTarget = false;
     }
 
+    /**
+     * Refresh.
+     */
     public void refresh() {
         entity = tb.game.getEntity(entity.getId());
         if (justMoved()) {
@@ -253,10 +397,16 @@ public class CEntity {
         }
     }
 
+    /**
+     * Reset possible damage.
+     */
     public void resetPossibleDamage() {
         Arrays.fill(possible_damage, 0);
     }
 
+    /**
+     * Characterize.
+     */
     public void characterize() {
         entity = tb.game.getEntity(entity.getId());
         current = new MoveOption(tb.game, this);
@@ -538,6 +688,11 @@ public class CEntity {
      * firing arcs defined in Compute. If the unit is a Mech capable of flipping
      * arms, full arm damages are applied to the rear arc; otherwise only add
      * half as the Mech can only twist in one direction.
+     *
+     * @param arc the arc
+     * @param secondary the secondary
+     * @param r the r
+     * @param ed the ed
      */
     private void addDamage(int arc, boolean secondary, int r, double ed) {
 
@@ -598,6 +753,8 @@ public class CEntity {
      * Fills range damage values for short, medium, long, and all, plus sets the
      * range bracket for the entity, which is 1/3 of long range or 1/4 extreme
      * range. The arc argument follows Compute.ARC_XXX format.
+     *
+     * @param arc the arc
      */
     public void computeRange(int arc) {
 
@@ -665,6 +822,10 @@ public class CEntity {
      * Returns the value of the armor in the indicated location. Conventional
      * infantry and battle armor behave differently than other units. Armor is
      * in integer units.
+     *
+     * @param loc the loc
+     * @param rear the rear
+     * @return the armor value
      */
     protected int getArmorValue(int loc, boolean rear) {
         int result = entity.getArmor(loc, rear);
@@ -695,6 +856,10 @@ public class CEntity {
      * ToHitData (FRONT, REAR, LEFT, RIGHT). Takes a damage value and adjusts it
      * based on the characterized entities armor/internal values in that arc.
      * Also adjusts based on the strategy module being used by this entity.
+     *
+     * @param threat the threat
+     * @param arc the arc
+     * @return the threat utility
      */
     public double getThreatUtility(double threat, int arc) {
         double t1 = threat;
@@ -747,10 +912,21 @@ public class CEntity {
         return Math.max(t1, t2);
     }
 
+    /**
+     * Gets the key.
+     *
+     * @return the key
+     */
     public Integer getKey() {
         return new Integer(entity.getId());
     }
 
+    /**
+     * Gets the all moves.
+     *
+     * @param client the client
+     * @return the all moves
+     */
     public MoveOption.Table getAllMoves(Client client) {
         if (moves == null) {
             moves = calculateMoveOptions(current, client);
@@ -761,6 +937,10 @@ public class CEntity {
     /**
      * From the current state, explore based upon an implementation of
      * Dijkstra's algorithm.
+     *
+     * @param base the base
+     * @param client the client
+     * @return the move option. table
      */
     protected MoveOption.Table calculateMoveOptions(MoveOption base, Client client) {
         //New array of movement options
@@ -859,7 +1039,11 @@ public class CEntity {
     }
 
     /**
-     * find all moves that get into dest
+     * find all moves that get into dest.
+     *
+     * @param dest the dest
+     * @param client the client
+     * @return the array list
      */
     public ArrayList<MoveOption> findMoves(Coords dest, Client client) {
         ArrayList<MoveOption> result = new ArrayList<MoveOption>();
@@ -882,6 +1066,11 @@ public class CEntity {
      * is (hopefully) close to the original value. New odds are generated based
      * on the units gunnery skill and the modifier and factored back into the
      * returned damage value.
+     *
+     * @param arc the arc
+     * @param a_range the a_range
+     * @param modifier the modifier
+     * @return the modified damage
      */
     public double getModifiedDamage(int arc, int a_range, int modifier) {
         if (a_range > MAX_RANGE) {
@@ -943,6 +1132,12 @@ public class CEntity {
      * defensive coverage, whether trees, ECM, or AMS is not considered. Built
      * in offensive equipment will be counted, such as Artemis IV/V, as will
      * minimum range modifiers and inherent weapon modifiers.
+     *
+     * @param attacker the attacker
+     * @param weapon the weapon
+     * @param range the range
+     * @param gunskill the gunskill
+     * @return the expected damage
      */
     public static double getExpectedDamage(Entity attacker, Mounted weapon,
             int range, int gunskill) {
@@ -1228,6 +1423,14 @@ public class CEntity {
         return fDamage;
     }
 
+    /**
+     * Gets the firing angle.
+     *
+     * @param dest the dest
+     * @param dest_facing the dest_facing
+     * @param src the src
+     * @return the firing angle
+     */
     public static int getFiringAngle(final Coords dest, int dest_facing,
             final Coords src) {
         int fa = dest.degree(src) - (dest_facing % 6) * 60;
@@ -1239,6 +1442,14 @@ public class CEntity {
         return fa;
     }
 
+    /**
+     * Gets the threat hit arc.
+     *
+     * @param dest the dest
+     * @param dest_facing the dest_facing
+     * @param src the src
+     * @return the threat hit arc
+     */
     public static int getThreatHitArc(Coords dest, int dest_facing, Coords src) {
         int fa = getFiringAngle(dest, dest_facing, src);
         if ((fa >= 300) || (fa <= 60)) {
@@ -1253,6 +1464,12 @@ public class CEntity {
         return ToHitData.SIDE_REAR;
     }
 
+    /**
+     * Firing arc to hit arc.
+     *
+     * @param arc the arc
+     * @return the int
+     */
     public static int firingArcToHitArc(int arc) {
         switch (arc) {
             case Compute.ARC_FORWARD:
@@ -1271,6 +1488,9 @@ public class CEntity {
         return 0;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     @Override
     public boolean equals(Object obj) {
         if ((obj instanceof Entity) || (obj instanceof CEntity)) {
@@ -1279,11 +1499,19 @@ public class CEntity {
         return false;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return entity.getId();
     }
 
+    /**
+     * Gets the tb.
+     *
+     * @return the tb
+     */
     public TestBot getTb() {
         return tb;
     }
