@@ -189,18 +189,8 @@ public class PhysicalAttackAction extends AbstractAttackAction {
         // sensor hits...
         // It gets a =4 penalty for being blind!
         if (((Mech) ae).getCockpitType() == Mech.COCKPIT_TORSO_MOUNTED) {
-            int sensorHits = ae.getBadCriticals(CriticalSlot.TYPE_SYSTEM,
-                    Mech.SYSTEM_SENSORS, Mech.LOC_HEAD);
-            int sensorHits2 = ae.getBadCriticals(CriticalSlot.TYPE_SYSTEM,
-                    Mech.SYSTEM_SENSORS, Mech.LOC_CT);
-            if ((sensorHits + sensorHits2) == 3) {
-            	toHit.addModifier(TargetRoll.IMPOSSIBLE, "Sensors Completely Destroyed for Torso-Mounted Cockpit");            
-                return;
-                
-            } else if (sensorHits == 2) {
-                toHit.addModifier(4,
-                        "Head Sensors Destroyed for Torso-Mounted Cockpit");
-            }
+        	if(!calculateBlindPenalty(toHit, ae))
+        	return;            
         }
 
         // if we're spotting for indirect fire, add +1
@@ -214,43 +204,76 @@ public class PhysicalAttackAction extends AbstractAttackAction {
         toHit.append(nightModifiers(game, target, null, ae, false));
 
         if (target.getTargetType() == Targetable.TYPE_ENTITY) {
-            // Checks specific to entity targets
-            Entity te = (Entity) target;
-
-            // target movement
-            toHit.append(Compute.getTargetMovementModifier(game, targetId));
-
-            // target prone
-            if (te.isProne()) {
-                toHit.addModifier(-2, "target prone and adjacent");
-            }
-
-            IHex targHex = game.getBoard().getHex(te.getPosition());
-            // water partial cover?
-            if ((te.height() > 0) && (te.getElevation() == -1)
-                    && (targHex.terrainLevel(Terrains.WATER) == te.height())) {
-                toHit.addModifier(1, "target has partial cover");
-            }
-
-            // Pilot skills
-            Compute.modifyPhysicalBTHForAdvantages(ae, te, toHit, game);
-
-            //Attacking Weight Class Modifier.
-            if ( game.getOptions().booleanOption("tacops_attack_physical_psr") ) {
-                if ( ae.getWeightClass() == EntityWeightClass.WEIGHT_LIGHT ) {
-                    toHit.addModifier(-2, "Weight Class Attack Modifier");
-                }else if ( ae.getWeightClass() == EntityWeightClass.WEIGHT_MEDIUM ) {
-                    toHit.addModifier(-1, "Weight Class Attack Modifier");
-                }
-            }
-
-            //evading bonuses (
-            if(te.isEvading()) {
-                toHit.addModifier(te.getEvasionBonus(), "target is evading");
-            }
+            processTargetableEntity(toHit, game, ae, target, targetId);
         }
         if ((ae instanceof Mech) && ((Mech)ae).hasIndustrialTSM()) {
             toHit.addModifier(2, "industrial TSM");
         }
     }
+
+	/**
+	 * @param toHit
+	 * @param game
+	 * @param ae
+	 * @param target
+	 * @param targetId
+	 */
+	private static void processTargetableEntity(ToHitData toHit, IGame game,
+			Entity ae, Targetable target, int targetId) {
+		// Checks specific to entity targets
+		Entity te = (Entity) target;
+
+		// target movement
+		toHit.append(Compute.getTargetMovementModifier(game, targetId));
+
+		// target prone
+		if (te.isProne()) {
+		    toHit.addModifier(-2, "target prone and adjacent");
+		}
+
+		IHex targHex = game.getBoard().getHex(te.getPosition());
+		// water partial cover?
+		if ((te.height() > 0) && (te.getElevation() == -1)
+		        && (targHex.terrainLevel(Terrains.WATER) == te.height())) {
+		    toHit.addModifier(1, "target has partial cover");
+		}
+
+		// Pilot skills
+		Compute.modifyPhysicalBTHForAdvantages(ae, te, toHit, game);
+
+		//Attacking Weight Class Modifier.
+		if ( game.getOptions().booleanOption("tacops_attack_physical_psr") ) {
+		    if ( ae.getWeightClass() == EntityWeightClass.WEIGHT_LIGHT ) {
+		        toHit.addModifier(-2, "Weight Class Attack Modifier");
+		    }else if ( ae.getWeightClass() == EntityWeightClass.WEIGHT_MEDIUM ) {
+		        toHit.addModifier(-1, "Weight Class Attack Modifier");
+		    }
+		}
+
+		//evading bonuses (
+		if(te.isEvading()) {
+		    toHit.addModifier(te.getEvasionBonus(), "target is evading");
+		}
+	}
+
+	/**
+	 * @param toHit
+	 * @param ae
+	 */
+	private static boolean calculateBlindPenalty(ToHitData toHit, Entity ae) {
+		int sensorHits = ae.getBadCriticals(CriticalSlot.TYPE_SYSTEM,
+		        Mech.SYSTEM_SENSORS, Mech.LOC_HEAD);
+		int sensorHits2 = ae.getBadCriticals(CriticalSlot.TYPE_SYSTEM,
+		        Mech.SYSTEM_SENSORS, Mech.LOC_CT);
+		if ((sensorHits + sensorHits2) == 3) {
+			toHit.addModifier(TargetRoll.IMPOSSIBLE, "Sensors Completely Destroyed for Torso-Mounted Cockpit");            
+		    return false;
+		    
+		} else if (sensorHits == 2) {
+		    toHit.addModifier(4,
+		            "Head Sensors Destroyed for Torso-Mounted Cockpit");
+		    return true;
+		}
+		return true;
+	}
 }
