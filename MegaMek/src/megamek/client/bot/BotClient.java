@@ -385,15 +385,6 @@ public abstract class BotClient extends Client {
         checkForProhibitedTerrain();
 
         setTestHexXandY();
-        
-        
-
-        // Randomize hexes so hexes are not in order
-        // This is to prevent clumping at the upper-left corner on very flat
-        // maps
-        
-
-        // Now get minimum and maximum elevation levels for these hexes
 
         highest_elev = -100;
         lowest_elev = 100;
