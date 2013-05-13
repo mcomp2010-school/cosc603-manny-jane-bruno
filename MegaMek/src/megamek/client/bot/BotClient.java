@@ -91,6 +91,8 @@ public abstract class BotClient extends Client {
     
     protected int counter;
     
+    protected double ideal_elev;
+    
     protected Coords[] valid_array;
     
     protected Entity deployed_ent;
@@ -100,6 +102,8 @@ public abstract class BotClient extends Client {
     protected int valid_arr_index;
     
     protected int arr_x_index;
+    
+    protected double av_range;
     
     protected Coords highest_hex = new Coords();
     
@@ -366,7 +370,7 @@ public abstract class BotClient extends Client {
         int valid_arr_index, arr_x_index;
         int weapon_count;
 
-        double av_range, best_fitness, ideal_elev;
+        double best_fitness, ideal_elev;
         // double[] fitness;
         double adjusted_damage, max_damage, total_damage;
 
@@ -449,12 +453,10 @@ public abstract class BotClient extends Client {
 
         // Calculate ideal elevation as a factor of average range of 18 being
         // highest elevation
+        
+        ideal_elev = calcIdealElev();
 
-        ideal_elev = lowest_elev
-                + ((av_range / 18) * (highest_elev - lowest_elev));
-        if (ideal_elev > highest_elev) {
-            ideal_elev = highest_elev;
-        }
+        
 
         best_fitness = -100.0;
         for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
@@ -711,6 +713,14 @@ public abstract class BotClient extends Client {
             // double[game.getBoard().getWidth()*game.getBoard().getHeight()];
             break;
         }
+    }
+    
+    protected double calcIdealElev() {
+    	ideal_elev = lowest_elev
+                + ((av_range / 18) * (highest_elev - lowest_elev));
+        if (ideal_elev > highest_elev) {
+            ideal_elev = highest_elev;
+        } return ideal_elev;
     }
     
     protected void setTestHexXandY() {
