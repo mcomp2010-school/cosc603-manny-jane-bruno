@@ -139,7 +139,10 @@ public class MoveOption extends MovePath {
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
         public int compare(MoveOption e0, MoveOption e1) {
-            return e0.getDistUtility() < e1.getDistUtility() ? -1 : 1;
+        	if(e0.getDistUtility() < e1.getDistUtility())
+        		return -1;
+        	else
+        		return 1;
         }
     }
 
@@ -464,8 +467,19 @@ public class MoveOption extends MovePath {
         // set them at the appropriate positions
         final Entity ae = entity;
 
-        int attHeight = ae.isProne() ? 0 : 1;
-        int targHeight = te.isProne() ? 0 : 1;
+        int attHeight;
+        if(ae.isProne())
+        	attHeight = 0;
+        else
+        	attHeight = 1;
+        
+        int targHeight;
+        
+        if(te.isProne())
+        	targHeight = 0;
+        else
+        	targHeight = 1;
+        
         int attEl = 0;
         int targEl = 0;
         attEl = ae.getElevation() + attHeight;
