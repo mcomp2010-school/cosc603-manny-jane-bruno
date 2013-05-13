@@ -315,8 +315,7 @@ public class GAAttack extends GA {
         	return;
         }
         
-        
-        // else try to move all to one target
+        // try to move all to one target
         for (int i = 0; (i < c1.genes.length - 1) && !done; i++) {
             int iGene = (i + r1) % (c1.genes.length - 1);
             AttackOption a = attack.get(iGene).get(c1.genes[iGene]);
@@ -325,6 +324,7 @@ public class GAAttack extends GA {
                 done = true;
             }
         }
+        
         if (target == null) { // then not shooting, so shoot something
             if (attack.size() > r1 && r1 > 1) {
                 c1.genes[r1] = Compute.randomInt(attack.get(r1).size() - 1);
