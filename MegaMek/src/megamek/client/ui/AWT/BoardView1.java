@@ -1292,7 +1292,7 @@ public class BoardView1 extends Canvas implements IBoardView, BoardListener,
                 boardGraph.drawLine(drawX + (int) (62 * scale), drawY
                         + (int) (71 * scale), drawX + (int) (21 * scale), drawY
                         + (int) (71 * scale));
-                if (c.x % 2 == 1) {
+                if (c.x % 2 != 0) {
                     boardGraph.drawLine(drawX + (int) (83 * scale), drawY
                             + (int) (36 * scale), drawX + (int) (62 * scale),
                             drawY + (int) (71 * scale));

@@ -747,7 +747,7 @@ public class TestBot extends BotClient {
                             to_check.add(enemy_move_array.get(k));
                         } else {
                             int value = Compute.randomInt(enemy_move_array.size());
-                            if (value % 2 == 1) {
+                            if (Math.abs(value) % 2 == 1) { // JV: adjusted to accomodate for negative numbers
                                 to_check.add(enemy_move_array.get(value));
                             } else {
                                 to_check.add(enemy_move_array.get(k));

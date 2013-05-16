@@ -95,6 +95,30 @@ public abstract class BotClient extends Client {
 
         });
     }
+    
+    protected int highest_elev;
+    
+    protected int lowest_elev;
+    
+    protected int counter;
+    
+    protected double ideal_elev;
+    
+    protected Coords[] valid_array;
+    
+    protected Entity deployed_ent;
+    
+    protected Entity test_ent;
+    
+    protected int valid_arr_index;
+    
+    protected int arr_x_index;
+    
+    protected double av_range;
+    
+    protected Coords highest_hex = new Coords();
+    
+    protected Coords test_hex = new Coords();
 
     /** The config. */
     BotConfiguration config = new BotConfiguration();
@@ -436,111 +460,36 @@ public abstract class BotClient extends Client {
      * @return the starting coords array
      */
     protected Coords[] getStartingCoordsArray() {
-        int test_x, test_y, highest_elev, lowest_elev;
-        int counter, valid_arr_index, arr_x_index;
+        int valid_arr_index, arr_x_index;
         int weapon_count;
 
-        double av_range, best_fitness, ideal_elev;
+        double best_fitness, ideal_elev;
         // double[] fitness;
         double adjusted_damage, max_damage, total_damage;
 
         Coords highest_hex = new Coords();
-        Coords test_hex = new Coords();
-        Coords[] valid_array;
-
-        Entity test_ent, deployed_ent;
 
         Vector<Entity> valid_attackers;
 
         deployed_ent = getEntity(game.getFirstDeployableEntityNum());
 
         WeaponAttackAction test_attack;
+        
+        checkForProhibitedTerrain();
 
-        // Create array of hexes in the deployment zone that can be deployed to
-        // Check for prohibited terrain, stacking limits
-
-        switch (getLocalPlayer().getStartingPos()) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-            valid_array = new Coords[(3 * game.getBoard().getWidth())
-                    + (3 * game.getBoard().getHeight()) - 9];
-            // fitness = new
-            // double[(3*game.getBoard().getWidth())+(3*game.getBoard().getHeight())-9];
-            break;
-        case 2:
-        case 6:
-            valid_array = new Coords[game.getBoard().getWidth() * 3];
-            // fitness = new double[game.getBoard().getWidth()*3];
-            break;
-        case 4:
-        case 8:
-            valid_array = new Coords[game.getBoard().getHeight() * 3];
-            // fitness = new double[game.getBoard().getHeight()*3];
-            break;
-        case 0:
-        default:
-            valid_array = new Coords[game.getBoard().getWidth()
-                    * game.getBoard().getHeight()];
-            // fitness = new
-            // double[game.getBoard().getWidth()*game.getBoard().getHeight()];
-            break;
-        }
-
-        counter = 0;
-        for (test_x = 0; test_x <= game.getBoard().getWidth(); test_x++) {
-            for (test_y = 0; test_y <= game.getBoard().getHeight(); test_y++) {
-                test_hex.x = test_x;
-                test_hex.y = test_y;
-                if (game.getBoard().isLegalDeployment(test_hex,
-                        getLocalPlayer())) {
-                    if (!deployed_ent.isHexProhibited(game.getBoard().getHex(
-                            test_hex.x, test_hex.y))) {
-                        valid_array[counter] = new Coords(test_hex);
-                        counter++;
-                    }
-                }
-            }
-        }
-
-        // Randomize hexes so hexes are not in order
-        // This is to prevent clumping at the upper-left corner on very flat
-        // maps
-
-        for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
-            arr_x_index = Compute.randomInt(counter);
-            if (arr_x_index < 0) {
-                arr_x_index = 0;
-            }
-            test_hex = valid_array[valid_arr_index];
-            valid_array[valid_arr_index] = valid_array[arr_x_index];
-            valid_array[arr_x_index] = test_hex;
-        }
-        // copy valid hexes into a new array of the correct size,
-        // so we don't return an array that contains null Coords
-        Coords[] valid_new = new Coords[counter];
-        for (int i = 0; i < counter; i++) {
-            valid_new[i] = valid_array[i];
-        }
-        valid_array = valid_new;
-
-        // Now get minimum and maximum elevation levels for these hexes
+        setTestHexXandY();
 
         highest_elev = -100;
         lowest_elev = 100;
+        
         for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
             if (game.getBoard().getHex(valid_array[valid_arr_index].x,
                     valid_array[valid_arr_index].y).getElevation() > highest_elev) {
-                highest_elev = game.getBoard().getHex(
-                        valid_array[valid_arr_index].x,
-                        valid_array[valid_arr_index].y).getElevation();
+                highest_elev = calcHighestElev(valid_arr_index);
             }
             if (game.getBoard().getHex(valid_array[valid_arr_index].x,
                     valid_array[valid_arr_index].y).getElevation() < lowest_elev) {
-                lowest_elev = game.getBoard().getHex(
-                        valid_array[valid_arr_index].x,
-                        valid_array[valid_arr_index].y).getElevation();
+                lowest_elev = calcLowestElev(valid_arr_index);
             }
         }
 
@@ -588,12 +537,10 @@ public abstract class BotClient extends Client {
 
         // Calculate ideal elevation as a factor of average range of 18 being
         // highest elevation
+        
+        ideal_elev = calcIdealElev();
 
-        ideal_elev = lowest_elev
-                + ((av_range / 18) * (highest_elev - lowest_elev));
-        if (ideal_elev > highest_elev) {
-            ideal_elev = highest_elev;
-        }
+        
 
         best_fitness = -100.0;
         for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
@@ -802,6 +749,101 @@ public abstract class BotClient extends Client {
         Arrays.sort(valid_array, new FitnessComparator());
 
         return valid_array;
+    }
+    
+    protected int calcHighestElev(int valid_arr_index) {
+    	highest_elev = game.getBoard().getHex(
+                valid_array[valid_arr_index].x,
+                valid_array[valid_arr_index].y).getElevation();
+    	return highest_elev;
+    }
+    
+    protected int calcLowestElev(int valid_arr_index) {
+    	lowest_elev = game.getBoard().getHex(
+                valid_array[valid_arr_index].x,
+                valid_array[valid_arr_index].y).getElevation();
+    	return lowest_elev;
+    }
+    
+    protected void checkForProhibitedTerrain() {
+    	
+    	int standard = game.getBoard().getWidth() * 3;
+    	
+    	switch (getLocalPlayer().getStartingPos()) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+            valid_array = new Coords[(standard)
+                    + (3 * game.getBoard().getHeight()) - 9];
+            // fitness = new
+            // double[(3*game.getBoard().getWidth())+(3*game.getBoard().getHeight())-9];
+            break;
+        case 2:
+        case 6:
+            valid_array = new Coords[standard];
+            // fitness = new double[game.getBoard().getWidth()*3];
+            break;
+        case 4:
+        case 8:
+            valid_array = new Coords[standard];
+            // fitness = new double[game.getBoard().getHeight()*3];
+            break;
+        case 0:
+        default:
+            valid_array = new Coords[game.getBoard().getWidth()
+                    * game.getBoard().getHeight()];
+            // fitness = new
+            // double[game.getBoard().getWidth()*game.getBoard().getHeight()];
+            break;
+        }
+    }
+    
+    protected double calcIdealElev() {
+    	ideal_elev = lowest_elev
+                + ((av_range / 18) * (highest_elev - lowest_elev));
+        if (ideal_elev > highest_elev) {
+            ideal_elev = highest_elev;
+        } return ideal_elev;
+    }
+    
+    protected void setTestHexXandY() {
+    	counter = 0;
+    	int test_x, test_y;
+        for (test_x = 0; test_x <= game.getBoard().getWidth(); test_x++) {
+            for (test_y = 0; test_y <= game.getBoard().getHeight(); test_y++) {
+                test_hex.x = test_x;
+                test_hex.y = test_y;
+                if (game.getBoard().isLegalDeployment(test_hex,
+                        getLocalPlayer())) {
+                    if (!deployed_ent.isHexProhibited(game.getBoard().getHex(
+                            test_hex.x, test_hex.y))) {
+                        valid_array[counter] = new Coords(test_hex);
+                        counter++;
+                    }
+                }
+            }
+            getValidArray();
+        }
+    }
+    
+    protected void getValidArray() {
+        for (valid_arr_index = 0; valid_arr_index < counter; valid_arr_index++) {
+            arr_x_index = Compute.randomInt(counter);
+            if (arr_x_index < 0) {
+                arr_x_index = 0;
+            }
+            test_hex = valid_array[valid_arr_index];
+            valid_array[valid_arr_index] = valid_array[arr_x_index];
+            valid_array[arr_x_index] = test_hex;
+        }
+        // copy valid hexes into a new array of the correct size,
+        // so we don't return an array that contains null Coords
+        Coords[] valid_new = new Coords[counter];
+        for (int i = 0; i < counter; i++) {
+            valid_new[i] = valid_array[i];
+        }
+        valid_array = valid_new;
     }
 
     /**
