@@ -35,7 +35,6 @@ class Node implements Comparable<Node> {
 		return "node [Key=" + Key + ", Value=" + Value + "]";
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -44,7 +43,6 @@ class Node implements Comparable<Node> {
 		result = prime * result + ((Value == null) ? 0 : Value.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -71,31 +69,21 @@ class Node implements Comparable<Node> {
 	@Override
 	public int compareTo(Node other) {
 		return this.Key.compareTo(other.Key);
-	}
-	
+	}	
 }
 
 /**
- * The Class DomParser.
+ * The Class DomParser
+ * Used to Parse XML
  */
 public class DomParser {
 	
 	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
-		DomParser Dom1 = new DomParser();
-		System.out.println(Dom1.parseXML("<? hello ?> <a><b>1</b><c>2</c></a>","a"));
-	}
-	
-	/**
 	 * Parses the xml.
 	 *
-	 * @param input the input
-	 * @param strElement the str element
-	 * @return the array list
+	 * @param input A string input of xml
+	 * @param strElement the string element
+	 * @return ArrayList of Nodes
 	 */
 	public ArrayList<Node> parseXML(String input, String strElement){
 		StringBuilder strBTemp= new StringBuilder();
@@ -142,7 +130,4 @@ public class DomParser {
 		}		
 		return new ArrayList<Node>(alOut);
 	}
-		
 }
-
-

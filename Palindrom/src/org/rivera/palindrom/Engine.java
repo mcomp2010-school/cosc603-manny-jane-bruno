@@ -1,24 +1,14 @@
 package org.rivera.palindrom;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
 
 /**
  * The Main Class to get program running.
  *
  * @author Emanuel Rivera
  */
-
 
 public class Engine {
 	/**
@@ -28,9 +18,8 @@ public class Engine {
 	 */
 	
 	public static void main(String[] args) {
-		
 		Engine Engine1=new Engine();
-		
+		//args=new String[]{"dataset1.xml","output.xml"};
 		Engine1.parseArgs(args);	
 	}
 	
@@ -40,38 +29,22 @@ public class Engine {
 	 * @param args the args
 	 */
 	public void parseArgs(String[] args){
-		Options options = new Options();
-		options.addOption("h","help",false,"Help")
-			.addOption("i","input",true,"Input (Required)")
-			.addOption("o","output",true,"Output (Required)");
-		CommandLineParser parser = new GnuParser();
-		try {
-			CommandLine cmd = parser.parse( options, args);
-			
-			if(cmd.hasOption("help")){
-				  HelpFormatter formatter = new HelpFormatter();
-				  formatter.printHelp("palindrom_xml", options);
-			}else if(cmd.hasOption("input") && cmd.hasOption("output")){
-				
-				try {
-					readXMLAndProduce("dataset1.xml","output.xml","dataset");
-				} catch (IOException e) {
-					System.err.println("File Error -" + e.getMessage());					
-				}				
-			}else{
-				HelpFormatter formatter = new HelpFormatter();
-				formatter.printHelp("palindrom_xml", options);
+		if(args.length==2){
+			try {
+				readXMLAndProduce(args[0],args[1],"dataset");
+			} catch (IOException e) {
+				System.err.println("File Error -" + e.getMessage());					
 			}
-		} catch (ParseException e) {
-			e.printStackTrace();
+		}else{
+			System.out.println("usage: palindrom_xml <input file> <output file>");
 		}
 	}
 	
 	/**
 	 * Clean string.
 	 *
-	 * @param strInput the str input
-	 * @return the string
+	 * @param strInput Plain Text
+	 * @return Clean Plain Text
 	 */
 	public String cleanString(String strInput){
 		return strInput.replaceAll("[^A-Za-z0-9]", "").toLowerCase().trim();
@@ -90,49 +63,40 @@ public class Engine {
 	}
 	
 	/**
-	 * Read file.
+	 * Read arraylist and generate 
 	 *
-	 * @param strPath the str path
-	 * @return the string
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @param inputList the str xml file
 	 */
-	public String readFile(String strPath) throws IOException{
-		StringBuilder output = new StringBuilder(); 
-		BufferedReader br = new BufferedReader(new FileReader(new File(strPath)));
-	    String line;
-	    while((line = br.readLine()) != null) {
-	    	output.append(line);
-	    }
-	    br.close();
-	    return output.toString();
+	
+	public String generateAnswers(ArrayList<Node> inputList){
+		StringBuilder output= new StringBuilder();
+		String strLineSep=System.getProperty("line.separator");
+		output.append("<?xml version=\"1.0\"?>"+strLineSep);
+		output.append("<answers>"+strLineSep);
+		for(int i = 0; i<inputList.size(); i++){
+			Node currentNode=inputList.get(i);
+			if(currentNode.getKey().startsWith("data"))
+				output.append("\t<"+currentNode.getKey()+">" + isPalindrom(currentNode.getKey()) 
+					+"</"+currentNode.getKey()+">"+strLineSep);
+		}
+		output.append("</answers>"+strLineSep);
+		return output.toString();
 	}
 	
 	/**
 	 * Read xml and produce.
 	 *
-	 * @param strXMLFile the str xml file
-	 * @param strXMLOuputFile the str xml ouput file
-	 * @param strElement the str element
+	 * @param strXMLFile the xml file
+	 * @param strXMLOuputFile the xml output file
+	 * @param strElement the element
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void readXMLAndProduce(String strXMLFile, String strXMLOuputFile,String strElement) throws IOException{
-		String FileContent= readFile(strXMLFile);
+	public void readXMLAndProduce(String strXMLFile, String strXMLOutputFile,String strElement) throws IOException{
+		String FileContent= FileUtils.readFile(strXMLFile);
 		DomParser dom1 = new DomParser();
 		ArrayList<Node> results= dom1.parseXML(FileContent, strElement);
-		
-		StringBuilder output= new StringBuilder();
-		String strLineSep=System.getProperty("line.separator");
-		output.append("<?xml version=\"1.0\"?>"+strLineSep);
-		output.append("<answers>"+strLineSep);
-		for(int i = 0; i<results.size(); i++){
-			Node currentNode=results.get(i);
-			if(currentNode.getKey().substring(1,currentNode.getKey().length()-1).startsWith("data"))
-				output.append("\t<"+currentNode.getKey()+">" + isPalindrom(currentNode.getKey()) 
-					+"</"+currentNode.getKey()+">"+strLineSep);
-		}
-		output.append("</answers>"+strLineSep);
-		
-		System.out.println(output.toString());
+		String xmlAnswerResults = generateAnswers(results);
+		FileUtils.writeStringToFile(xmlAnswerResults, strXMLOutputFile, false);
 	}
 
 }
