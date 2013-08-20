@@ -301,7 +301,7 @@ public class GALance extends GA {
         }
         int r1 = (c1.genes.length > 2) ? Compute.randomInt(c1.genes.length - 1)
                 : 0;
-        if (r1 % 2 == 1) {
+        if (Math.abs(r1) % 2 == 1) { // Adjusted to accomodate for negative numbers
             c1.genes[r1] = Compute.randomInt(this.moves.get(r1).length);
             return;
         }

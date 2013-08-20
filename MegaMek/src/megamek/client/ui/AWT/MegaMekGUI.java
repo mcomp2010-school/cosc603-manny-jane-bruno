@@ -537,7 +537,7 @@ public class MegaMekGUI implements IMegaMekGUI {
         // apply any scenario damage
         sl.applyDamage(server);
         ClientGUI gui = null;
-        if (sd.localName != "") { //$NON-NLS-1$
+        if (!sd.localName.equals("")) { //$NON-NLS-1$
             // initialize game
             client = new Client(hd.name, "localhost", hd.port); //$NON-NLS-1$
             gui = new ClientGUI(client);

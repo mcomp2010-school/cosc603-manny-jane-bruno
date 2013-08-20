@@ -57,6 +57,8 @@ public class GAAttack extends GA {
     
     /** The damages. */
     double[] damages = null;
+    
+    protected int r1;
 
     /**
      * Instantiates a new gA attack.
@@ -366,24 +368,15 @@ public class GAAttack extends GA {
     @Override
     protected void doRandomMutation(int iChromIndex) {
         Chromosome c1 = chromosomes[iChromIndex];
-        // skip if it's an empty chromosome
-        if (c1.genes.length < 1) {
-            return;
-        }
-        int r1 = (c1.genes.length > 2) ? Compute.randomInt(c1.genes.length - 1)
-                : 0;
         CEntity target = null;
         boolean done = false;
-        if (r1 % 2 == 1) {
-            c1.genes[r1]--;
-            if (c1.genes[r1] < 0 && attack.size() > r1) {
-                c1.genes[r1] = attack.get(r1).size() - 1;
-            } else {
-                c1.genes[r1] = 0; // TODO : what is a good value here?
-            }
-            return;
+        // skip if it's an empty chromosome
+        boolean isEmpty = checkIfEmptyChromosome(c1);
+        if (isEmpty){
+        	return;
         }
-        // else try to move all to one target
+        
+        // try to move all to one target
         for (int i = 0; (i < c1.genes.length - 1) && !done; i++) {
             int iGene = (i + r1) % (c1.genes.length - 1);
             AttackOption a = attack.get(iGene).get(c1.genes[iGene]);
@@ -392,6 +385,7 @@ public class GAAttack extends GA {
                 done = true;
             }
         }
+        
         if (target == null) { // then not shooting, so shoot something
             if (attack.size() > r1 && r1 > 1) {
                 c1.genes[r1] = Compute.randomInt(attack.get(r1).size() - 1);
@@ -419,6 +413,23 @@ public class GAAttack extends GA {
             }
             (chromosomes[0]).genes[chromosomeDim - 1] = target.enemy_num;
         }
+    }
+    
+    protected boolean checkIfEmptyChromosome(Chromosome c1){
+    	if (c1.genes.length < 1) {
+            return true;
+        }
+        r1 = (c1.genes.length > 2) ? Compute.randomInt(c1.genes.length - 1)
+                : 0;
+        if (Math.abs(r1) % 2 == 1) { // Adjusted to accomodate for negative numbers
+            c1.genes[r1]--;
+            if (c1.genes[r1] < 0 && attack.size() > r1) {
+                c1.genes[r1] = attack.get(r1).size() - 1;
+            } else {
+                c1.genes[r1] = 0; // TODO : what is a good value here?
+            }
+            return true;
+        } return false;
     }
 
     /* (non-Javadoc)
